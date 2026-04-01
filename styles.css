@@ -74,7 +74,8 @@ body {
 
 /* 3. HERO SECTION - UNIFICADO */
 .hero {
-    height: 100vh;
+    min-height: 100svh;
+    height: auto;
     display: flex;
     align-items: center;
     padding: 0 8%;
@@ -459,14 +460,25 @@ footer {
         margin-left: 10%;
     }
 }
+@media (max-width: 992px) {
+    .hero {
+        /* Aumentamos el padding superior para empujar todo el contenido hacia abajo */
+        padding-top: 60px; 
+        padding-bottom: 60px;
+        align-items: flex-start; /* Alineamos al inicio para controlar mejor el scroll */
+        justify-content: space-between;
+    }
+}
 
 /* Tablets y pantallas medianas */
 @media (max-width: 992px) {
     .hero-wrapper {
-        flex-direction: column;
+        flex-direction: column-reverse;
+        justify-content: center;
         text-align: center;
-        margin-top: 5rem;
+        margin-top: 4rem;
     }
+   
 
     .hero {
         background-image: linear-gradient(rgba(11, 11, 11, 0.8), rgba(11, 11, 11, 0.8)), url("imagenes/homepage2.png");

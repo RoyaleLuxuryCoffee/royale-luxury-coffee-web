@@ -217,7 +217,7 @@ section.img-venta img {
 
 }
 .list-flavor li {
-    list-style:circle; 
+    list-style-type:circle; 
     display:flex;
     justify-content: center; 
     gap: 1.5rem; 
@@ -451,4 +451,123 @@ font-size: 18px;
 .content {
     padding-top: 15px;
     color: var(--gold);
+}
+
+.segunda {
+    background-color: #000;
+}
+
+/* === RESPONSIVE COMPLETO === */
+
+@media (max-width: 1024px) {
+    main {
+        gap: 8%;
+        padding: 8rem 6% 4rem;
+    }
+
+    section.img-venta img {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .size-option {
+        padding: 0.8rem 5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    main {
+        flex-direction: column;
+        padding: 7rem 5% 4rem;
+        gap: 2rem;
+        align-items: center;
+    }
+
+    section.img-venta {
+        position: static;
+        width: 100%;
+        max-width: 500px;
+        margin: 0 auto;
+    }
+
+    section.img-venta img {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    #enunciado-venta {
+        top: 0;
+        text-align: center;
+    }
+
+    .data-product {
+        padding-top: 1rem;
+        padding-right: 0;
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .data-product h1 {
+        font-size: 1.4rem;
+        white-space: normal;
+        text-align: center;
+    }
+
+    .data-product #originp {
+        text-align: center;
+    }
+
+    .list-flavor {
+        flex-wrap: wrap;
+        gap: 15px;
+        justify-content: center;
+    }
+
+    .size-option {
+        padding: 0.8rem 3rem;
+        min-width: auto;
+        flex: 1;
+    }
+
+    .volumen-option {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .quantity-button {
+        width: 100%;
+    }
+
+    .finalizar-compra {
+        width: 100%;
+    }
+
+    .btn-acquire-perfect {
+        width: 100%;
+        padding: 14px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    main {
+        padding: 6rem 4% 3rem;
+    }
+
+    .data-product h1 {
+        font-size: 1.2rem;
+    }
+
+    .list-flavor {
+        font-size: 0.9rem;
+        gap: 10px;
+    }
+
+    .size-option {
+        padding: 0.8rem 1.5rem;
+        font-size: 0.85rem;
+    }
+
+    .coffee-accordion summary {
+        font-size: 0.9rem;
+    }
 }
