@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Royale Luxury Coffee — Café Premium de Garzón, Huila</title>
-    <meta name="description" content="Royale Luxury Coffee: microlotes de café de origen cultivados en Garzón, Huila. Sabores únicos, calidad premium, directo del productor.">
+    <meta name="description"
+        content="Royale Luxury Coffee: microlotes de café de origen cultivados en Garzón, Huila. Sabores únicos, calidad premium, directo del productor.">
     <link rel="canonical" href="https://royaleluxurycoffee.com/">
 
     <!-- Open Graph -->
@@ -14,7 +15,8 @@
     <meta property="og:url" content="https://royaleluxurycoffee.com/">
     <meta property="og:title" content="Royale Luxury Coffee — Café Premium de Garzón, Huila">
     <meta property="og:image" content="imagenes/logo.png">
-    <meta property="og:description" content="Garzón Microlots. Precision farming. Curated flavors, direct trade selection..">
+    <meta property="og:description"
+        content="Garzón Microlots. Precision farming. Curated flavors, direct trade selection..">
     <meta property="og:image" content="https://royaleluxurycoffee.com/imagenes/producto3.png">
 
     <!-- Twitter Card -->
@@ -30,14 +32,18 @@
     <link rel="dns-prefetch" href="//fonts.googleapis.com">
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link rel="dns-prefetch" href="//checkout.bold.co">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@500;600&display=swap"
+        rel="stylesheet">
 
     <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
+
 <body>
 
     <header class="nav">
-        <div class="logo">Royale Luxury Coffee </div>
+        <div class="logo">Royale Luxury Coffee</div>
         <nav>
             <a href="#">Origin</a>
             <a href="#">Collection</a>
@@ -45,14 +51,12 @@
         </nav>
     </header>
 
-
-
     <main>
 
         <section class="hero">
             <div class="hero-wrapper">
                 <div class="hero-content">
-                    <h1>Coffee is not a product.<br><span>It’s culture.</span></h1>
+                    <h1>Coffee is not a product.<br><span>It's culture.</span></h1>
                     <p>
                         Estate microlots. Garzón, Huila.
                         <br>High-scoring coffee, grown with intent.
@@ -61,18 +65,18 @@
                 </div>
 
                 <div class="hero-product">
-                    <img src="imagenes/producto3.png" alt="Royal Luxury Coffee Pack">
+                    <img src="imagenes/1.png" alt="Royal Luxury Coffee Pack">
                 </div>
             </div>
+            <div class="scroll-indicator"><span>Scroll</span></div>
         </section>
 
 
-
-        <section class="editorial-section">
+        <section class="editorial-section reveal">
             <div class="container">
                 <div class="editorial-text">
-
-                    <h2> Huila no es origen.<br>Es estándar.</h2>
+                    <span class="editorial-eyebrow">Colombia · Huila · Specialty</span>
+                    <h2>Huila no es origen.<br>Es estándar.</h2>
                     <p>
                         En las montañas del Huila, el café no es industria apresurada.
                         Es práctica lenta, consciente y obsesiva.
@@ -80,15 +84,15 @@
                     </p>
                 </div>
                 <div class="editorial-finca">
-                    <img src="imagenes/cafe.jpg" alt="Finca cafetera en Garzón, Huila">
+                    <div class="editorial-img-wrap">
+                        <img src="imagenes/cafe.jpg" alt="Finca cafetera en Garzón, Huila">
+                    </div>
                 </div>
             </div>
         </section>
 
 
-
-
-        <div class="editorial-metadata">
+        <div class="editorial-metadata reveal">
             <div>
                 <span>Origin</span>
                 <strong>Garzón, Huila, Colombia</strong>
@@ -97,21 +101,35 @@
                 <span>Elevation</span>
                 <strong>1.400 – 1.800 msnm</strong>
             </div>
-          
             <div>
                 <span>Process</span>
                 <strong>Washed</strong>
             </div>
         </div>
-        <br>
-        <br>
 
 
-
+        <section class="showcase reveal">
+            <div class="showcase-inner">
+                <div class="showcase-text-left">
+                    <p>En las altas mesetas del Huila, el café no se cosecha.<br><strong>Se selecciona.</strong> Cada
+                        cereza, en su momento exacto de madurez.</p>
+                </div>
+                <div class="showcase-product">
+                    <img src="imagenes/1.png" alt="Black Heron — Royale Luxury Coffee">
+                    <span class="showcase-label">Black Heron · Garza Negra</span>
+                </div>
+                <div class="showcase-text-right">
+                    <p>Proceso Washed. Tueste Medium Dark. Notas de Chocolate Oscuro, Caramelo &amp; Almendra Tostada.
+                    </p>
+                </div>
+            </div>
+        </section>
 
         <section class="origen reveal" id="origen">
+            <div class="origen-deco-text">Huila</div>
             <div class="origen-inner">
                 <div class="origen-copy">
+                    <span class="origen-eyebrow">2°53′N 75°37′W</span>
                     <h2>Origen</h2>
                     <p>
                         Garzón, Huila es una región donde el café
@@ -120,18 +138,61 @@
                         humanas, no industriales.
                     </p>
                 </div>
+                <div class="origen-stats">
+                    <div class="origen-stat">
+                        <strong>1.800</strong>
+                        <span>msnm máximo</span>
+                    </div>
+                    <div class="origen-stat">
+                        <strong>100%</strong>
+                        <span>cosecha manual</span>
+                    </div>
+                    <div class="origen-stat">
+                        <strong>SCA</strong>
+                        <span>specialty grade</span>
+                    </div>
+                </div>
             </div>
         </section>
 
+        <section class="sensory-profile-section reveal" id="sensory">
+            <div class="sensory-container">
 
-        <section class="contacto" id="contacto">
-            <h2>Contact</h2>
-            <p>Producción limitada. Solicitudes bajo criterio.</p>
+                <div class="sensory-col">
+                    <h3 class="sensory-heading"><span class="gold-line">— I —</span> FLAVOR WHEEL</h3>
+                    <div class="chart-wrapper">
+                        <canvas id="flavorWheel"></canvas>
+                        <div class="center-spotlight">N° 01</div>
+                    </div>
+                    <div class="sensory-footer">
+                        <p class="sensory-eyebrow">WOOD · FINISH</p>
+                        <h4 class="flavor-title">Cedar</h4>
+                        <p class="flavor-subtitle">Resting box · 21 days</p>
+                        <p class="flavor-stats">6% PERCEPTION <span class="divider">|</span> REVEALS AT 64°C</p>
+                    </div>
+                </div>
 
-            <div class="contact-links">
-                <a href="RoyaleLuxuryCoffee@gmail.com" class="contact-link">Contact by email</a><br>
-                <a href="tel:+573000000000" class="contact-link">Call by phone</a><br>
-                <a href="https://wa.me/573000000000" target="_blank" rel="noopener" class="contact-link">WhatsApp</a>
+                <div class="sensory-col">
+                    <h3 class="sensory-heading"><span class="gold-line">— II —</span> SENSORY PROFILE</h3>
+                    <div class="chart-wrapper">
+                        <canvas id="radarChart"></canvas>
+                    </div>
+                    <div class="sensory-table">
+                        <div class="table-col">
+                            <div class="table-row"><span>Fragrance</span><span class="gold-score">8.50</span></div>
+                            <div class="table-row"><span>Flavor</span><span class="gold-score">9.00</span></div>
+                            <div class="table-row"><span>Acidity</span><span class="gold-score">7.25</span></div>
+                            <div class="table-row"><span>Balance</span><span class="gold-score">8.75</span></div>
+                        </div>
+                        <div class="table-col">
+                            <div class="table-row"><span>Aroma</span><span class="gold-score">8.75</span></div>
+                            <div class="table-row"><span>Aftertaste</span><span class="gold-score">8.75</span></div>
+                            <div class="table-row"><span>Body</span><span class="gold-score">9.25</span></div>
+                            <div class="table-row"><span>Sweetness</span><span class="gold-score">8.25</span></div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </section>
 
@@ -141,6 +202,97 @@
         <p>© Garzón, Huila — Coffee as Culture</p>
     </footer>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+
+            // Scroll reveal
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        revealObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.08 });
+
+            document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+            // Charts global config
+            Chart.defaults.font.family = "'Inter', sans-serif";
+            Chart.defaults.color = 'rgba(255, 255, 255, 0.6)';
+
+            // Radar chart
+            const ctxRadar = document.getElementById('radarChart').getContext('2d');
+            new Chart(ctxRadar, {
+                type: 'radar',
+                data: {
+                    labels: ['FRAGRANCE', 'AROMA', 'FLAVOR', 'AFTERTASTE', 'ACIDITY', 'BODY', 'BALANCE', 'SWEETNESS'],
+                    datasets: [{
+                        label: 'Sensory Profile',
+                        data: [8.50, 8.75, 9.00, 8.75, 7.25, 9.25, 8.75, 8.25],
+                        backgroundColor: 'rgba(201, 162, 77, 0.08)',
+                        borderColor: '#c9a24d',
+                        pointBackgroundColor: '#c9a24d',
+                        pointBorderColor: '#000',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: '#c9a24d',
+                        borderWidth: 1.5,
+                    }]
+                },
+                options: {
+                    scales: {
+                        r: {
+                            angleLines: { color: 'rgba(255, 255, 255, 0.08)' },
+                            grid: { color: 'rgba(255, 255, 255, 0.08)' },
+                            pointLabels: {
+                                color: '#c9a24d',
+                                font: { size: 9, letterSpacing: 2 }
+                            },
+                            ticks: { display: false, min: 0, max: 10 }
+                        }
+                    },
+                    plugins: { legend: { display: false } }
+                }
+            });
+
+            // Flavor wheel
+            const ctxWheel = document.getElementById('flavorWheel').getContext('2d');
+            new Chart(ctxWheel, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Dark Chocolate', 'Caramel', 'Roasted Almond'],
+                    datasets: [{
+                        data: [38, 26, 18],
+                        backgroundColor: ['#1A110D', '#c9a24d', '#5C3A21'],
+                        borderWidth: 2,
+                        borderColor: '#080808',
+                        hoverOffset: 12,
+                        borderRadius: 4,
+                        spacing: 4
+                    }]
+                },
+                options: {
+                    cutout: '80%',
+                    layout: { padding: 20 },
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            backgroundColor: 'rgba(8, 8, 8, 0.95)',
+                            titleFont: { family: "'Playfair Display', serif", size: 14 },
+                            bodyFont: { family: "'Inter', sans-serif", size: 12 },
+                            borderColor: '#c9a24d',
+                            borderWidth: 1,
+                            callbacks: {
+                                label: function (context) {
+                                    return ' ' + context.label + ': ' + context.raw + '%';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

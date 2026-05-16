@@ -1,0 +1,516 @@
+/* =============================================
+   ROYALE LUXURY COFFEE — UI COMPONENTS
+   ============================================= */
+
+/* ── 1. Breadcrumb ─────────────────────────── */
+.r-breadcrumb {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: var(--tw-3);
+    text-transform: uppercase;
+}
+.r-breadcrumb a { color: var(--gold); transition: color .3s var(--ease); }
+.r-breadcrumb a:hover { color: var(--gold-soft); }
+.r-breadcrumb [aria-current="page"] { color: rgba(245,241,232,0.45); }
+.r-breadcrumb .sep { color: rgba(245,241,232,0.20); }
+
+/* ── 2. GhostNumeral ───────────────────────── */
+.r-ghost-numeral {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 300;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(201,169,97,0.18);
+    line-height: 0.85;
+    letter-spacing: -0.04em;
+    font-size: clamp(120px, 18vw, 280px);
+    pointer-events: none;
+    user-select: none;
+    display: inline-block;
+}
+
+/* ── 3. ProductHeader ──────────────────────── */
+.r-product-header__top {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 24px;
+}
+.r-product-header__counter {
+    font-family: var(--sans);
+    font-size: 10px;
+    letter-spacing: var(--tw-3);
+    color: var(--bone-40);
+}
+.r-product-header__title {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(48px, 9vw, 88px);
+    line-height: 0.95;
+    margin: 0;
+}
+.r-product-header__title .dot { color: var(--gold-deep); }
+.r-product-header__sub {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 20px;
+}
+.r-product-header__sub em {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 20px;
+    color: rgba(245,241,232,0.85);
+}
+.r-product-header__rule { width: 48px; height: 1px; background: rgba(201,169,97,0.40); }
+.r-product-header__copy {
+    max-width: 460px;
+    margin-top: 28px;
+    font-family: var(--sans);
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--bone-65);
+}
+
+/* ── 4. TastingChips ───────────────────────── */
+.r-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+.r-chip {
+    display: inline-flex;
+    padding: 12px 20px;
+    border: 1px solid rgba(245,241,232,0.15);
+    color: rgba(245,241,232,0.70);
+    font-family: var(--sans);
+    font-size: 10px;
+    letter-spacing: var(--tw-3);
+    text-transform: uppercase;
+    transition: border-color .3s var(--ease), color .3s var(--ease);
+}
+.r-chip:hover { border-color: rgba(245,241,232,0.40); }
+.r-chip--primary { border-color: var(--gold); color: var(--gold); }
+.r-chip--primary:hover { border-color: var(--gold-soft); color: var(--gold-soft); }
+
+/* ── 5. SpecBar ────────────────────────────── */
+.r-specbar {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border: 1px solid var(--hairline-soft);
+    margin: 0;
+}
+.r-specbar__cell {
+    padding: 20px;
+    border-left: 1px solid var(--hairline-soft);
+}
+.r-specbar__cell:first-child { border-left: 0; }
+.r-specbar__cell dt { margin-bottom: 8px; }
+.r-specbar__cell dd {
+    margin: 0;
+    font-family: var(--serif);
+    font-size: 28px;
+    line-height: 1;
+    color: var(--bone);
+}
+@media (min-width: 768px) { .r-specbar__cell dd { font-size: 32px; } }
+/* SCA Score — verde como señal de calidad */
+.r-specbar__cell:first-child dd { color: var(--silver); }
+
+/* ── 6. FormatPicker ───────────────────────── */
+.r-format { border: 0; padding: 0; margin: 0; }
+.r-format__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    width: 100%;
+    padding: 0 0 12px;
+}
+.r-format__hint {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 12px;
+    color: var(--bone-40);
+}
+.r-format__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+.r-format__opt {
+    position: relative;
+    padding: 20px;
+    text-align: left;
+    border: 1px solid rgba(245,241,232,0.15);
+    transition: border-color .3s var(--ease), background .3s var(--ease);
+}
+.r-format__opt:hover { border-color: rgba(245,241,232,0.40); }
+.r-format__opt.is-active {
+    border-color: var(--gold);
+    background: rgba(201,169,97,0.04);
+}
+.r-format__opt.is-active::after {
+    content: "";
+    position: absolute;
+    top: 12px; right: 12px;
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--gold);
+}
+.r-format__primary {
+    display: block;
+    font-family: var(--serif);
+    font-size: 22px;
+    line-height: 1;
+    color: var(--bone);
+}
+.r-format__secondary {
+    display: block;
+    margin-top: 12px;
+    font-family: var(--sans);
+    font-size: 10px;
+    letter-spacing: var(--tw-3);
+    text-transform: uppercase;
+    color: rgba(245,241,232,0.55);
+}
+
+/* ── 7. GrindDial ──────────────────────────── */
+.r-dial { border: 1px solid var(--hairline-soft); padding: 28px; }
+.r-dial__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 32px;
+}
+.r-dial__status {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 12px;
+    color: var(--bone-55);
+}
+.r-dial__status em { font-style: italic; color: var(--bone); }
+
+.r-dial__track { position: relative; height: 48px; }
+.r-dial__rule {
+    position: absolute;
+    left: 0; right: 0; top: 50%;
+    height: 1px;
+    background: rgba(245,241,232,0.15);
+}
+.r-dial__tick {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 1px;
+    background: var(--bone);
+}
+.r-dial__tick--major { height: 12px; opacity: 0.40; }
+.r-dial__tick--minor { height: 6px;  opacity: 0.15; }
+
+.r-dial__caret {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 1px;
+    height: 32px;
+    background: var(--gold);
+    transition: left .4s var(--ease);
+}
+.r-dial__caret::after {
+    content: "";
+    position: absolute;
+    left: 50%; top: -2px;
+    transform: translateX(-50%);
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--gold);
+}
+
+.r-dial__labels {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 24px;
+}
+.r-dial__labels button {
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: var(--tw-3);
+    text-transform: uppercase;
+    color: var(--bone-40);
+    transition: color .3s var(--ease);
+}
+.r-dial__labels button[aria-checked="true"] { color: var(--gold); }
+
+/* ── 8. CadencePicker ──────────────────────── */
+.r-cadence { border: 0; padding: 0; margin: 0; }
+.r-cadence__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    width: 100%;
+    padding: 0 0 12px;
+}
+.r-cadence__hint {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 12px;
+    color: var(--bone-40);
+}
+.r-cadence__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+.r-cadence__opt {
+    position: relative;
+    padding: 20px;
+    text-align: left;
+    border: 1px solid rgba(245,241,232,0.15);
+    transition: border-color .3s var(--ease), background .3s var(--ease);
+}
+.r-cadence__opt:hover { border-color: rgba(245,241,232,0.40); }
+.r-cadence__opt.is-active {
+    border-color: var(--gold);
+    background: rgba(201,169,97,0.04);
+}
+.r-cadence__opt.is-active::after {
+    content: "";
+    position: absolute;
+    top: 12px; right: 12px;
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--gold);
+}
+.r-cadence__primary {
+    display: block;
+    font-family: var(--serif);
+    font-size: 20px;
+    color: var(--bone);
+}
+.r-cadence__row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-top: 12px;
+}
+.r-cadence__secondary {
+    font-family: var(--sans);
+    font-size: 10px;
+    letter-spacing: var(--tw-3);
+    text-transform: uppercase;
+    color: rgba(245,241,232,0.50);
+}
+.r-cadence__discount {
+    font-family: var(--sans);
+    font-size: 10px;
+    letter-spacing: var(--tw-3);
+    color: var(--gold);
+}
+
+/* ── 9. DossierStrip ───────────────────────── */
+.r-dossier { position: relative; overflow: hidden; padding: 128px 0; }
+@media (min-width: 768px) { .r-dossier { padding: 176px 0; } }
+
+.r-dossier__ghost {
+    position: absolute;
+    right: -2vw; bottom: -2vw;
+    opacity: 0.7;
+}
+.r-dossier__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 32px;
+    flex-wrap: wrap;
+    margin-bottom: 64px;
+}
+.r-dossier__title {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(48px, 8vw, 88px);
+    line-height: 0.95;
+    margin: 16px 0 0;
+}
+.r-dossier__title em { font-style: italic; }
+.r-dossier__helper {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 13px;
+    color: rgba(245,241,232,0.45);
+    max-width: 280px;
+}
+.r-dossier .hairline { margin: 0 0 48px; }
+.r-dossier__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 48px;
+}
+@media (min-width: 768px) {
+    .r-dossier__grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 0;
+    }
+    .r-dossier__cell {
+        padding: 0 32px;
+        border-left: 1px solid var(--hairline-soft);
+    }
+    .r-dossier__cell:first-child { border-left: 0; padding-left: 0; }
+    .r-dossier__cell:last-child  { padding-right: 0; }
+}
+.r-dossier__chapter {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+.r-dossier__chapter em {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 20px;
+    color: var(--silver);
+}
+.r-dossier__rule { flex: 1; height: 1px; background: rgba(201,169,97,0.20); }
+.r-dossier__cell h3 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 1.15;
+    margin: 0 0 16px;
+    color: var(--bone);
+}
+.r-dossier__cell p {
+    font-family: var(--sans);
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--bone-55);
+    margin: 0 0 24px;
+}
+.r-dossier__data {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px 24px;
+    margin: 0;
+}
+.r-dossier__data div {
+    border-top: 1px solid rgba(245,241,232,0.10);
+    padding-top: 12px;
+}
+.r-dossier__data dt { margin: 0 0 4px; }
+.r-dossier__data dd {
+    margin: 0;
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: var(--tw-3);
+    text-transform: uppercase;
+    color: var(--bone);
+}
+.r-dossier__notes { list-style: none; padding: 0; margin: 0; }
+.r-dossier__notes li {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-top: 1px solid rgba(245,241,232,0.10);
+    font-family: var(--serif);
+    font-size: 18px;
+}
+.r-dossier__notes li span:last-child {
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: var(--tw-3);
+    color: var(--silver);
+}
+
+/* ── 10. CertificateSeal ───────────────────── */
+.r-seal {
+    width: var(--seal-size, 220px);
+    height: var(--seal-size, 220px);
+    margin: 0;
+}
+.r-seal__rotor {
+    transform-origin: 110px 110px;
+    animation: r-seal-spin 60s linear infinite;
+}
+@keyframes r-seal-spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .r-seal__rotor { animation: none; } }
+
+/* ── 11. ProvenanceBlock ───────────────────── */
+.r-provenance { padding: 128px 0; }
+@media (min-width: 768px) { .r-provenance { padding: 176px 0; } }
+
+.r-provenance__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 48px;
+    align-items: start;
+}
+@media (min-width: 768px) {
+    .r-provenance__grid { grid-template-columns: 4fr 8fr; gap: 40px; }
+}
+.r-provenance__seal {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+.r-provenance__title {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(48px, 8vw, 80px);
+    line-height: 0.95;
+    margin: 16px 0 32px;
+}
+.r-provenance__title em { font-style: italic; }
+.r-provenance__fields {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    margin: 0 0 24px;
+}
+.r-provenance__fields dt { margin: 0 0 8px; }
+.r-provenance__fields dd {
+    margin: 0;
+    font-family: var(--sans);
+    font-size: 15px;
+    color: var(--bone);
+}
+.r-provenance__rule {
+    width: 64px;
+    height: 1px;
+    background: rgba(201,169,97,0.30);
+    border: 0;
+    margin: 24px 0;
+}
+.r-provenance__signature { margin: 0; }
+.r-provenance__signature em {
+    display: block;
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 20px;
+    color: var(--bone);
+    margin-bottom: 4px;
+}
+.r-provenance__cert {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 32px;
+    font-family: var(--sans);
+    font-size: 10px;
+    letter-spacing: var(--tw-3);
+    text-transform: uppercase;
+    color: var(--gold);
+    transition: color .3s var(--ease);
+}
+.r-provenance__cert:hover { color: var(--gold-soft); }
+.r-provenance__cert-rule {
+    display: inline-block;
+    width: 24px;
+    height: 1px;
+    background: currentColor;
+}

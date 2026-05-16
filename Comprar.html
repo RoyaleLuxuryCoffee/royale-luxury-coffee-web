@@ -3,157 +3,736 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Royale Luxury Coffee — Coffee as Culture</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Café de microlotes de origen cultivados en Garzón, Huila. Coffee as culture">
-    <link rel="dns-prefetch" href="//checkout.bold.co">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>The Black Heron — Royale Luxury Coffee</title>
+    <meta name="description"
+        content="Microlote N°01 · Garza Negra · Garzón, Huila. Single-estate specialty coffee, direct from the farm.">
 
+    <meta property="og:title" content="The Black Heron — Royale Luxury Coffee">
+    <meta property="og:description" content="Single Estate · Lot N° 01 · Garzón, Huila, Colombia">
+    <meta property="og:image" content="imagenes/1.png">
+    <meta name="theme-color" content="#0A0908">
+
+    <link rel="icon" type="image/png" href="imagenes/producto3.png">
     <link rel="dns-prefetch" href="//fonts.googleapis.com">
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link rel="dns-prefetch" href="//checkout.bold.co">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@500;600&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap"
         rel="stylesheet">
 
+    <link rel="stylesheet" href="css/tokens.css">
+    <link rel="stylesheet" href="css/components.css">
     <link rel="stylesheet" href="style-compra.css">
-
-    <meta property="og:title" content="Royal Luxury Coffee">
-    <meta property="og:description" content="Microlotes de café de origen cultivados en Garzón, Huila">
-    <meta property="og:image" content="imagenes/homepage2.png">
-    <meta name="theme-color" content="#0b0b0b">
-    <link rel="icon" type="image/png" href="imagenes/homepage.png">
 </head>
 
 <body>
-    <header class="nav">
 
-        <div class="logo">
-            <a href="index.html"> <img src="imagenes/logo.png" alt="logo Royal Luxury Coffee">
-            </a>
-        </div>
+    <!-- ═══ NAVIGATION ═══════════════════════════════════════════════════ -->
+    <header class="site-nav">
+        <a href="index.html" class="site-nav__logo">Royale Luxury Coffee</a>
         <nav>
-            <a href="#">Origen</a>
-            <a href="#">Colección</a>
-            <a href="#">Contacto</a>
+            <a href="index.html#origen">Origin</a>
+            <a href="#">Collection</a>
+            <a href="#">Contact</a>
         </nav>
     </header>
 
-
     <main>
-        <section class="img-venta">
-            <span id="enunciado-venta">Shop / Black Honey Coffee Bag</span>
-            <img src="imagenes/venta.png" alt="bolsa de café en venta">
 
+        <!-- ═══ BREADCRUMB ══════════════════════════════════════════════ -->
+        <div class="container breadcrumb-row">
+            <nav class="r-breadcrumb" aria-label="Breadcrumb">
+                <a href="index.html">Maison</a>
+                <span class="sep">/</span>
+                <a href="#">Collection</a>
+                <span class="sep">/</span>
+                <span aria-current="page">The Black Heron</span>
+            </nav>
+        </div>
 
-        </section>
-        <div class="data-product">
+        <!-- ═══ PRODUCT AREA ════════════════════════════════════════════ -->
+        <div class="product-layout container">
 
-            <H1>THE Black Heron Bag</H1>
-            <p id="originp">Huila-Colombia <br></p>
-            <ul class="list-flavor ">
-                <li>Creamy</li>
-                <li>Milk Chocolate</li>
-                <li>Florals</li>
-            </ul>
-            <p id="volume"><em>Volume:</em> </p>
-            <div class="volumen-option">
-
-                <button class="size-option">
-
-                    <span class="onzas">
-                        14 Oz Whole Bean
-
-                    </span>
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
-                        class="icon-perfect-beans">
-                        <path
-                            d="M6.5 10.5C6.5 7.5 8.5 5 11.5 5C14.5 5 16 7.5 16 10.5V13.5C16 16.5 14 19 11 19C8 19 6.5 16.5 6.5 13.5V10.5Z"
-                            stroke="currentColor" stroke-width="1.2" stroke-linejoin="round" />
-                        <path d="M11 5C11 8 13.5 10.5 11.5 13.5C10 16 11 19 11 19" stroke="currentColor"
-                            stroke-width="0.8" stroke-linecap="round" />
-                        <path
-                            d="M10.5 14.5C10.5 11.5 12.5 9 15.5 9C18.5 9 20 11.5 20 14.5V17.5C20 20.5 18 23 15 23C12 23 10.5 20.5 10.5 17.5V14.5Z"
-                            stroke="currentColor" stroke-width="1.2" stroke-linejoin="round" />
-                        <path d="M15 9C15 12 17.5 14.5 15.5 17.5C14 20 15 23 15 23" stroke="currentColor"
-                            stroke-width="0.8" stroke-linecap="round" />
-                    </svg>
-
-
-                    <span class="price">$19.99</span>
-
-                </button>
+            <!-- LEFT: product image -->
+            <div class="product-image-col">
+                <img src="imagenes/1.png" alt="The Black Heron — 340 g coffee bag, Lot N° 01">
             </div>
-            <div class="quantity">
-                <p>Quantity:</p>
-                <div class="quantity-button">
 
-                    <div class="quantity-controls">
+            <!-- RIGHT: product panel -->
+            <div class="product-panel">
 
-                        <button class="menos">-</button>
-                        <span class="numero">1</span>
-                        <button class="mas">+</button>
+                <!-- Ghost numeral (decorative) -->
+                <span class="r-ghost-numeral product-ghost" aria-hidden="true">N°01</span>
+
+                <!-- 1. Product header -->
+                <header class="r-product-header">
+                    <div class="r-product-header__top">
+                        <span class="label">Single Estate · Lot N° 01</span>
+                        <span class="r-product-header__counter">240 / 1000</span>
+                    </div>
+                    <h1 class="r-product-header__title">
+                        The Black<br>Heron<span class="dot">.</span>
+                    </h1>
+                    <div class="r-product-header__sub">
+                        <em>Garza Negra</em>
+                        <span class="r-product-header__rule"></span>
+                        <span class="label-mute">Garzón · Huila · Colombia</span>
+                    </div>
+                    <p class="r-product-header__copy">
+                        Picked one cherry at a time at 1.800 m, washed under spring water,
+                        rested twenty-one days in cedar before roast. A medium-dark that
+                        opens into chocolate and finishes on cedar.
+                    </p>
+                </header>
+
+
+
+                <!-- 3. Spec bar -->
+                <dl class="r-specbar">
+                    <div class="r-specbar__cell">
+                        <dt class="label">SCA Score</dt>
+                        <dd>87.5</dd>
+                    </div>
+                    <div class="r-specbar__cell">
+                        <dt class="label">Roast</dt>
+                        <dd>Med-Dark</dd>
+                    </div>
+                    <div class="r-specbar__cell">
+                        <dt class="label">Process</dt>
+                        <dd>Washed</dd>
+                    </div>
+                </dl>
+
+                <!-- 4. Format picker -->
+                <fieldset class="r-format" data-component="format-picker">
+                    <legend class="r-format__head">
+                        <span class="label">Format</span>
+                        <span class="r-format__hint">Choose one</span>
+                    </legend>
+                    <div class="r-format__grid" role="radiogroup">
+                        <button type="button" role="radio" aria-checked="true" data-id="black-heron-340g"
+                            data-price="30000" class="r-format__opt is-active">
+                            <span class="r-format__primary">340 g</span>
+                            <span class="r-format__secondary">12 oz · The Bag</span>
+                        </button>
+
 
                     </div>
+                </fieldset>
 
+                <!-- 5. Grind dial -->
+                <div class="r-dial" data-component="grind-dial" data-value="whole">
+                    <header class="r-dial__head">
+                        <span class="label">Grind</span>
+                        <span class="r-dial__status"><em>Whole</em> — recommended</span>
+                    </header>
+                    <div class="r-dial__track" aria-hidden="true">
+                        <div class="r-dial__rule"></div>
+                        <div class="r-dial__ticks"></div>
+                        <div class="r-dial__caret"></div>
+                    </div>
+                    <div class="r-dial__labels" role="radiogroup" aria-label="Grind preference">
+                        <button type="button" role="radio" aria-checked="true" data-id="whole">Whole</button>
+                        <button type="button" role="radio" aria-checked="false" data-id="espresso">Espresso</button>
+                        <button type="button" role="radio" aria-checked="false" data-id="pourover">Pour-Over</button>
+                        <button type="button" role="radio" aria-checked="false" data-id="french">French</button>
+                        <button type="button" role="radio" aria-checked="false" data-id="coldbrew">Cold Brew</button>
+                    </div>
+                </div>
+
+                <!-- 6. Cadence picker -->
+                <fieldset class="r-cadence" data-component="cadence-picker">
+                    <legend class="r-cadence__head">
+                        <span class="label">Cadence</span>
+                        <span class="r-cadence__hint">Pause anytime</span>
+                    </legend>
+                    <div class="r-cadence__grid" role="radiogroup">
+                        <button type="button" role="radio" aria-checked="true" data-id="once"
+                            class="r-cadence__opt is-active">
+                            <span class="r-cadence__primary">Once</span>
+                            <span class="r-cadence__row">
+                                <span class="r-cadence__secondary">Single Shipment</span>
+                            </span>
+                        </button>
+
+                    </div>
+                </fieldset>
+
+                <hr class="hairline">
+
+                <!-- ── BUY SECTION (SPA: product-view / checkout-module) ── -->
+
+                <!-- Product view -->
+                <div id="product-view" class="buy-block">
+                    <div class="qty-row">
+                        <span class="label">Quantity</span>
+                        <div class="qty-controls">
+                            <button class="qty-btn menos" aria-label="Remove one">−</button>
+                            <span class="qty-num numero">1</span>
+                            <button class="qty-btn mas" aria-label="Add one">+</button>
+                        </div>
+                    </div>
+
+                    <div class="price-row">
+                        <span class="label price-label">Total</span>
+                        <span class="price-amount" id="price-display">$30.000</span>
+                    </div>
+
+                    <button type="button" onclick="showCheckout()" class="r-btn-primary">
+                        Shop Origin Now
+                    </button>
+                </div>
+
+                <!-- Checkout module (hidden by default) -->
+                <div id="checkout-module" class="checkout-module" style="display:none; opacity:0;">
+                    <header class="checkout-header">
+                        <span class="label">Step 02 / Logistics</span>
+                        <h2 class="checkout-title">Shipping Details</h2>
+                    </header>
+
+                    <div class="r-form">
+                        <div class="r-field">
+                            <label class="label" for="clientName">Full Name</label>
+                            <input type="text" id="clientName" placeholder="Your full name" autocomplete="name">
+                        </div>
+                        <div class="r-field">
+                            <label class="label" for="clientDepartment">Department</label>
+                            <select id="clientDepartment" onchange="loadMunicipios()">
+                                <option value="" disabled selected>Select department</option>
+                            </select>
+                        </div>
+                        <div class="r-field">
+                            <label class="label" for="clientCity">City</label>
+                            <select id="clientCity" onchange="calculateTotal()" disabled>
+                                <option value="" disabled selected>Select city</option>
+                            </select>
+                        </div>
+                        <div class="r-field">
+                            <label class="label" for="clientAddress">Address</label>
+                            <input type="text" id="clientAddress" placeholder="Street, apt, building..."
+                                autocomplete="street-address">
+                        </div>
+                    </div>
+
+                    <dl class="payment-summary">
+                        <div class="summary-line">
+                            <dt>Subtotal</dt>
+                            <dd id="subtotal-val">$30.000</dd>
+                        </div>
+                        <div class="summary-line">
+                            <dt>Shipping (Interrapidísimo)</dt>
+                            <dd id="shipping-val">—</dd>
+                        </div>
+                        <div class="summary-line summary-total">
+                            <dt>Total</dt>
+                            <dd id="total-val">$30.000</dd>
+                        </div>
+                    </dl>
+
+                    <div id="zona-aviso" class="zona-aviso" style="display:none;">
+                        <p>Zona de difícil acceso — te contactamos en menos de 24 h para coordinar el envío.</p>
+                        <a href="mailto:info@royaleluxurycoffee.com">info@royaleluxurycoffee.com</a>
+                    </div>
+
+                    <div class="checkout-actions">
+                        <button type="button" onclick="pagarConBold()" class="r-btn-primary"
+                            aria-label="Proceed to payment">
+                            <svg viewBox="0 0 80 80" width="52" height="52" fill="none"
+                                xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                <path d="M28 38 V 22 C 28 14, 52 14, 52 22 V 38" stroke="currentColor"
+                                    stroke-width="2.5" stroke-linecap="round" />
+                                <rect x="16" y="38" width="48" height="36" rx="2" stroke="currentColor"
+                                    stroke-width="2.5" />
+                                <text x="40" y="60" text-anchor="middle"
+                                    font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="7"
+                                    font-weight="900" fill="currentColor" letter-spacing="2">ROYALE</text>
+                            </svg>
+                        </button>
+                        <button type="button" onclick="showProduct()" class="r-btn-ghost">
+                            ← Back to product
+                        </button>
+                    </div>
+                </div>
+
+            </div><!-- /product-panel -->
+        </div><!-- /product-layout -->
+
+        <hr class="hairline container">
+
+        <!-- ═══ ORIGEN / BRAND GALLERY ════════════════════════════════════ -->
+        <section class="r-origen">
+
+            <!-- Editorial quote -->
+            <div class="r-origen__statement container">
+                <p class="r-origen__quote">
+                    From the cloud<br>
+                    forest floor to<br>
+                    your cup<span class="dot">.</span>
+                </p>
+                <span class="label r-origen__sub">Garzón · Huila · 1.800 msnm · Colombia</span>
+            </div>
+
+            <!-- Photo grid — replace src with real photos of Garzón / farm / harvest -->
+            <div class="r-origen__grid">
+                <figure class="r-origen__fig r-origen__fig--hero">
+                    <!-- Hero: landscape of Garzón cloud forest or the farm -->
+                    <img src="imagenes/tablecoffee.jpg" alt="Cloud forest — Finca El Cedro, Garzón, Huila">
+                    <figcaption class="r-origen__cap">
+                        <span class="label">Finca El Cedro</span>
+                        <span class="label-mute">Vargas Family · Est. III</span>
+                    </figcaption>
+                </figure>
+
+                <div class="r-origen__stack">
+                    <figure class="r-origen__fig">
+                        <!-- Portrait: manual harvest or hands picking cherries -->
+                        <img src="imagenes/juan.HEIC" alt="Manual harvest — cherry selection at 1.800 m">
+                        <figcaption class="r-origen__cap">
+                            <span class="label">Manual · 100%</span>
+                        </figcaption>
+                    </figure>
+                    <figure class="r-origen__fig">
+                        <!-- Detail: washed process, cedar resting, or roasting drum -->
+                        <img src="imagenes/render1.png" alt="Washed process — 21 days cedar rest">
+                        <figcaption class="r-origen__cap">
+                            <span class="label">Washed · 21 days cedar</span>
+                        </figcaption>
+                    </figure>
                 </div>
             </div>
 
-            <button class="finalizar-compra">Shop Origin Now <svg viewBox="-150 0 400 100" fill="none"
-                    xmlns="http://www.w3.org/2000/svg" class="icon-royale-compact">
-
-                    <path d="M40 45 V 30 C 40 22, 60 22, 60 30 V 45" stroke="currentColor" stroke-width="2.5"
-                        stroke-linecap="square" />
-
-                    <rect x="30" y="45" width="40" height="35" stroke="currentColor" stroke-width="2.5"
-                        fill="transparent" />
-
-                    <text x="50" y="66" text-anchor="middle"
-                        font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="6.5" font-weight="900"
-                        fill="currentColor" letter-spacing="1">ROYALE</text>
-
-                    <g class="royale-seal-compact">
-                    </g>
-
-                </svg></button>
-
-             <details class="coffee-accordion">
-                    <summary>About This Coffee <span class="icon"></span></summary>
-             <div class="content">
-                    <p>Renowned throughout the world for its incomparable standard of quality and smooth, creamy taste profile, Jamaica Blue Mountain has rightfully earned the nickname of 'The Champagne of Coffee'. Considered one of the best coffees in the world, Jamaica Blue Mountain must meet stringent regulations and be grown under very specific conditions to meet export quality.
-
-                    The mountains are distinguished by their unique micro-climate and location which provide the ideal circumstances for growing high-quality coffee: at high-altitude on a tropical island, where near constant mist and cloud cover give perfect shading and temperature, and the cool sea breezes provide ideal moisture..</p>
-             </div>
-
-            </details>
-
-            <details class="coffee-accordion">
-
-                 <summary>Roasting <span class="icon"></span></summary>
-            <div class="content">
-                 <p>We roast all our coffee beans in small artisanal batches each day to preserve freshness and consistency. All ground coffee is ground to order just before shipping, so you can be assured your coffee has arrived as fresh as possible.
-
-                The majority of our coffees are medium roasted as a standard, unless otherwise stated on the product page.
-
-            Please contact us if you have any questions about our coffees or the way we roast.</p>
-            </div>
-           </details>
-
-            <h3>Tastes like</h3>
-            <p>Dark chocolate, caramel, and hints of vanilla</p>
-
-
-        </div>
-
-        <section>
-
-
-
         </section>
 
+        <hr class="hairline container">
 
+        <!-- ═══ DOSSIER ══════════════════════════════════════════════════ -->
+        <section class="r-dossier">
+            <span class="r-ghost-numeral r-dossier__ghost" aria-hidden="true">Dossier</span>
+            <div class="container">
+                <div class="r-dossier__head">
+                    <div>
+                        <span class="label">Part · II</span>
+                        <h2 class="r-dossier__title">
+                            The dossier, <em class="gold-grad">unfolded.</em>
+                        </h2>
+                    </div>
+                    <p class="r-dossier__helper">Four chapters, no accordions to click through.</p>
+                </div>
+                <hr class="hairline">
+                <div class="r-dossier__grid">
+
+                    <article class="r-dossier__cell">
+                        <header class="r-dossier__chapter">
+                            <em>01</em><span class="label-mute">About</span>
+                            <span class="r-dossier__rule"></span>
+                        </header>
+                        <h3>A coffee numbered, not branded.</h3>
+                        <p>Black Heron is the inaugural microlot in the Garza Negra series — a single-estate Arabica
+                            from Garzón, Huila. Each bag carries its lot number and the date it left the drum.</p>
+                    </article>
+
+                    <article class="r-dossier__cell">
+                        <header class="r-dossier__chapter">
+                            <em>02</em><span class="label-mute">Roasting</span>
+                            <span class="r-dossier__rule"></span>
+                        </header>
+                        <h3>Small drums, slow heat.</h3>
+                        <p>Roasted in 12 kg artisanal batches at our Bogotá atelier. Whole bean by default; ground on
+                            demand the morning your order ships, never before.</p>
+                        <dl class="r-dossier__data">
+                            <div>
+                                <dt class="label">12 KG</dt>
+                                <dd>Drum</dd>
+                            </div>
+                            <div>
+                                <dt class="label">14 MIN</dt>
+                                <dd>Profile</dd>
+                            </div>
+                        </dl>
+                    </article>
+
+                    <article class="r-dossier__cell">
+                        <header class="r-dossier__chapter">
+                            <em>03</em><span class="label-mute">Origin</span>
+                            <span class="r-dossier__rule"></span>
+                        </header>
+                        <h3>Garzón, where the cloud forest breathes.</h3>
+                        <p>Hand-picked between October and February by the Vargas family — third-generation farmers
+                            working four hectares above the Magdalena.</p>
+                        <dl class="r-dossier__data">
+                            <div>
+                                <dt class="label">Altitude</dt>
+                                <dd>1.800 msnm</dd>
+                            </div>
+                            <div>
+                                <dt class="label">Variety</dt>
+                                <dd>Caturra · Pink B.</dd>
+                            </div>
+                            <div>
+                                <dt class="label">Harvest</dt>
+                                <dd>Manual · 100%</dd>
+                            </div>
+                            <div>
+                                <dt class="label">Family</dt>
+                                <dd>Vargas, Est. III</dd>
+                            </div>
+                        </dl>
+                    </article>
+
+                    <article class="r-dossier__cell">
+                        <header class="r-dossier__chapter">
+                            <em>04</em><span class="label-mute">Tastes Like</span>
+                            <span class="r-dossier__rule"></span>
+                        </header>
+                        <h3>Chocolate that cools into cedar.</h3>
+                        <ul class="r-dossier__notes">
+                            <li style="--pct:38%">
+                                <div class="r-dossier__note-row"><span>Dark Chocolate</span><span>38%</span></div>
+                                <div class="r-dossier__note-track">
+                                    <div class="r-dossier__note-fill r-sensory__fill"></div>
+                                </div>
+                            </li>
+                            <li style="--pct:26%">
+                                <div class="r-dossier__note-row"><span>Caramel</span><span>26%</span></div>
+                                <div class="r-dossier__note-track">
+                                    <div class="r-dossier__note-fill r-sensory__fill"></div>
+                                </div>
+                            </li>
+                            <li style="--pct:18%">
+                                <div class="r-dossier__note-row"><span>Roasted Almond</span><span>18%</span></div>
+                                <div class="r-dossier__note-track">
+                                    <div class="r-dossier__note-fill r-sensory__fill"></div>
+                                </div>
+                            </li>
+                            <li style="--pct:12%">
+                                <div class="r-dossier__note-row"><span>Black Cherry</span><span>12%</span></div>
+                                <div class="r-dossier__note-track">
+                                    <div class="r-dossier__note-fill r-sensory__fill"></div>
+                                </div>
+                            </li>
+                            <li style="--pct:6%">
+                                <div class="r-dossier__note-row"><span>Cedar</span><span>6%</span></div>
+                                <div class="r-dossier__note-track">
+                                    <div class="r-dossier__note-fill r-sensory__fill"></div>
+                                </div>
+                            </li>
+                        </ul>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <hr class="hairline container">
+
+        <!-- ═══ PROVENANCE ═══════════════════════════════════════════════ -->
+        <section class="r-provenance">
+            <div class="container r-provenance__grid">
+
+                <!-- Seal -->
+                <div class="r-provenance__seal">
+                    <figure class="r-seal" style="--seal-size: 220px;">
+                        <svg viewBox="0 0 220 220" width="100%" height="100%" aria-hidden="true">
+                            <defs>
+                                <path id="seal-curve" d="M 110,110 m -94,0 a 94,94 0 1,1 188,0 a 94,94 0 1,1 -188,0" />
+                            </defs>
+                            <circle cx="110" cy="110" r="108" fill="none" stroke="#C9A961" stroke-opacity="0.50"
+                                stroke-width="1" />
+                            <circle cx="110" cy="110" r="80" fill="#0A0908" stroke="#C9A961" stroke-opacity="0.35"
+                                stroke-width="1" />
+
+                            <g class="r-seal__rotor">
+                                <text font-family="Inter, sans-serif" font-size="9" letter-spacing="4" fill="#C9A961"
+                                    fill-opacity="0.85">
+                                    <textPath href="#seal-curve" startOffset="0">
+                                        MMXXVI · CERTIFICATE OF ORIGIN · GARZÓN HUILA · MMXXVI · CERTIFICATE OF ORIGIN ·
+                                        GARZÓN HUILA ·
+                                    </textPath>
+                                </text>
+                            </g>
+
+                            <text x="110" y="142" text-anchor="middle" font-family="'Cormorant Garamond', serif"
+                                font-style="italic" font-size="9" fill="#C9A961" fill-opacity="0.7">LOT N° 01</text>
+
+                            <!-- Heron mark -->
+                            <g transform="translate(110 105)" fill="#C9A961">
+                                <ellipse cx="0" cy="0" rx="14" ry="6" />
+                                <path d="M -10 -2 Q -14 -10 -8 -16 Q -2 -22 -4 -30 Q -5 -34 -2 -36" stroke="#C9A961"
+                                    stroke-width="1.6" fill="none" stroke-linecap="round" />
+                                <circle cx="-2" cy="-37" r="2" />
+                                <path d="M 0 -37 L 6 -36" stroke="#C9A961" stroke-width="1" />
+                                <path d="M 4 5 L 6 18 M 8 5 L 10 18" stroke="#C9A961" stroke-width="1" fill="none"
+                                    stroke-linecap="round" />
+                            </g>
+                        </svg>
+                    </figure>
+                </div>
+
+                <!-- Body -->
+                <div class="r-provenance__body">
+                    <span class="label">Part · III — Provenance</span>
+                    <h2 class="r-provenance__title">
+                        Every bag carries<br>
+                        <em class="gold-grad">its papers.</em>
+                    </h2>
+                    <dl class="r-provenance__fields">
+                        <div>
+                            <dt class="label">Producer</dt>
+                            <dd>Vargas Family</dd>
+                        </div>
+                        <div>
+                            <dt class="label">Farm</dt>
+                            <dd>Finca El Cedro — Garzón, Huila</dd>
+                        </div>
+                        <div>
+                            <dt class="label">Elevation</dt>
+                            <dd>1.800 msnm</dd>
+                        </div>
+                        <div>
+                            <dt class="label">Roasted</dt>
+                            <dd>Atelier Bogotá — Lot N° 01</dd>
+                        </div>
+                    </dl>
+                    <hr class="r-provenance__rule">
+                    <p class="r-provenance__signature">
+                        <em>Lucía M.</em>
+                        <span class="label-mute">Roastmaster · Atelier Bogotá</span>
+                    </p>
+                    <a class="r-provenance__cert" href="#">
+                        Download Certificate (PDF)<span class="r-provenance__cert-rule"></span>
+                    </a>
+                </div>
+
+            </div>
+        </section>
 
     </main>
 
+    <footer class="site-footer container">
+        <p class="label-mute">© Garzón, Huila — Coffee as Culture</p>
+    </footer>
 
+    <!-- Floating contact -->
+    <div class="float-contact" role="complementary" aria-label="Contact">
+        <a href="https://wa.me/573XXXXXXXXX" class="float-btn" target="_blank" rel="noopener noreferrer"
+            aria-label="WhatsApp">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20" aria-hidden="true">
+                <path
+                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+            </svg>
+        </a>
+        <a href="mailto:info@royaleluxurycoffee.com" class="float-btn" aria-label="Email">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round" width="20" height="20" aria-hidden="true">
+                <rect x="2" y="4" width="20" height="16" rx="2" />
+                <path d="M2 7l10 7 10-7" />
+            </svg>
+        </a>
+    </div>
+
+    <!-- Shipping calculator -->
+    <script src="js/shipping.js"></script>
+    <!-- Component behaviour -->
+    <script src="js/components.js" defer></script>
+
+    <!-- Page logic -->
+    <script>
+        (function () {
+            'use strict';
+
+            /* ── State ────────────────────────────── */
+            var selectedProductId = 'black-heron-340g';
+            var selectedBasePrice = 30000;
+            var selectedCadence = 'once';
+            var selectedGrind = 'whole';
+
+            /* ── API URL ──────────────────────────── */
+            var API_URL = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
+                ? 'http://localhost:3001'
+                : 'https://royaleluxurycoffee.com';
+
+            /* ── Helpers ──────────────────────────── */
+            function qty() { return parseInt(document.querySelector('.numero').textContent) || 1; }
+            function discount() { return selectedCadence === 'sub' ? 0.12 : 0; }
+            function unitPrice() { return Math.round(selectedBasePrice * (1 - discount())); }
+            function subtotal() { return unitPrice() * qty(); }
+
+            function fmt(n) { return '$' + Math.round(n).toLocaleString('es-CO', { maximumFractionDigits: 0 }); }
+
+            function updatePriceDisplay() {
+                var el = document.getElementById('price-display');
+                if (el) el.textContent = fmt(subtotal());
+                var sv = document.getElementById('subtotal-val');
+                if (sv) sv.textContent = fmt(subtotal());
+                calculateTotal();
+            }
+
+            /* ── Quantity controls ────────────────── */
+            var btnMas = document.querySelector('.mas');
+            var btnMenos = document.querySelector('.menos');
+            var numSpan = document.querySelector('.numero');
+
+            if (btnMas) {
+                btnMas.addEventListener('click', function () {
+                    numSpan.textContent = qty() + 1;
+                    updatePriceDisplay();
+                });
+            }
+
+            if (btnMenos) {
+                btnMenos.addEventListener('click', function () {
+                    if (qty() > 1) {
+                        numSpan.textContent = qty() - 1;
+                        updatePriceDisplay();
+                    }
+                });
+            }
+
+            /* ── Listen to component events ──────── */
+            document.addEventListener('format:change', function (e) {
+                selectedProductId = e.detail.id;
+                selectedBasePrice = parseInt(e.detail.price, 10);
+                updatePriceDisplay();
+            });
+
+            document.addEventListener('cadence:change', function (e) {
+                selectedCadence = e.detail.id;
+                updatePriceDisplay();
+            });
+
+            document.addEventListener('grind:change', function (e) {
+                selectedGrind = e.detail.id;
+            });
+
+            /* ── SPA transitions ──────────────────── */
+            var productView = document.getElementById('product-view');
+            var checkoutModule = document.getElementById('checkout-module');
+
+            window.showCheckout = function () {
+                productView.style.transition = 'opacity 0.4s ease';
+                productView.style.opacity = '0';
+                setTimeout(function () {
+                    productView.style.display = 'none';
+                    checkoutModule.style.display = 'flex';
+                    setTimeout(function () { checkoutModule.style.opacity = '1'; }, 30);
+                }, 420);
+            };
+
+            window.showProduct = function () {
+                location.reload();
+            };
+
+            /* ── Municipios ───────────────────────── */
+            var municipiosData = {};
+            var DEPT_LABELS = {
+                AMAZONAS: 'Amazonas', ANTIOQUIA: 'Antioquia', ARAUCA: 'Arauca',
+                ATLANTICO: 'Atlántico', BOGOTADC: 'Bogotá D.C.', BOLIVAR: 'Bolívar',
+                BOYACA: 'Boyacá', CALDAS: 'Caldas', CAQUETA: 'Caquetá',
+                CASANARE: 'Casanare', CAUCA: 'Cauca', CESAR: 'Cesar',
+                CHOCO: 'Chocó', CORDOBA: 'Córdoba', CUNDINAMARCA: 'Cundinamarca',
+                GUAINIA: 'Guainía', GUAVIARE: 'Guaviare', HUILA: 'Huila',
+                LAGUAJIRA: 'La Guajira', MAGDALENA: 'Magdalena', META: 'Meta',
+                NARINO: 'Nariño', NORTESANTANDER: 'Norte de Santander',
+                PUTUMAYO: 'Putumayo', QUINDIO: 'Quindío', RISARALDA: 'Risaralda',
+                SANANDRES: 'San Andrés y Providencia', SANTANDER: 'Santander',
+                SUCRE: 'Sucre', TOLIMA: 'Tolima', VALLE: 'Valle del Cauca',
+                VAUPES: 'Vaupés', VICHADA: 'Vichada'
+            };
+
+            fetch('municipios.json')
+                .then(function (r) { return r.json(); })
+                .then(function (data) {
+                    municipiosData = data;
+                    var sel = document.getElementById('clientDepartment');
+                    Object.keys(data).sort().forEach(function (key) {
+                        var opt = document.createElement('option');
+                        opt.value = key;
+                        opt.textContent = DEPT_LABELS[key] || key;
+                        sel.appendChild(opt);
+                    });
+                });
+
+            window.loadMunicipios = function () {
+                var dept = document.getElementById('clientDepartment').value;
+                var citySel = document.getElementById('clientCity');
+                citySel.innerHTML = '<option value="" disabled selected>Select city</option>';
+                citySel.disabled = false;
+                (municipiosData[dept] || []).forEach(function (ciudad) {
+                    var opt = document.createElement('option');
+                    opt.value = ciudad;
+                    opt.textContent = ciudad;
+                    citySel.appendChild(opt);
+                });
+                calculateTotal();
+            };
+
+            /* ── Price calculation ────────────────── */
+            window.calculateTotal = function () {
+                var dept = document.getElementById('clientDepartment').value;
+                var result = Shipping.calculate(dept, subtotal());
+
+                var sv = document.getElementById('subtotal-val');
+                var shv = document.getElementById('shipping-val');
+                var tv = document.getElementById('total-val');
+                var aviso = document.getElementById('zona-aviso');
+                var payBtn = document.querySelector('#checkout-module .r-btn-primary');
+
+                if (result && result.contact) {
+                    if (sv) sv.textContent = fmt(subtotal());
+                    if (shv) shv.textContent = '—';
+                    if (tv) tv.textContent = '—';
+                    if (aviso) aviso.style.display = 'block';
+                    if (payBtn) payBtn.disabled = true;
+                    return;
+                }
+
+                if (aviso) aviso.style.display = 'none';
+                if (payBtn) payBtn.disabled = false;
+                if (sv) sv.textContent = fmt(subtotal());
+                if (shv) shv.textContent = result ? fmt(result.total) : '—';
+                if (tv) tv.textContent = result ? fmt(subtotal() + result.total) : fmt(subtotal());
+            };
+
+            /* ── Payment via Bold ─────────────────── */
+            window.pagarConBold = async function () {
+                var name = document.getElementById('clientName').value.trim();
+                var addr = document.getElementById('clientAddress').value.trim();
+                var city = document.getElementById('clientCity').value;
+                var dept = document.getElementById('clientDepartment').value;
+
+                if (!name || !addr || !city || !dept) {
+                    alert('Please fill in all shipping details.');
+                    return;
+                }
+
+                try {
+                    var res = await fetch(API_URL + '/order', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            productId: selectedProductId,
+                            quantity: qty(),
+                            grind: selectedGrind,
+                            cadence: selectedCadence,
+                            customer: { name: name, address: addr, city: city, department: dept }
+                        })
+                    });
+                    var result = await res.json();
+                    if (result.success && result.paymentUrl) {
+                        window.location.href = result.paymentUrl;
+                    } else {
+                        alert('Error creating payment link. Please try again.');
+                    }
+                } catch (err) {
+                    alert('Connection error. Please check your internet and try again.');
+                }
+            };
+
+        }());
+    </script>
 
 </body>
 
