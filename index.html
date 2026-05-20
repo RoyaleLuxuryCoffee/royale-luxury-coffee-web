@@ -36,19 +36,40 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@500;600&display=swap"
         rel="stylesheet">
 
+    <link rel="preconnect" href="https://res.cloudinary.com" crossorigin>
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
 
+    <div id="rlc-loader" class="rlc-loader">
+        <div class="rlc-loader__logo">
+            <span class="rlc-loader__name">Royale Luxury</span>
+            <em class="rlc-loader__sub">Coffee</em>
+        </div>
+        <div class="rlc-loader__bar"><div class="rlc-loader__progress"></div></div>
+    </div>
+
+    <div class="nav-overlay" id="nav-overlay"></div>
+
     <header class="nav">
         <div class="logo">Royale Luxury Coffee</div>
-        <nav>
+        <nav id="nav-menu">
             <a href="#">Origin</a>
             <a href="#">Collection</a>
             <a href="#">Contact</a>
         </nav>
+        <div class="nav-right">
+            <div class="lang-switcher">
+                <button data-lang="es">ES</button>
+                <span>|</span>
+                <button data-lang="en">EN</button>
+            </div>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
     </header>
 
     <main>
@@ -65,7 +86,7 @@
                 </div>
 
                 <div class="hero-product">
-                    <img src="imagenes/1.png" alt="Royal Luxury Coffee Pack">
+                    <img src="imagenes/bag-v3.svg" alt="Royal Luxury Coffee Pack">
                 </div>
             </div>
             <div class="scroll-indicator"><span>Scroll</span></div>
@@ -76,8 +97,8 @@
             <div class="container">
                 <div class="editorial-text">
                     <span class="editorial-eyebrow">Colombia · Huila · Specialty</span>
-                    <h2>Huila no es origen.<br>Es estándar.</h2>
-                    <p>
+                    <h2 data-i18n="editorial-h2">Huila no es origen.<br>Es estándar.</h2>
+                    <p data-i18n="editorial-p">
                         En las montañas del Huila, el café no es industria apresurada.
                         Es práctica lenta, consciente y obsesiva.
                         Cada microlote es una decisión.
@@ -111,17 +132,43 @@
         <section class="showcase reveal">
             <div class="showcase-inner">
                 <div class="showcase-text-left">
-                    <p>En las altas mesetas del Huila, el café no se cosecha.<br><strong>Se selecciona.</strong> Cada
+                    <p data-i18n="showcase-left">En las altas mesetas del Huila, el café no se cosecha.<br><strong>Se selecciona.</strong> Cada
                         cereza, en su momento exacto de madurez.</p>
                 </div>
                 <div class="showcase-product">
-                    <img src="imagenes/1.png" alt="Black Heron — Royale Luxury Coffee">
+                    <img src="imagenes/bag-v3.svg" alt="Black Heron — Royale Luxury Coffee">
                     <span class="showcase-label">Black Heron · Garza Negra</span>
                 </div>
                 <div class="showcase-text-right">
-                    <p>Proceso Washed. Tueste Medium Dark. Notas de Chocolate Oscuro, Caramelo &amp; Almendra Tostada.
+                    <p data-i18n="showcase-right">Proceso Washed. Tueste Medium Dark. Notas de Chocolate Oscuro, Caramelo &amp; Almendra Tostada.
                     </p>
                 </div>
+            </div>
+        </section>
+
+        <section class="documental reveal" id="documental">
+            <div class="documental-intro">
+                <p class="documental-eyebrow">Quiénes somos</p>
+                <h2 class="documental-title">La historia<br><em>detrás del grano</em></h2>
+                <p class="documental-body">Desde las montañas del Huila hasta tu taza.<br>Un proceso de selección sin concesiones.</p>
+            </div>
+            <div class="documental-cinema">
+                <video id="doc-video" muted playsinline loop preload="none"
+                    poster="https://res.cloudinary.com/duf951flp/video/upload/so_0,q_auto,f_jpg/0519_1_txuepp.jpg">
+                    <source src="https://res.cloudinary.com/duf951flp/video/upload/q_auto,vc_auto/0519_1_txuepp.webm" type="video/webm">
+                    <source src="https://res.cloudinary.com/duf951flp/video/upload/q_auto,vc_auto/0519_1_txuepp.mp4" type="video/mp4">
+                </video>
+                <div class="documental-vignette"></div>
+                <button class="documental-sound" id="doc-sound" aria-label="Activar sonido">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+                        <path class="sound-waves" d="M15.54 8.46a5 5 0 0 1 0 7.07M19.07 4.93a10 10 0 0 1 0 14.14"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="documental-cta">
+                <p class="documental-cta__label">Ahora que nos conoces</p>
+                <a href="Comprar.html" class="documental-cta__btn">Conoce The Black Heron →</a>
             </div>
         </section>
 
@@ -130,8 +177,8 @@
             <div class="origen-inner">
                 <div class="origen-copy">
                     <span class="origen-eyebrow">2°53′N 75°37′W</span>
-                    <h2>Origen</h2>
-                    <p>
+                    <h2 data-i18n="origen-h2">Origen</h2>
+                    <p data-i18n="origen-p">
                         Garzón, Huila es una región donde el café
                         se cultiva con altitud, tiempo y criterio.
                         Cada microlote responde a decisiones
@@ -141,11 +188,11 @@
                 <div class="origen-stats">
                     <div class="origen-stat">
                         <strong>1.800</strong>
-                        <span>msnm máximo</span>
+                        <span data-i18n="stat-msnm">msnm máximo</span>
                     </div>
                     <div class="origen-stat">
                         <strong>100%</strong>
-                        <span>cosecha manual</span>
+                        <span data-i18n="stat-cosecha">cosecha manual</span>
                     </div>
                     <div class="origen-stat">
                         <strong>SCA</strong>
@@ -156,19 +203,48 @@
         </section>
 
         <section class="sensory-profile-section reveal" id="sensory">
+            <div class="sensory-header">
+                <p class="sensory-super-eyebrow">Análisis Sensorial — N° 01</p>
+                <h2 class="sensory-title">The Black Heron<br><em>Garza Negra</em></h2>
+                <p class="sensory-product-name"><em>Washed</em> · Medium Dark · Garzón, Huila</p>
+                <hr class="hairline sensory-hairline">
+            </div>
             <div class="sensory-container">
 
                 <div class="sensory-col">
                     <h3 class="sensory-heading"><span class="gold-line">— I —</span> FLAVOR WHEEL</h3>
                     <div class="chart-wrapper">
-                        <canvas id="flavorWheel"></canvas>
+                        <div class="fw-container">
+                            <canvas id="flavorWheel"></canvas>
+                        </div>
                         <div class="center-spotlight">N° 01</div>
                     </div>
-                    <div class="sensory-footer">
-                        <p class="sensory-eyebrow">WOOD · FINISH</p>
-                        <h4 class="flavor-title">Cedar</h4>
-                        <p class="flavor-subtitle">Resting box · 21 days</p>
-                        <p class="flavor-stats">6% PERCEPTION <span class="divider">|</span> REVEALS AT 64°C</p>
+                    <div class="flavor-legend">
+                        <div class="fl-row">
+                            <span class="fl-swatch" style="background:#1A110D"></span>
+                            <span class="fl-name">Dark Chocolate</span>
+                            <span class="fl-pct">32%</span>
+                        </div>
+                        <div class="fl-row">
+                            <span class="fl-swatch" style="background:#c9a24d"></span>
+                            <span class="fl-name">Caramel</span>
+                            <span class="fl-pct">24%</span>
+                        </div>
+                        <div class="fl-row">
+                            <span class="fl-swatch" style="background:#5C3A21"></span>
+                            <span class="fl-name">Roasted Almond</span>
+                            <span class="fl-pct">20%</span>
+                        </div>
+                        <div class="fl-row">
+                            <span class="fl-swatch" style="background:#1E1208"></span>
+                            <span class="fl-name">Cedar</span>
+                            <span class="fl-pct">14%</span>
+                        </div>
+                        <div class="fl-row">
+                            <span class="fl-swatch" style="background:#6B4A18"></span>
+                            <span class="fl-name">Brown Sugar</span>
+                            <span class="fl-pct">10%</span>
+                        </div>
                     </div>
                 </div>
 
@@ -177,18 +253,46 @@
                     <div class="chart-wrapper">
                         <canvas id="radarChart"></canvas>
                     </div>
-                    <div class="sensory-table">
-                        <div class="table-col">
-                            <div class="table-row"><span>Fragrance</span><span class="gold-score">8.50</span></div>
-                            <div class="table-row"><span>Flavor</span><span class="gold-score">9.00</span></div>
-                            <div class="table-row"><span>Acidity</span><span class="gold-score">7.25</span></div>
-                            <div class="table-row"><span>Balance</span><span class="gold-score">8.75</span></div>
+                    <div class="sensory-scores">
+                        <div class="score-row">
+                            <span class="score-label">Fragrance</span>
+                            <div class="score-bar"><div class="score-fill" style="width:85%"></div></div>
+                            <span class="score-num">8.50</span>
                         </div>
-                        <div class="table-col">
-                            <div class="table-row"><span>Aroma</span><span class="gold-score">8.75</span></div>
-                            <div class="table-row"><span>Aftertaste</span><span class="gold-score">8.75</span></div>
-                            <div class="table-row"><span>Body</span><span class="gold-score">9.25</span></div>
-                            <div class="table-row"><span>Sweetness</span><span class="gold-score">8.25</span></div>
+                        <div class="score-row">
+                            <span class="score-label">Aroma</span>
+                            <div class="score-bar"><div class="score-fill" style="width:87.5%"></div></div>
+                            <span class="score-num">8.75</span>
+                        </div>
+                        <div class="score-row">
+                            <span class="score-label">Flavor</span>
+                            <div class="score-bar"><div class="score-fill" style="width:90%"></div></div>
+                            <span class="score-num">9.00</span>
+                        </div>
+                        <div class="score-row">
+                            <span class="score-label">Aftertaste</span>
+                            <div class="score-bar"><div class="score-fill" style="width:87.5%"></div></div>
+                            <span class="score-num">8.75</span>
+                        </div>
+                        <div class="score-row">
+                            <span class="score-label">Acidity</span>
+                            <div class="score-bar"><div class="score-fill" style="width:72.5%"></div></div>
+                            <span class="score-num">7.25</span>
+                        </div>
+                        <div class="score-row">
+                            <span class="score-label">Body</span>
+                            <div class="score-bar"><div class="score-fill" style="width:92.5%"></div></div>
+                            <span class="score-num">9.25</span>
+                        </div>
+                        <div class="score-row">
+                            <span class="score-label">Balance</span>
+                            <div class="score-bar"><div class="score-fill" style="width:87.5%"></div></div>
+                            <span class="score-num">8.75</span>
+                        </div>
+                        <div class="score-row">
+                            <span class="score-label">Sweetness</span>
+                            <div class="score-bar"><div class="score-fill" style="width:82.5%"></div></div>
+                            <span class="score-num">8.25</span>
                         </div>
                     </div>
                 </div>
@@ -257,23 +361,37 @@
 
             // Flavor wheel
             const ctxWheel = document.getElementById('flavorWheel').getContext('2d');
+
+            const gradCaramel = ctxWheel.createRadialGradient(140, 140, 60, 140, 140, 140);
+            gradCaramel.addColorStop(0, '#E6D2A6');
+            gradCaramel.addColorStop(1, '#8B7355');
+
+            const gradChoc = ctxWheel.createRadialGradient(140, 140, 60, 140, 140, 140);
+            gradChoc.addColorStop(0, '#2A1409');
+            gradChoc.addColorStop(1, '#0D0604');
+
+            const gradAlmond = ctxWheel.createRadialGradient(140, 140, 60, 140, 140, 140);
+            gradAlmond.addColorStop(0, '#7A4A28');
+            gradAlmond.addColorStop(1, '#3D2010');
+
             new Chart(ctxWheel, {
                 type: 'doughnut',
                 data: {
-                    labels: ['Dark Chocolate', 'Caramel', 'Roasted Almond'],
+                    labels: ['Dark Chocolate', 'Caramel', 'Roasted Almond', 'Cedar', 'Brown Sugar'],
                     datasets: [{
-                        data: [38, 26, 18],
-                        backgroundColor: ['#1A110D', '#c9a24d', '#5C3A21'],
-                        borderWidth: 2,
+                        data: [32, 24, 20, 14, 10],
+                        backgroundColor: [gradChoc, gradCaramel, gradAlmond, '#1E1208', '#6B4A18'],
+                        borderWidth: 1,
                         borderColor: '#080808',
-                        hoverOffset: 12,
-                        borderRadius: 4,
-                        spacing: 4
+                        hoverOffset: 10,
+                        borderRadius: 3,
+                        spacing: 3
                     }]
                 },
                 options: {
-                    cutout: '80%',
-                    layout: { padding: 20 },
+                    cutout: '68%',
+                    layout: { padding: 12 },
+                    animation: { duration: 1800, easing: 'easeInOutQuart' },
                     plugins: {
                         legend: { display: false },
                         tooltip: {
@@ -292,6 +410,110 @@
                 }
             });
         });
+    </script>
+    <script src="js/i18n.js"></script>
+
+    <script>
+        // Video lazy-load
+        (function () {
+            var video = document.getElementById('doc-video');
+            if (!video) return;
+            var preloaded = false;
+            var played = false;
+            var preloadObs = new IntersectionObserver(function (entries) {
+                if (entries[0].isIntersecting && !preloaded) {
+                    preloaded = true;
+                    video.preload = 'auto';
+                    video.load();
+                    preloadObs.disconnect();
+                }
+            }, { rootMargin: '400px' });
+            var playObs = new IntersectionObserver(function (entries) {
+                if (entries[0].isIntersecting && !played) {
+                    played = true;
+                    video.play().catch(function () {});
+                    playObs.disconnect();
+                }
+            }, { threshold: 0.25 });
+            preloadObs.observe(video);
+            playObs.observe(video);
+
+            var btn = document.getElementById('doc-sound');
+            if (btn) {
+                btn.addEventListener('click', function () {
+                    video.muted = !video.muted;
+                    btn.classList.toggle('is-unmuted', !video.muted);
+                });
+            }
+        })();
+
+        // Loader
+        (function () {
+            var loader = document.getElementById('rlc-loader');
+            if (!loader) return;
+            var bar = loader.querySelector('.rlc-loader__progress');
+            var start = performance.now();
+            var duration = 1800;
+            function tick(now) {
+                var p = Math.min((now - start) / duration, 1);
+                if (bar) bar.style.width = (p * 100) + '%';
+                if (p < 1) { requestAnimationFrame(tick); }
+                else { loader.classList.add('rlc-loader--out'); }
+            }
+            requestAnimationFrame(tick);
+            window.addEventListener('load', function () {
+                loader.classList.add('rlc-loader--out');
+            });
+        })();
+
+        // Mobile nav
+        (function () {
+            var toggle = document.getElementById('nav-toggle');
+            var menu = document.getElementById('nav-menu');
+            var overlay = document.getElementById('nav-overlay');
+            if (!toggle || !menu) return;
+
+            function openNav() {
+                toggle.classList.add('is-open');
+                menu.classList.add('is-open');
+                if (overlay) overlay.classList.add('is-open');
+                toggle.setAttribute('aria-expanded', 'true');
+            }
+
+            function closeNav() {
+                toggle.classList.remove('is-open');
+                menu.classList.remove('is-open');
+                if (overlay) overlay.classList.remove('is-open');
+                toggle.setAttribute('aria-expanded', 'false');
+            }
+
+            toggle.addEventListener('click', function () {
+                menu.classList.contains('is-open') ? closeNav() : openNav();
+            });
+
+            if (overlay) overlay.addEventListener('click', closeNav);
+
+            menu.querySelectorAll('a').forEach(function (a) {
+                a.addEventListener('click', closeNav);
+            });
+        })();
+
+        // Lang switcher
+        (function () {
+            var btns = document.querySelectorAll('.lang-switcher [data-lang]');
+            var current = localStorage.getItem('rlc-lang') || 'es';
+            function setLang(lang) {
+                current = lang;
+                localStorage.setItem('rlc-lang', lang);
+                btns.forEach(function (b) {
+                    b.classList.toggle('lang-active', b.dataset.lang === lang);
+                });
+            }
+            btns.forEach(function (b) {
+                b.addEventListener('click', function () { setLang(b.dataset.lang); });
+            });
+            setLang(current);
+        })();
     </script>
 </body>
 

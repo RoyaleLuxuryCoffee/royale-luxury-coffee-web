@@ -25,7 +25,7 @@
     --sans:  'Inter', system-ui, sans-serif;
 
     --tw-2: 0.18em;
-    --tw-3: 0.32em;
+    --tw-3: 0.4em;
 
     --ease: cubic-bezier(.7, 0, .2, 1);
 }
@@ -68,7 +68,80 @@ img { display: block; max-width: 100%; height: auto; }
 
 .hairline { height: 1px; background: var(--hairline); border: 0; }
 
+/* ── Grain texture overlay ── */
+body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 9998;
+    pointer-events: none;
+    opacity: 0.04;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 180px 180px;
+}
+
+/* ── Custom cursor ── */
+*, *::before, *::after { cursor: none !important; }
+
+.r-cursor {
+    position: fixed;
+    top: 0; left: 0;
+    width: 7px; height: 7px;
+    background: var(--gold);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 99999;
+    transform: translate(-50%, -50%);
+    transition: width 0.25s ease, height 0.25s ease, opacity 0.25s ease, background 0.25s ease;
+    will-change: transform;
+}
+
+.r-cursor.r-cursor--hover {
+    width: 36px;
+    height: 36px;
+    background: transparent;
+    border: 1px solid var(--gold);
+    opacity: 0.6;
+}
+
+.r-cursor.r-cursor--hidden { opacity: 0; }
+
+@media (hover: none) {
+    .r-cursor { display: none; }
+    *, *::before, *::after { cursor: auto !important; }
+}
+
 .container { max-width: 1400px; margin: 0 auto; padding: 0 24px; }
 
 @media (min-width: 768px)  { .container { padding: 0 40px; } }
 @media (min-width: 1024px) { .container { padding: 0 56px; } }
+
+.lang-switcher {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-left: 1.5rem;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+}
+
+.lang-switcher button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--silver);
+    font-family: var(--sans);
+    font-size: inherit;
+    letter-spacing: inherit;
+    padding: 2px 3px;
+    transition: color 0.2s;
+}
+
+.lang-switcher button.lang-active {
+    color: var(--gold);
+}
+
+.lang-switcher span {
+    color: var(--silver);
+    opacity: 0.4;
+}

@@ -10,10 +10,10 @@
 
     <meta property="og:title" content="The Black Heron — Royale Luxury Coffee">
     <meta property="og:description" content="Single Estate · Lot N° 01 · Garzón, Huila, Colombia">
-    <meta property="og:image" content="imagenes/1.png">
+    <meta property="og:image" content="imagenes/homepage2.png">
     <meta name="theme-color" content="#0A0908">
 
-    <link rel="icon" type="image/png" href="imagenes/producto3.png">
+    <link rel="icon" type="image/png" href="imagenes/logo.png">
     <link rel="dns-prefetch" href="//fonts.googleapis.com">
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link rel="dns-prefetch" href="//checkout.bold.co">
@@ -31,6 +31,20 @@
 <body>
 
     <!-- ═══ NAVIGATION ═══════════════════════════════════════════════════ -->
+    <!-- ── Sticky buy bar ───────────────────────────────────────────────── -->
+    <div class="r-stickybar" id="stickybar" aria-hidden="true">
+        <div class="container r-stickybar__inner">
+            <div class="r-stickybar__product">
+                <span class="r-stickybar__name">The Black Heron</span>
+                <span class="r-stickybar__detail">340 g · Lot N° 01 · Garzón, Huila</span>
+            </div>
+            <div class="r-stickybar__right">
+                <span class="r-stickybar__price" id="sticky-price">$30.000</span>
+                <button class="r-stickybar__btn" onclick="stickyBuy()" data-i18n="shop-btn">Shop Origin Now</button>
+            </div>
+        </div>
+    </div>
+
     <header class="site-nav">
         <a href="index.html" class="site-nav__logo">Royale Luxury Coffee</a>
         <nav>
@@ -38,6 +52,11 @@
             <a href="#">Collection</a>
             <a href="#">Contact</a>
         </nav>
+        <div class="lang-switcher">
+            <button data-lang="es">ES</button>
+            <span>|</span>
+            <button data-lang="en">EN</button>
+        </div>
     </header>
 
     <main>
@@ -58,7 +77,37 @@
 
             <!-- LEFT: product image -->
             <div class="product-image-col">
-                <img src="imagenes/1.png" alt="The Black Heron — 340 g coffee bag, Lot N° 01">
+                <div class="product-img-wrap">
+                    <div class="product-halo"></div>
+                    <img src="imagenes/bag-v3.svg" alt="The Black Heron — 340 g coffee bag, Lot N° 01">
+
+                    <div class="r-pin r-pin--a">
+                        <div class="r-pin__tag">
+                            <span class="label">Altitude</span>
+                            <strong>1.800 m</strong>
+                        </div>
+                        <div class="r-pin__wire"></div>
+                        <div class="r-pin__node"></div>
+                    </div>
+
+                    <div class="r-pin r-pin--b">
+                        <div class="r-pin__node"></div>
+                        <div class="r-pin__wire"></div>
+                        <div class="r-pin__tag">
+                            <span class="label">SCA Score</span>
+                            <strong>87.5</strong>
+                        </div>
+                    </div>
+
+                    <div class="r-pin r-pin--c">
+                        <div class="r-pin__tag">
+                            <span class="label">Process</span>
+                            <strong>Washed</strong>
+                        </div>
+                        <div class="r-pin__wire"></div>
+                        <div class="r-pin__node"></div>
+                    </div>
+                </div>
             </div>
 
             <!-- RIGHT: product panel -->
@@ -81,7 +130,7 @@
                         <span class="r-product-header__rule"></span>
                         <span class="label-mute">Garzón · Huila · Colombia</span>
                     </div>
-                    <p class="r-product-header__copy">
+                    <p class="r-product-header__copy" data-i18n="product-copy">
                         Picked one cherry at a time at 1.800 m, washed under spring water,
                         rested twenty-one days in cedar before roast. A medium-dark that
                         opens into chocolate and finishes on cedar.
@@ -94,7 +143,7 @@
                 <dl class="r-specbar">
                     <div class="r-specbar__cell">
                         <dt class="label">SCA Score</dt>
-                        <dd>87.5</dd>
+                        <dd id="sca-score">87.5</dd>
                     </div>
                     <div class="r-specbar__cell">
                         <dt class="label">Roast</dt>
@@ -109,8 +158,8 @@
                 <!-- 4. Format picker -->
                 <fieldset class="r-format" data-component="format-picker">
                     <legend class="r-format__head">
-                        <span class="label">Format</span>
-                        <span class="r-format__hint">Choose one</span>
+                        <span class="label" data-i18n="format-label">Format</span>
+                        <span class="r-format__hint" data-i18n="format-hint">Choose one</span>
                     </legend>
                     <div class="r-format__grid" role="radiogroup">
                         <button type="button" role="radio" aria-checked="true" data-id="black-heron-340g"
@@ -126,7 +175,7 @@
                 <!-- 5. Grind dial -->
                 <div class="r-dial" data-component="grind-dial" data-value="whole">
                     <header class="r-dial__head">
-                        <span class="label">Grind</span>
+                        <span class="label" data-i18n="grind-label">Grind</span>
                         <span class="r-dial__status"><em>Whole</em> — recommended</span>
                     </header>
                     <div class="r-dial__track" aria-hidden="true">
@@ -146,15 +195,15 @@
                 <!-- 6. Cadence picker -->
                 <fieldset class="r-cadence" data-component="cadence-picker">
                     <legend class="r-cadence__head">
-                        <span class="label">Cadence</span>
-                        <span class="r-cadence__hint">Pause anytime</span>
+                        <span class="label" data-i18n="cadence-label">Cadence</span>
+                        <span class="r-cadence__hint" data-i18n="cadence-hint">Pause anytime</span>
                     </legend>
                     <div class="r-cadence__grid" role="radiogroup">
                         <button type="button" role="radio" aria-checked="true" data-id="once"
                             class="r-cadence__opt is-active">
-                            <span class="r-cadence__primary">Once</span>
+                            <span class="r-cadence__primary" data-i18n="cadence-once">Once</span>
                             <span class="r-cadence__row">
-                                <span class="r-cadence__secondary">Single Shipment</span>
+                                <span class="r-cadence__secondary" data-i18n="cadence-shipment">Single Shipment</span>
                             </span>
                         </button>
 
@@ -168,7 +217,7 @@
                 <!-- Product view -->
                 <div id="product-view" class="buy-block">
                     <div class="qty-row">
-                        <span class="label">Quantity</span>
+                        <span class="label" data-i18n="qty-label">Quantity</span>
                         <div class="qty-controls">
                             <button class="qty-btn menos" aria-label="Remove one">−</button>
                             <span class="qty-num numero">1</span>
@@ -181,39 +230,45 @@
                         <span class="price-amount" id="price-display">$30.000</span>
                     </div>
 
-                    <button type="button" onclick="showCheckout()" class="r-btn-primary">
+                    <button type="button" onclick="showCheckout()" class="r-btn-primary" data-i18n="shop-btn">
                         Shop Origin Now
                     </button>
+
+                    <div class="r-trust">
+                        <span>Pago seguro · Bold</span>
+                        <span>Envío Interrapidísimo</span>
+                        <span>Molido al despachar</span>
+                    </div>
                 </div>
 
                 <!-- Checkout module (hidden by default) -->
                 <div id="checkout-module" class="checkout-module" style="display:none; opacity:0;">
                     <header class="checkout-header">
-                        <span class="label">Step 02 / Logistics</span>
-                        <h2 class="checkout-title">Shipping Details</h2>
+                        <span class="label" data-i18n="checkout-step">Step 02 / Logistics</span>
+                        <h2 class="checkout-title" data-i18n="checkout-title">Shipping Details</h2>
                     </header>
 
                     <div class="r-form">
                         <div class="r-field">
-                            <label class="label" for="clientName">Full Name</label>
-                            <input type="text" id="clientName" placeholder="Your full name" autocomplete="name">
+                            <label class="label" for="clientName" data-i18n="label-name">Full Name</label>
+                            <input type="text" id="clientName" placeholder="Your full name" autocomplete="name" data-i18n-ph="ph-name">
                         </div>
                         <div class="r-field">
-                            <label class="label" for="clientDepartment">Department</label>
+                            <label class="label" for="clientDepartment" data-i18n="label-dept">Department</label>
                             <select id="clientDepartment" onchange="loadMunicipios()">
-                                <option value="" disabled selected>Select department</option>
+                                <option value="" disabled selected data-i18n-opt="opt-dept">Select department</option>
                             </select>
                         </div>
                         <div class="r-field">
-                            <label class="label" for="clientCity">City</label>
+                            <label class="label" for="clientCity" data-i18n="label-city">City</label>
                             <select id="clientCity" onchange="calculateTotal()" disabled>
-                                <option value="" disabled selected>Select city</option>
+                                <option value="" disabled selected data-i18n-opt="opt-city">Select city</option>
                             </select>
                         </div>
                         <div class="r-field">
-                            <label class="label" for="clientAddress">Address</label>
+                            <label class="label" for="clientAddress" data-i18n="label-address">Address</label>
                             <input type="text" id="clientAddress" placeholder="Street, apt, building..."
-                                autocomplete="street-address">
+                                autocomplete="street-address" data-i18n-ph="ph-address">
                         </div>
                     </div>
 
@@ -223,7 +278,7 @@
                             <dd id="subtotal-val">$30.000</dd>
                         </div>
                         <div class="summary-line">
-                            <dt>Shipping (Interrapidísimo)</dt>
+                            <dt data-i18n="shipping-label">Shipping (Interrapidísimo)</dt>
                             <dd id="shipping-val">—</dd>
                         </div>
                         <div class="summary-line summary-total">
@@ -233,7 +288,7 @@
                     </dl>
 
                     <div id="zona-aviso" class="zona-aviso" style="display:none;">
-                        <p>Zona de difícil acceso — te contactamos en menos de 24 h para coordinar el envío.</p>
+                        <p data-i18n="zona-aviso">Zona de difícil acceso — te contactamos en menos de 24 h para coordinar el envío.</p>
                         <a href="mailto:info@royaleluxurycoffee.com">info@royaleluxurycoffee.com</a>
                     </div>
 
@@ -251,7 +306,7 @@
                                     font-weight="900" fill="currentColor" letter-spacing="2">ROYALE</text>
                             </svg>
                         </button>
-                        <button type="button" onclick="showProduct()" class="r-btn-ghost">
+                        <button type="button" onclick="showProduct()" class="r-btn-ghost" data-i18n="back-btn">
                             ← Back to product
                         </button>
                     </div>
@@ -262,47 +317,40 @@
 
         <hr class="hairline container">
 
-        <!-- ═══ ORIGEN / BRAND GALLERY ════════════════════════════════════ -->
+        <!-- ═══ ORIGEN / BRAND EDITORIAL ══════════════════════════════════ -->
         <section class="r-origen">
 
-            <!-- Editorial quote -->
+            <!-- Editorial statement -->
             <div class="r-origen__statement container">
-                <p class="r-origen__quote">
+                <span class="label r-origen__eyebrow">2°53′N · 75°37′W · 1.800 msnm</span>
+                <p class="r-origen__quote" data-i18n="origin-quote">
                     From the cloud<br>
                     forest floor to<br>
                     your cup<span class="dot">.</span>
                 </p>
-                <span class="label r-origen__sub">Garzón · Huila · 1.800 msnm · Colombia</span>
-            </div>
-
-            <!-- Photo grid — replace src with real photos of Garzón / farm / harvest -->
-            <div class="r-origen__grid">
-                <figure class="r-origen__fig r-origen__fig--hero">
-                    <!-- Hero: landscape of Garzón cloud forest or the farm -->
-                    <img src="imagenes/tablecoffee.jpg" alt="Cloud forest — Finca El Cedro, Garzón, Huila">
-                    <figcaption class="r-origen__cap">
-                        <span class="label">Finca El Cedro</span>
-                        <span class="label-mute">Vargas Family · Est. III</span>
-                    </figcaption>
-                </figure>
-
-                <div class="r-origen__stack">
-                    <figure class="r-origen__fig">
-                        <!-- Portrait: manual harvest or hands picking cherries -->
-                        <img src="imagenes/juan.HEIC" alt="Manual harvest — cherry selection at 1.800 m">
-                        <figcaption class="r-origen__cap">
-                            <span class="label">Manual · 100%</span>
-                        </figcaption>
-                    </figure>
-                    <figure class="r-origen__fig">
-                        <!-- Detail: washed process, cedar resting, or roasting drum -->
-                        <img src="imagenes/render1.png" alt="Washed process — 21 days cedar rest">
-                        <figcaption class="r-origen__cap">
-                            <span class="label">Washed · 21 days cedar</span>
-                        </figcaption>
-                    </figure>
+                <div class="r-origen__statement-foot">
+                    <span class="label-mute r-origen__sub">Garzón · Huila · Colombia</span>
+                    <div class="r-origen__divider"></div>
+                    <span class="label-mute">Finca El Cedro · Vargas Family · Est. III</span>
                 </div>
             </div>
+
+            <!-- Full-bleed editorial image -->
+            <figure class="r-origen__hero">
+                <img src="imagenes/tablecoffee.jpg" alt="Finca El Cedro — bosque nublado, Garzón, Huila, 1.800 msnm">
+                <figcaption class="r-origen__hero-cap">
+                    <div class="container r-origen__hero-inner">
+                        <div>
+                            <span class="label">Finca El Cedro</span>
+                            <span class="label-mute">Vargas Family · Est. III · Garzón, Huila</span>
+                        </div>
+                        <div class="r-origen__hero-right">
+                            <span class="label-mute">Cosecha manual · 100% hand-picked</span>
+                            <span class="label-mute">Washed · 21 días en cedro</span>
+                        </div>
+                    </div>
+                </figcaption>
+            </figure>
 
         </section>
 
@@ -312,35 +360,35 @@
         <section class="r-dossier">
             <span class="r-ghost-numeral r-dossier__ghost" aria-hidden="true">Dossier</span>
             <div class="container">
-                <div class="r-dossier__head">
+                <div class="r-dossier__head reveal-up">
                     <div>
                         <span class="label">Part · II</span>
-                        <h2 class="r-dossier__title">
+                        <h2 class="r-dossier__title" data-i18n="dossier-title">
                             The dossier, <em class="gold-grad">unfolded.</em>
                         </h2>
                     </div>
-                    <p class="r-dossier__helper">Four chapters, no accordions to click through.</p>
+                    <p class="r-dossier__helper" data-i18n="dossier-helper">Four chapters, no accordions to click through.</p>
                 </div>
                 <hr class="hairline">
                 <div class="r-dossier__grid">
 
-                    <article class="r-dossier__cell">
+                    <article class="r-dossier__cell reveal-up" style="transition-delay:0.05s">
                         <header class="r-dossier__chapter">
                             <em>01</em><span class="label-mute">About</span>
                             <span class="r-dossier__rule"></span>
                         </header>
-                        <h3>A coffee numbered, not branded.</h3>
-                        <p>Black Heron is the inaugural microlot in the Garza Negra series — a single-estate Arabica
+                        <h3 data-i18n="d01-h3">A coffee numbered, not branded.</h3>
+                        <p data-i18n="d01-p">Black Heron is the inaugural microlot in the Garza Negra series — a single-estate Arabica
                             from Garzón, Huila. Each bag carries its lot number and the date it left the drum.</p>
                     </article>
 
-                    <article class="r-dossier__cell">
+                    <article class="r-dossier__cell reveal-up" style="transition-delay:0.15s">
                         <header class="r-dossier__chapter">
                             <em>02</em><span class="label-mute">Roasting</span>
                             <span class="r-dossier__rule"></span>
                         </header>
-                        <h3>Small drums, slow heat.</h3>
-                        <p>Roasted in 12 kg artisanal batches at our Bogotá atelier. Whole bean by default; ground on
+                        <h3 data-i18n="d02-h3">Small drums, slow heat.</h3>
+                        <p data-i18n="d02-p">Roasted in 12 kg artisanal batches at our Bogotá atelier. Whole bean by default; ground on
                             demand the morning your order ships, never before.</p>
                         <dl class="r-dossier__data">
                             <div>
@@ -354,13 +402,13 @@
                         </dl>
                     </article>
 
-                    <article class="r-dossier__cell">
+                    <article class="r-dossier__cell reveal-up" style="transition-delay:0.25s">
                         <header class="r-dossier__chapter">
                             <em>03</em><span class="label-mute">Origin</span>
                             <span class="r-dossier__rule"></span>
                         </header>
-                        <h3>Garzón, where the cloud forest breathes.</h3>
-                        <p>Hand-picked between October and February by the Vargas family — third-generation farmers
+                        <h3 data-i18n="d03-h3">Garzón, where the cloud forest breathes.</h3>
+                        <p data-i18n="d03-p">Hand-picked between October and February by the Vargas family — third-generation farmers
                             working four hectares above the Magdalena.</p>
                         <dl class="r-dossier__data">
                             <div>
@@ -382,12 +430,12 @@
                         </dl>
                     </article>
 
-                    <article class="r-dossier__cell">
+                    <article class="r-dossier__cell reveal-up" style="transition-delay:0.35s">
                         <header class="r-dossier__chapter">
                             <em>04</em><span class="label-mute">Tastes Like</span>
                             <span class="r-dossier__rule"></span>
                         </header>
-                        <h3>Chocolate that cools into cedar.</h3>
+                        <h3 data-i18n="d04-h3">Chocolate that cools into cedar.</h3>
                         <ul class="r-dossier__notes">
                             <li style="--pct:38%">
                                 <div class="r-dossier__note-row"><span>Dark Chocolate</span><span>38%</span></div>
@@ -433,7 +481,7 @@
             <div class="container r-provenance__grid">
 
                 <!-- Seal -->
-                <div class="r-provenance__seal">
+                <div class="r-provenance__seal reveal-up">
                     <figure class="r-seal" style="--seal-size: 220px;">
                         <svg viewBox="0 0 220 220" width="100%" height="100%" aria-hidden="true">
                             <defs>
@@ -472,9 +520,9 @@
                 </div>
 
                 <!-- Body -->
-                <div class="r-provenance__body">
+                <div class="r-provenance__body reveal-up" style="transition-delay:0.18s">
                     <span class="label">Part · III — Provenance</span>
-                    <h2 class="r-provenance__title">
+                    <h2 class="r-provenance__title" data-i18n="prov-title">
                         Every bag carries<br>
                         <em class="gold-grad">its papers.</em>
                     </h2>
@@ -502,7 +550,7 @@
                         <span class="label-mute">Roastmaster · Atelier Bogotá</span>
                     </p>
                     <a class="r-provenance__cert" href="#">
-                        Download Certificate (PDF)<span class="r-provenance__cert-rule"></span>
+                        <span data-i18n="prov-cert">Download Certificate (PDF)</span><span class="r-provenance__cert-rule"></span>
                     </a>
                 </div>
 
@@ -563,10 +611,13 @@
             function fmt(n) { return '$' + Math.round(n).toLocaleString('es-CO', { maximumFractionDigits: 0 }); }
 
             function updatePriceDisplay() {
+                var price = fmt(subtotal());
                 var el = document.getElementById('price-display');
-                if (el) el.textContent = fmt(subtotal());
+                if (el) el.textContent = price;
                 var sv = document.getElementById('subtotal-val');
-                if (sv) sv.textContent = fmt(subtotal());
+                if (sv) sv.textContent = price;
+                var sp = document.getElementById('sticky-price');
+                if (sp) sp.textContent = price;
                 calculateTotal();
             }
 
@@ -617,8 +668,19 @@
                 setTimeout(function () {
                     productView.style.display = 'none';
                     checkoutModule.style.display = 'flex';
-                    setTimeout(function () { checkoutModule.style.opacity = '1'; }, 30);
+                    setTimeout(function () {
+                        checkoutModule.style.opacity = '1';
+                        document.querySelector('.product-panel').scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }, 30);
                 }, 420);
+            };
+
+            window.stickyBuy = function () {
+                if (productView.style.display === 'none') {
+                    document.querySelector('.product-panel').scrollIntoView({ behavior: 'smooth', block: 'start' });
+                } else {
+                    showCheckout();
+                }
             };
 
             window.showProduct = function () {
@@ -704,7 +766,7 @@
                 var dept = document.getElementById('clientDepartment').value;
 
                 if (!name || !addr || !city || !dept) {
-                    alert('Please fill in all shipping details.');
+                    showToast(window.I18n ? I18n.t('alert-fill') : 'Por favor completa todos los datos de envío.');
                     return;
                 }
 
@@ -724,13 +786,147 @@
                     if (result.success && result.paymentUrl) {
                         window.location.href = result.paymentUrl;
                     } else {
-                        alert('Error creating payment link. Please try again.');
+                        showToast(window.I18n ? I18n.t('alert-error') : 'Error al generar el link de pago. Intenta de nuevo.');
                     }
                 } catch (err) {
-                    alert('Connection error. Please check your internet and try again.');
+                    showToast(window.I18n ? I18n.t('alert-conn') : 'Error de conexión. Revisa tu internet e intenta de nuevo.');
                 }
             };
 
+        }());
+    </script>
+    <script src="js/i18n.js"></script>
+
+    <!-- Loading screen -->
+    <div id="rlc-loader" class="rlc-loader">
+        <div class="rlc-loader__logo">
+            <span class="rlc-loader__name">Royale Luxury</span>
+            <em class="rlc-loader__sub">Coffee</em>
+        </div>
+        <div class="rlc-loader__bar"><div class="rlc-loader__progress"></div></div>
+    </div>
+
+    <!-- Custom cursor -->
+    <div id="rlc-cursor" class="r-cursor r-cursor--hidden"></div>
+
+    <!-- Toast -->
+    <div id="rlc-toast" style="
+        position:fixed; bottom:32px; left:50%; transform:translateX(-50%) translateY(20px);
+        background:rgba(10,9,8,0.95); border:1px solid rgba(201,169,97,0.3);
+        color:rgba(245,241,232,0.85); font-family:'Inter',sans-serif; font-size:12px;
+        letter-spacing:0.04em; padding:14px 28px; z-index:99999;
+        opacity:0; transition:opacity 0.3s ease, transform 0.3s ease;
+        backdrop-filter:blur(12px); white-space:nowrap; pointer-events:none;
+    "></div>
+
+    <script>
+        function showToast(msg) {
+            var t = document.getElementById('rlc-toast');
+            t.textContent = msg;
+            t.style.opacity = '1';
+            t.style.transform = 'translateX(-50%) translateY(0)';
+            clearTimeout(t._timer);
+            t._timer = setTimeout(function () {
+                t.style.opacity = '0';
+                t.style.transform = 'translateX(-50%) translateY(20px)';
+            }, 3500);
+        }
+
+        // Loader
+        (function () {
+            var loader = document.getElementById('rlc-loader');
+            var bar = loader && loader.querySelector('.rlc-loader__progress');
+            if (!loader) return;
+            var start = Date.now(), min = 1000;
+            function finish() {
+                var delay = Math.max(0, min - (Date.now() - start));
+                setTimeout(function () {
+                    loader.classList.add('rlc-loader--out');
+                    setTimeout(function () { loader.style.display = 'none'; }, 700);
+                }, delay);
+            }
+            if (bar) { bar.style.transition = 'width 0.9s ease'; setTimeout(function () { bar.style.width = '100%'; }, 50); }
+            if (document.readyState === 'complete') finish();
+            else window.addEventListener('load', finish);
+        }());
+
+        // Scroll reveal
+        (function () {
+            var els = document.querySelectorAll('.reveal-up');
+            if (!('IntersectionObserver' in window)) {
+                els.forEach(function (el) { el.classList.add('is-revealed'); });
+                return;
+            }
+            var obs = new IntersectionObserver(function (entries) {
+                entries.forEach(function (e) {
+                    if (e.isIntersecting) { e.target.classList.add('is-revealed'); obs.unobserve(e.target); }
+                });
+            }, { threshold: 0.08, rootMargin: '0px 0px -24px 0px' });
+            els.forEach(function (el) { obs.observe(el); });
+        }());
+
+        // SCA score counter
+        (function () {
+            var el = document.getElementById('sca-score');
+            if (!el || !('IntersectionObserver' in window)) return;
+            var obs = new IntersectionObserver(function (entries) {
+                if (!entries[0].isIntersecting) return;
+                obs.disconnect();
+                var current = 0, target = 87.5, interval = 16, steps = 90;
+                var inc = target / steps;
+                var timer = setInterval(function () {
+                    current = Math.min(current + inc, target);
+                    el.textContent = current.toFixed(1);
+                    if (current >= target) clearInterval(timer);
+                }, interval);
+            }, { threshold: 0.6 });
+            obs.observe(el);
+        }());
+
+        // Sticky buy bar
+        (function () {
+            var bar = document.getElementById('stickybar');
+            var trigger = document.querySelector('.product-layout');
+            if (!bar || !trigger || !('IntersectionObserver' in window)) return;
+            new IntersectionObserver(function (entries) {
+                var gone = !entries[0].isIntersecting;
+                bar.classList.toggle('is-visible', gone);
+                bar.setAttribute('aria-hidden', gone ? 'false' : 'true');
+            }, { threshold: 0 }).observe(trigger);
+        }());
+
+        // Taste-note bar fill on scroll
+        (function () {
+            var fills = document.querySelectorAll('.r-dossier__note-fill');
+            if (!fills.length || !('IntersectionObserver' in window)) {
+                fills.forEach(function (f) { f.classList.add('is-visible'); });
+                return;
+            }
+            var obs = new IntersectionObserver(function (entries) {
+                entries.forEach(function (e) {
+                    if (e.isIntersecting) {
+                        e.target.classList.add('is-visible');
+                        obs.unobserve(e.target);
+                    }
+                });
+            }, { threshold: 0.3 });
+            fills.forEach(function (f) { obs.observe(f); });
+        }());
+
+        // Cursor
+        (function () {
+            var cursor = document.getElementById('rlc-cursor');
+            if (!cursor || window.matchMedia('(hover: none)').matches) return;
+            document.addEventListener('mousemove', function (e) {
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
+                cursor.classList.remove('r-cursor--hidden');
+            });
+            document.addEventListener('mouseleave', function () { cursor.classList.add('r-cursor--hidden'); });
+            document.querySelectorAll('a, button, [role="radio"], label').forEach(function (el) {
+                el.addEventListener('mouseenter', function () { cursor.classList.add('r-cursor--hover'); });
+                el.addEventListener('mouseleave', function () { cursor.classList.remove('r-cursor--hover'); });
+            });
         }());
     </script>
 

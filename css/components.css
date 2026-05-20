@@ -514,3 +514,18 @@
     height: 1px;
     background: currentColor;
 }
+
+/* ── Responsive ────────────────────────────── */
+@media (max-width: 768px) {
+    .r-dossier__head { margin-bottom: 40px; gap: 16px; }
+    .r-dossier__helper { max-width: 100%; }
+    .r-provenance__grid { gap: 48px; }
+}
+
+@media (max-width: 480px) {
+    .r-format__hint { display: none; }
+    .r-cadence__hint { display: none; }
+    .r-dossier { padding: 80px 0; }
+    .r-provenance { padding: 80px 0; }
+    .r-seal { --seal-size: 160px !important; }
+}
