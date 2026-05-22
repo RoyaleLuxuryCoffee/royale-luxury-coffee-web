@@ -1,42 +1,31 @@
-const express = require("express");
-const cors    = require("cors");
-const { Resend } = require("resend");
-require("dotenv").config();
+require('dotenv').config();
+const { Redis } = require('@upstash/redis');
+const { Resend } = require('resend');
 
-const app    = express();
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-// ─── Middlewares ───────────────────────────────────────────────────────────
-const allowedOrigins = [
-  "https://royaleluxurycoffee.com",
-  "http://localhost",
-  "http://127.0.0.1"
-];
-app.use(cors({
-  origin: (origin, callback) => {
-    if (!origin || allowedOrigins.some(o => origin.startsWith(o))) {
-      callback(null, true);
-    } else {
-      callback(new Error("CORS: origen no permitido"));
-    }
-  }
-}));
-app.use(express.json());
+// ─── Helpers de seguridad ──────────────────────────────────────────────────
+function escapeHtml(str) {
+  return String(str ?? '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
 
-// ─── Órdenes pendientes ────────────────────────────────────────────────────
-const pendingOrders = new Map();
-
-// ─── Catálogo ──────────────────────────────────────────────────────────────
-const products = [
-  {
-    id: "black-heron-340g",
-    name: "The Black Heron — Garza Negra",
-    priceCOP: 30000
-  }
-];
+function isValidReference(ref) {
+  return typeof ref === 'string' && /^ROYALE-\d+$/.test(ref);
+}
 
 // ─── Email al cliente ──────────────────────────────────────────────────────
 function clientEmailTemplate(order) {
+  const name     = escapeHtml(order.customer.name);
+  const product  = escapeHtml(order.product);
+  const phone    = escapeHtml(order.customer.phone);
+  const ref      = escapeHtml(order.reference);
+  const amount   = escapeHtml(order.amount.toLocaleString('es-CO'));
+  const quantity = escapeHtml(String(order.quantity));
   return `<!DOCTYPE html>
 <html lang="es">
 <head>
@@ -50,16 +39,15 @@ function clientEmailTemplate(order) {
       <td align="center" style="padding:48px 16px;">
         <table width="560" cellpadding="0" cellspacing="0" style="max-width:560px;width:100%;">
 
-          <!-- Header -->
           <tr>
             <td style="padding:0 0 40px;border-bottom:1px solid rgba(201,169,97,0.2);">
               <p style="margin:0;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;
-                         font-size:10px;letter-spacing:5px;text-transform:uppercase;
-                         color:#C9A961;">ROYALE LUXURY COFFEE</p>
+                         font-size:10px;letter-spacing:5px;text-transform:uppercase;color:#C9A961;">
+                ROYALE LUXURY COFFEE
+              </p>
             </td>
           </tr>
 
-          <!-- Title -->
           <tr>
             <td style="padding:40px 0 8px;">
               <h1 style="margin:0;font-size:28px;font-weight:400;line-height:1.2;
@@ -72,33 +60,30 @@ function clientEmailTemplate(order) {
             <td style="padding:0 0 32px;">
               <p style="margin:0;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;
                          font-size:13px;color:rgba(245,241,232,0.5);letter-spacing:0.05em;">
-                Ref. ${order.reference}
+                Ref. ${ref}
               </p>
             </td>
           </tr>
 
-          <!-- Saludo -->
           <tr>
             <td style="padding:0 0 32px;">
               <p style="margin:0;font-size:16px;line-height:1.8;color:rgba(245,241,232,0.75);">
-                Estimado/a ${order.customer.name},
+                Estimado/a ${name},
               </p>
               <p style="margin:16px 0 0;font-size:16px;line-height:1.8;color:rgba(245,241,232,0.75);">
-                Su pedido <em style="color:#F5F1E8;">${order.product}</em> — ${order.quantity} × 340 g
+                Su pedido <em style="color:#F5F1E8;">${product}</em> — ${quantity} × 340 g
                 ha sido procesado exitosamente por un total de
-                <strong style="color:#C9A961;">$${order.amount.toLocaleString('es-CO')} COP</strong>.
+                <strong style="color:#C9A961;">$${amount} COP</strong>.
               </p>
             </td>
           </tr>
 
-          <!-- Divider -->
           <tr>
             <td style="padding:0 0 32px;">
               <div style="height:1px;background:rgba(201,169,97,0.15);"></div>
             </td>
           </tr>
 
-          <!-- Despacho -->
           <tr>
             <td style="padding:0 0 8px;">
               <p style="margin:0;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;
@@ -117,20 +102,18 @@ function clientEmailTemplate(order) {
             </td>
           </tr>
 
-          <!-- Aviso WhatsApp -->
           <tr>
             <td style="padding:0 0 32px;">
               <p style="margin:0;font-size:15px;line-height:1.8;color:rgba(245,241,232,0.75);">
                 Pronto recibirá un mensaje de
                 <strong style="color:#F5F1E8;">WhatsApp</strong> al número
-                <em style="color:#C9A961;">${order.customer.phone}</em>
+                <em style="color:#C9A961;">${phone}</em>
                 con el valor exacto del flete a cancelar al mensajero en efectivo
                 al momento de la entrega.
               </p>
             </td>
           </tr>
 
-          <!-- FCE callout -->
           <tr>
             <td style="padding:24px;background:rgba(201,169,97,0.05);
                         border-left:2px solid rgba(201,169,97,0.3);">
@@ -147,15 +130,12 @@ function clientEmailTemplate(order) {
           </tr>
 
           <tr><td style="padding:32px 0 0;"></td></tr>
-
-          <!-- Divider -->
           <tr>
             <td style="padding:0 0 32px;">
               <div style="height:1px;background:rgba(201,169,97,0.15);"></div>
             </td>
           </tr>
 
-          <!-- Footer -->
           <tr>
             <td>
               <p style="margin:0;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;
@@ -179,6 +159,16 @@ function clientEmailTemplate(order) {
 
 // ─── Email al dueño ────────────────────────────────────────────────────────
 function ownerEmailTemplate(order) {
+  const name    = escapeHtml(order.customer.name);
+  const email   = escapeHtml(order.customer.email);
+  const phone   = escapeHtml(order.customer.phone);
+  const address = escapeHtml(order.customer.address);
+  const city    = escapeHtml(order.customer.city);
+  const dept    = escapeHtml(order.customer.department);
+  const product = escapeHtml(order.product);
+  const ref     = escapeHtml(order.reference);
+  const amount  = escapeHtml(order.amount.toLocaleString('es-CO'));
+  const qty     = escapeHtml(String(order.quantity));
   return `<!DOCTYPE html>
 <html lang="es">
 <head>
@@ -201,50 +191,65 @@ function ownerEmailTemplate(order) {
 
           <tr>
             <td style="padding:28px 0 24px;">
-              <h1 style="margin:0;font-size:22px;font-weight:400;color:#F5F1E8;font-family:Georgia,serif;font-style:italic;">
+              <h1 style="margin:0;font-size:22px;font-weight:400;color:#F5F1E8;
+                          font-family:Georgia,serif;font-style:italic;">
                 Pago aprobado ✓
               </h1>
             </td>
           </tr>
 
-          <!-- Resumen del pedido -->
           <tr>
-            <td style="padding:20px 24px;background:rgba(201,169,97,0.05);border-left:2px solid rgba(201,169,97,0.35);">
+            <td style="padding:20px 24px;background:rgba(201,169,97,0.05);
+                        border-left:2px solid rgba(201,169,97,0.35);">
               <table cellpadding="0" cellspacing="0" width="100%">
                 <tr>
-                  <td style="padding:5px 0;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#C9A961;width:40%;">Referencia</td>
-                  <td style="padding:5px 0;font-size:13px;color:#F5F1E8;text-align:right;">${order.reference}</td>
+                  <td style="padding:5px 0;font-size:11px;letter-spacing:3px;text-transform:uppercase;
+                              color:#C9A961;width:40%;">Referencia</td>
+                  <td style="padding:5px 0;font-size:13px;color:#F5F1E8;text-align:right;">
+                    ${ref}
+                  </td>
                 </tr>
                 <tr>
-                  <td style="padding:5px 0;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#C9A961;">Producto</td>
-                  <td style="padding:5px 0;font-size:13px;color:#F5F1E8;text-align:right;">${order.product} × ${order.quantity}</td>
+                  <td style="padding:5px 0;font-size:11px;letter-spacing:3px;text-transform:uppercase;
+                              color:#C9A961;">Producto</td>
+                  <td style="padding:5px 0;font-size:13px;color:#F5F1E8;text-align:right;">
+                    ${product} × ${qty}
+                  </td>
                 </tr>
                 <tr>
-                  <td style="padding:5px 0;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#C9A961;">Total cobrado</td>
-                  <td style="padding:5px 0;font-size:15px;font-weight:700;color:#C9A961;text-align:right;">$${order.amount.toLocaleString('es-CO')} COP</td>
+                  <td style="padding:5px 0;font-size:11px;letter-spacing:3px;text-transform:uppercase;
+                              color:#C9A961;">Total cobrado</td>
+                  <td style="padding:5px 0;font-size:15px;font-weight:700;color:#C9A961;text-align:right;">
+                    $${amount} COP
+                  </td>
                 </tr>
               </table>
             </td>
           </tr>
 
-          <tr><td style="padding:20px 0;"><div style="height:1px;background:rgba(201,169,97,0.12);"></div></td></tr>
+          <tr>
+            <td style="padding:20px 0;">
+              <div style="height:1px;background:rgba(201,169,97,0.12);"></div>
+            </td>
+          </tr>
 
-          <!-- Datos del cliente -->
           <tr>
             <td style="padding:0 0 8px;">
-              <p style="margin:0;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:#C9A961;">Datos del cliente</p>
+              <p style="margin:0;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:#C9A961;">
+                Datos del cliente
+              </p>
             </td>
           </tr>
           <tr>
             <td style="padding:0 0 24px;">
               <table cellpadding="0" cellspacing="0" width="100%">
-                <tr><td style="padding:3px 0;font-size:14px;color:#F5F1E8;">${order.customer.name}</td></tr>
-                <tr><td style="padding:3px 0;font-size:13px;color:rgba(245,241,232,0.6);">${order.customer.email}</td></tr>
-                <tr><td style="padding:3px 0;font-size:13px;color:rgba(245,241,232,0.6);">${order.customer.phone}</td></tr>
+                <tr><td style="padding:3px 0;font-size:14px;color:#F5F1E8;">${name}</td></tr>
+                <tr><td style="padding:3px 0;font-size:13px;color:rgba(245,241,232,0.6);">${email}</td></tr>
+                <tr><td style="padding:3px 0;font-size:13px;color:rgba(245,241,232,0.6);">${phone}</td></tr>
                 <tr>
                   <td style="padding:8px 0 3px;font-size:13px;color:rgba(245,241,232,0.8);">
-                    ${order.customer.address}<br>
-                    ${order.customer.city}, ${order.customer.department}
+                    ${address}<br>
+                    ${city}, ${dept}
                   </td>
                 </tr>
               </table>
@@ -268,13 +273,12 @@ function ownerEmailTemplate(order) {
 }
 
 // ─── Envíos ────────────────────────────────────────────────────────────────
-
 async function notifyClient(order) {
   await resend.emails.send({
-    from: process.env.ROYALE_EMAIL_FROM || "Royale Luxury Coffee <orders@royaleluxurycoffee.com>",
-    to:   order.customer.email,
+    from:    process.env.ROYALE_EMAIL_FROM || 'Royale Luxury Coffee <orders@royaleluxurycoffee.com>',
+    to:      order.customer.email,
     subject: `Su orden Royale Luxury Coffee está confirmada — Ref. ${order.reference}`,
-    html: clientEmailTemplate(order)
+    html:    clientEmailTemplate(order)
   });
   console.log(`📧 Email cliente → ${order.customer.email}`);
 }
@@ -283,92 +287,46 @@ async function notifyOwner(order) {
   const ownerEmail = process.env.ROYALE_OWNER_EMAIL;
   if (!ownerEmail) return;
   await resend.emails.send({
-    from: process.env.ROYALE_EMAIL_FROM || "Royale Luxury Coffee <orders@royaleluxurycoffee.com>",
-    to:   ownerEmail,
+    from:    process.env.ROYALE_EMAIL_FROM || 'Royale Luxury Coffee <orders@royaleluxurycoffee.com>',
+    to:      ownerEmail,
     subject: `Nuevo pedido — ${order.customer.name} — $${order.amount.toLocaleString('es-CO')} COP`,
-    html: ownerEmailTemplate(order)
+    html:    ownerEmailTemplate(order)
   });
   console.log(`📧 Email dueño → ${ownerEmail}`);
 }
 
-// ─── Rutas ─────────────────────────────────────────────────────────────────
+// ─── Handler ───────────────────────────────────────────────────────────────
+module.exports = async function handler(req, res) {
+  const redis = new Redis({
+    url:   process.env.KV_REST_API_URL,
+    token: process.env.KV_REST_API_TOKEN
+  });
 
-app.get("/", (req, res) => res.send("🚀 Royale Engine: Online"));
+  if (req.method !== 'POST') return res.status(405).end();
 
-app.post("/order", async (req, res) => {
-  try {
-    const { productId, quantity, cadence, customer } = req.body;
-    const product = products.find(p => p.id === productId);
-
-    if (!product) {
-      return res.status(404).json({ success: false, error: "Producto no encontrado" });
+  // Verificar secret del webhook si está configurado
+  const webhookSecret = process.env.BOLD_WEBHOOK_SECRET;
+  if (webhookSecret) {
+    const incomingSecret = req.headers['x-bold-secret'] || req.headers['x-webhook-secret'];
+    if (incomingSecret !== webhookSecret) {
+      console.warn('⚠️  Webhook: secret inválido');
+      return res.status(401).end();
     }
-
-    const cant         = parseInt(quantity) || 1;
-    const discountRate = cadence === 'sub' ? 0.12 : 0;
-    const unitPrice    = Math.round(product.priceCOP * (1 - discountRate));
-    const totalAmount  = unitPrice * cant;
-    const reference    = `ROYALE-${Date.now()}`;
-
-    console.log(`\n📦 Procesando: ${product.name} x${cant}`);
-    console.log(`🚚 ${customer.name} | ${customer.phone} | ${customer.address}, ${customer.city}`);
-
-    pendingOrders.set(reference, {
-      reference,
-      product:  product.name,
-      quantity: cant,
-      amount:   totalAmount,
-      customer,
-      createdAt: new Date().toISOString()
-    });
-
-    const response = await fetch("https://integrations.api.bold.co/online/link/v1", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `x-api-key ${process.env.BOLD_API_KEY}`
-      },
-      body: JSON.stringify({
-        amount_type: "CLOSE",
-        amount: { currency: "COP", total_amount: totalAmount },
-        description: `Royale: ${product.name} x${cant} — ${customer.name}`.slice(0, 100),
-        reference,
-        redirect_url: process.env.REDIRECT_URL || "https://royaleluxurycoffee.com/thanks.html"
-      })
-    });
-
-    const data = await response.json();
-
-    if (!response.ok) {
-      console.error("❌ Bold error:", JSON.stringify(data));
-      pendingOrders.delete(reference);
-      return res.status(response.status).json({ success: false, error: data });
-    }
-
-    res.json({ success: true, paymentUrl: data.payload?.url || data.url });
-
-  } catch (error) {
-    console.error("Error /order:", error);
-    res.status(500).json({ success: false, error: "Fallo interno" });
   }
-});
 
-// ─── Webhook Bold ──────────────────────────────────────────────────────────
-app.post("/webhook/bold", async (req, res) => {
   try {
     const { status, reference } = req.body;
 
-    if (status !== "APPROVED") {
-      return res.sendStatus(200);
-    }
+    if (!isValidReference(reference)) return res.status(200).end();
+    if (status !== 'APPROVED')        return res.status(200).end();
 
-    const order = pendingOrders.get(reference);
+    const order = await redis.get(reference);
     if (!order) {
-      console.warn(`⚠️  Webhook: orden no encontrada para ref ${reference}`);
-      return res.sendStatus(200);
+      console.warn(`⚠️  Webhook: orden no encontrada — ref ${reference}`);
+      return res.status(200).end();
     }
 
-    console.log(`\n✅ PAGO APROBADO — ${reference} | $${order.amount.toLocaleString('es-CO')} COP`);
+    console.log(`✅ PAGO APROBADO — ${reference} | $${order.amount.toLocaleString('es-CO')} COP`);
 
     const results = await Promise.allSettled([
       notifyClient(order),
@@ -381,18 +339,11 @@ app.post("/webhook/bold", async (req, res) => {
       }
     });
 
-    pendingOrders.delete(reference);
-    res.sendStatus(200);
+    await redis.del(reference);
+    return res.status(200).end();
 
   } catch (err) {
-    console.error("Webhook error:", err);
-    res.sendStatus(500);
+    console.error('Webhook error:', err);
+    return res.status(500).end();
   }
-});
-
-const PORT = process.env.PORT || 3001;
-app.listen(PORT, () => {
-  console.log(`\n=========================================`);
-  console.log(`✅ Royale Backend corriendo en el puerto ${PORT}`);
-  console.log(`=========================================\n`);
-});
+};

@@ -519,31 +519,34 @@
 
 .checkout-actions { display: flex; flex-direction: column; gap: 12px; }
 
-/* ── Zona difícil acceso ───────────────────── */
-.zona-aviso {
-    padding: 20px;
-    border: 1px solid var(--hairline);
-    background: rgba(201, 169, 97, 0.04);
+/* ── Flete Contra Entrega note ─────────────── */
+.r-fce-note {
+    padding: 20px 0 0;
+    border-top: 1px solid var(--hairline-soft);
+    margin-top: 4px;
 }
 
-.zona-aviso p {
-    margin: 0 0 8px;
+.r-fce-note__title {
     font-family: var(--sans);
-    font-size: 13px;
-    color: var(--bone-65);
-    line-height: 1.6;
-}
-
-.zona-aviso a {
-    font-family: var(--sans);
-    font-size: 11px;
+    font-size: 10px;
     letter-spacing: var(--tw-3);
     text-transform: uppercase;
     color: var(--gold);
-    transition: color .3s var(--ease);
+    margin-bottom: 10px;
 }
 
-.zona-aviso a:hover { color: var(--gold-soft); }
+.r-fce-note__body {
+    font-family: var(--serif);
+    font-size: 14px;
+    font-style: italic;
+    color: var(--bone-55);
+    line-height: 1.75;
+}
+
+.r-fce-note__body em {
+    color: var(--gold-soft);
+    font-style: italic;
+}
 
 .r-btn-primary:disabled {
     opacity: 0.35;

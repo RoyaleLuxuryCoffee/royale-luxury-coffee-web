@@ -236,7 +236,7 @@
 
                     <div class="r-trust">
                         <span>Pago seguro · Bold</span>
-                        <span>Envío Interrapidísimo</span>
+                        <span>Flete Contra Entrega</span>
                         <span>Molido al despachar</span>
                     </div>
                 </div>
@@ -261,7 +261,7 @@
                         </div>
                         <div class="r-field">
                             <label class="label" for="clientCity" data-i18n="label-city">City</label>
-                            <select id="clientCity" onchange="calculateTotal()" disabled>
+                            <select id="clientCity" disabled>
                                 <option value="" disabled selected data-i18n-opt="opt-city">Select city</option>
                             </select>
                         </div>
@@ -270,27 +270,24 @@
                             <input type="text" id="clientAddress" placeholder="Street, apt, building..."
                                 autocomplete="street-address" data-i18n-ph="ph-address">
                         </div>
+                        <div class="r-field">
+                            <label class="label" for="clientPhone" data-i18n="label-phone">Phone</label>
+                            <input type="tel" id="clientPhone" placeholder="+57 300 000 0000"
+                                autocomplete="tel" data-i18n-ph="ph-phone">
+                        </div>
+                        <div class="r-field">
+                            <label class="label" for="clientEmail" data-i18n="label-email">Email</label>
+                            <input type="email" id="clientEmail" placeholder="your@email.com"
+                                autocomplete="email" data-i18n-ph="ph-email">
+                        </div>
                     </div>
 
                     <dl class="payment-summary">
-                        <div class="summary-line">
-                            <dt>Subtotal</dt>
-                            <dd id="subtotal-val">$30.000</dd>
-                        </div>
-                        <div class="summary-line">
-                            <dt data-i18n="shipping-label">Shipping (Interrapidísimo)</dt>
-                            <dd id="shipping-val">—</dd>
-                        </div>
                         <div class="summary-line summary-total">
                             <dt>Total</dt>
                             <dd id="total-val">$30.000</dd>
                         </div>
                     </dl>
-
-                    <div id="zona-aviso" class="zona-aviso" style="display:none;">
-                        <p data-i18n="zona-aviso">Zona de difícil acceso — te contactamos en menos de 24 h para coordinar el envío.</p>
-                        <a href="mailto:info@royaleluxurycoffee.com">info@royaleluxurycoffee.com</a>
-                    </div>
 
                     <div class="checkout-actions">
                         <button type="button" onclick="pagarConBold()" class="r-btn-primary"
@@ -309,6 +306,11 @@
                         <button type="button" onclick="showProduct()" class="r-btn-ghost" data-i18n="back-btn">
                             ← Back to product
                         </button>
+                    </div>
+
+                    <div class="r-fce-note">
+                        <p class="r-fce-note__title">Despacho Preferencial</p>
+                        <p class="r-fce-note__body">Royale procesa su orden de inmediato. El costo del transporte se calcula en tiempo real por la transportadora y se cancela directamente al mensajero en la modalidad <em>Flete Contra Entrega</em>.</p>
                     </div>
                 </div>
 
@@ -581,8 +583,6 @@
         </a>
     </div>
 
-    <!-- Shipping calculator -->
-    <script src="js/shipping.js"></script>
     <!-- Component behaviour -->
     <script src="js/components.js" defer></script>
 
@@ -598,9 +598,7 @@
             var selectedGrind = 'whole';
 
             /* ── API URL ──────────────────────────── */
-            var API_URL = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
-                ? 'http://localhost:3001'
-                : 'https://royaleluxurycoffee.com';
+            var ORDER_ENDPOINT = '/api/order';
 
             /* ── Helpers ──────────────────────────── */
             function qty() { return parseInt(document.querySelector('.numero').textContent) || 1; }
@@ -614,11 +612,10 @@
                 var price = fmt(subtotal());
                 var el = document.getElementById('price-display');
                 if (el) el.textContent = price;
-                var sv = document.getElementById('subtotal-val');
-                if (sv) sv.textContent = price;
                 var sp = document.getElementById('sticky-price');
                 if (sp) sp.textContent = price;
-                calculateTotal();
+                var tv = document.getElementById('total-val');
+                if (tv) tv.textContent = price;
             }
 
             /* ── Quantity controls ────────────────── */
@@ -728,50 +725,24 @@
                     opt.textContent = ciudad;
                     citySel.appendChild(opt);
                 });
-                calculateTotal();
-            };
-
-            /* ── Price calculation ────────────────── */
-            window.calculateTotal = function () {
-                var dept = document.getElementById('clientDepartment').value;
-                var result = Shipping.calculate(dept, subtotal());
-
-                var sv = document.getElementById('subtotal-val');
-                var shv = document.getElementById('shipping-val');
-                var tv = document.getElementById('total-val');
-                var aviso = document.getElementById('zona-aviso');
-                var payBtn = document.querySelector('#checkout-module .r-btn-primary');
-
-                if (result && result.contact) {
-                    if (sv) sv.textContent = fmt(subtotal());
-                    if (shv) shv.textContent = '—';
-                    if (tv) tv.textContent = '—';
-                    if (aviso) aviso.style.display = 'block';
-                    if (payBtn) payBtn.disabled = true;
-                    return;
-                }
-
-                if (aviso) aviso.style.display = 'none';
-                if (payBtn) payBtn.disabled = false;
-                if (sv) sv.textContent = fmt(subtotal());
-                if (shv) shv.textContent = result ? fmt(result.total) : '—';
-                if (tv) tv.textContent = result ? fmt(subtotal() + result.total) : fmt(subtotal());
             };
 
             /* ── Payment via Bold ─────────────────── */
             window.pagarConBold = async function () {
-                var name = document.getElementById('clientName').value.trim();
-                var addr = document.getElementById('clientAddress').value.trim();
-                var city = document.getElementById('clientCity').value;
-                var dept = document.getElementById('clientDepartment').value;
+                var name  = document.getElementById('clientName').value.trim();
+                var addr  = document.getElementById('clientAddress').value.trim();
+                var city  = document.getElementById('clientCity').value;
+                var dept  = document.getElementById('clientDepartment').value;
+                var phone = document.getElementById('clientPhone').value.trim();
+                var email = document.getElementById('clientEmail').value.trim();
 
-                if (!name || !addr || !city || !dept) {
+                if (!name || !addr || !city || !dept || !phone || !email) {
                     showToast(window.I18n ? I18n.t('alert-fill') : 'Por favor completa todos los datos de envío.');
                     return;
                 }
 
                 try {
-                    var res = await fetch(API_URL + '/order', {
+                    var res = await fetch(ORDER_ENDPOINT, {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({
@@ -779,7 +750,7 @@
                             quantity: qty(),
                             grind: selectedGrind,
                             cadence: selectedCadence,
-                            customer: { name: name, address: addr, city: city, department: dept }
+                            customer: { name, address: addr, city, department: dept, phone, email }
                         })
                     });
                     var result = await res.json();
