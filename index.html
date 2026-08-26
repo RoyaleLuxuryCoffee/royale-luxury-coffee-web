@@ -5,40 +5,68 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Royale Luxury Coffee — Café Premium de Garzón, Huila</title>
+    <title>Café Molido y en Grano de Garzón, Huila — Royale Luxury Coffee</title>
     <meta name="description"
-        content="Royale Luxury Coffee: microlotes de café de origen cultivados en Garzón, Huila. Sabores únicos, calidad premium, directo del productor.">
+        content="Café especial de Garzón, Huila. Microlotes 100% arábica, molido al despachar o en grano, directo del productor. Pide tu café de Huila en línea con envío a toda Colombia.">
+    <meta name="keywords" content="café, café molido, café Garzón, café Huila, café Colombia, café especial, café de origen">
     <link rel="canonical" href="https://royaleluxurycoffee.com/">
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://royaleluxurycoffee.com/">
-    <meta property="og:title" content="Royale Luxury Coffee — Café Premium de Garzón, Huila">
-    <meta property="og:image" content="imagenes/logo.png">
+    <meta property="og:title" content="Café Molido y en Grano de Garzón, Huila — Royale Luxury Coffee">
     <meta property="og:description"
-        content="Garzón Microlots. Precision farming. Curated flavors, direct trade selection..">
-    <meta property="og:image" content="https://royaleluxurycoffee.com/imagenes/producto3.png">
+        content="Café especial de Garzón, Huila. Microlotes 100% arábica, molido al despachar o en grano, directo del productor.">
+    <meta property="og:image" content="https://royaleluxurycoffee.com/imagenes/homepage2.png">
+    <meta property="og:locale" content="es_CO">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Royale Luxury Coffee">
-    <meta name="twitter:description" content="Café premium de origen en Garzón, Huila.">
+    <meta name="twitter:title" content="Café Molido y en Grano de Garzón, Huila — Royale Luxury Coffee">
+    <meta name="twitter:description" content="Café especial de Garzón, Huila. Microlotes 100% arábica, directo del productor.">
     <meta name="twitter:image" content="https://royaleluxurycoffee.com/imagenes/homepage2.png">
 
     <meta name="theme-color" content="#0b0b0b">
-    <link rel="icon" type="image/png" href="imagenes/producto3.png">
+    <link rel="icon" type="image/png" href="imagenes/logo.png">
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.googleapis.com">
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link rel="dns-prefetch" href="//checkout.bold.co">
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@500;600&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;600&display=swap"
         rel="stylesheet">
 
     <link rel="preconnect" href="https://res.cloudinary.com" crossorigin>
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Royale Luxury Coffee",
+        "url": "https://royaleluxurycoffee.com/",
+        "logo": "https://royaleluxurycoffee.com/imagenes/logo.png",
+        "description": "Café especial de Garzón, Huila, Colombia. Microlotes de café molido y en grano cultivados por Juan Soler y Nicolás Murcia en la finca Villa Angélica.",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Garzón",
+            "addressRegion": "Huila",
+            "addressCountry": "CO"
+        },
+        "sameAs": [
+            "https://instagram.com/royaleluxurycoffee"
+        ],
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+57-323-796-6960",
+            "contactType": "customer service",
+            "areaServed": "CO",
+            "availableLanguage": ["Spanish", "English"]
+        }
+    }
+    </script>
 </head>
 
 <body>
@@ -54,11 +82,26 @@
     <div class="nav-overlay" id="nav-overlay"></div>
 
     <header class="nav">
-        <div class="logo">Royale Luxury Coffee</div>
+        <a href="index.html" class="logo">Royale Luxury Coffee</a>
         <nav id="nav-menu">
-            <a href="#">Origin</a>
-            <a href="#">Collection</a>
-            <a href="#">Contact</a>
+            <span class="nav-menu__deco" aria-hidden="true">RLC</span>
+            <button type="button" class="nav-menu__close" id="nav-close" aria-label="Cerrar menú">&times;</button>
+            <div class="nav-menu__head">
+                <span class="nav-menu__label">Menu</span>
+                <span class="nav-menu__tagline">Estate microlots<br>Garzón, Huila</span>
+            </div>
+            <div class="nav-menu__links">
+                <a href="#origen">Origin</a>
+                <a href="#collection">Collection</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <div class="nav-menu__footer">
+                <a href="mailto:info@royaleluxurycoffee.com">info@royaleluxurycoffee.com</a>
+                <div class="nav-menu__footer-row">
+                    <a href="https://instagram.com/royaleluxurycoffee" target="_blank" rel="noopener noreferrer">Instagram</a>
+                    <a href="https://wa.me/573237966960" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+                </div>
+            </div>
         </nav>
         <div class="nav-right">
             <div class="lang-switcher">
@@ -66,6 +109,7 @@
                 <span>|</span>
                 <button data-lang="en">EN</button>
             </div>
+            <a href="Comprar.html" class="nav-cta">Shop</a>
             <button class="nav-toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false">
                 <span></span><span></span><span></span>
             </button>
@@ -106,7 +150,7 @@
                 </div>
                 <div class="editorial-finca">
                     <div class="editorial-img-wrap">
-                        <img src="imagenes/cafe.jpg" alt="Finca cafetera en Garzón, Huila">
+                        <img src="imagenes/cafe.jpg" alt="Finca cafetera en Garzón, Huila" loading="lazy">
                     </div>
                 </div>
             </div>
@@ -129,14 +173,14 @@
         </div>
 
 
-        <section class="showcase reveal">
+        <section class="showcase reveal" id="collection">
             <div class="showcase-inner">
                 <div class="showcase-text-left">
                     <p data-i18n="showcase-left">En las altas mesetas del Huila, el café no se cosecha.<br><strong>Se selecciona.</strong> Cada
                         cereza, en su momento exacto de madurez.</p>
                 </div>
                 <div class="showcase-product">
-                    <img src="imagenes/bag-v3.svg" alt="Black Heron — Royale Luxury Coffee">
+                    <img src="imagenes/bag-v3.svg" alt="Black Heron — Royale Luxury Coffee" loading="lazy">
                     <span class="showcase-label">Black Heron · Garza Negra</span>
                 </div>
                 <div class="showcase-text-right">
@@ -153,18 +197,27 @@
                 <p class="documental-body">Desde las montañas del Huila hasta tu taza.<br>Un proceso de selección sin concesiones.</p>
             </div>
             <div class="documental-cinema">
-                <video id="doc-video" muted playsinline loop preload="none"
+                <video id="doc-video" muted playsinline loop preload="none" controls controlsList="nodownload"
                     poster="https://res.cloudinary.com/duf951flp/video/upload/so_0,q_auto,f_jpg/0519_1_txuepp.jpg">
                     <source src="https://res.cloudinary.com/duf951flp/video/upload/q_auto,vc_auto/0519_1_txuepp.webm" type="video/webm">
-                    <source src="https://res.cloudinary.com/duf951flp/video/upload/q_auto,vc_auto/0519_1_txuepp.mp4" type="video/mp4">
+                    <source src="https://res.cloudinary.com/duf951flp/video/upload/q_auto,vc_h264/0519_1_txuepp.mp4" type="video/mp4; codecs=&quot;avc1.42E01E&quot;">
                 </video>
                 <div class="documental-vignette"></div>
-                <button class="documental-sound" id="doc-sound" aria-label="Activar sonido">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
-                        <path class="sound-waves" d="M15.54 8.46a5 5 0 0 1 0 7.07M19.07 4.93a10 10 0 0 1 0 14.14"/>
-                    </svg>
-                </button>
+                <div class="documental-quality" id="doc-quality">
+                    <button class="documental-quality__btn" id="doc-quality-btn" aria-haspopup="true" aria-expanded="false" aria-label="Calidad de video">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <circle cx="12" cy="12" r="3"/>
+                            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+                        </svg>
+                        <span class="documental-quality__label" id="doc-quality-label">Auto</span>
+                    </button>
+                    <ul class="documental-quality__menu" id="doc-quality-menu" role="menu">
+                        <li role="none"><button type="button" role="menuitem" class="is-active" data-quality="auto">Auto</button></li>
+                        <li role="none"><button type="button" role="menuitem" data-quality="1080">1080p</button></li>
+                        <li role="none"><button type="button" role="menuitem" data-quality="720">720p</button></li>
+                        <li role="none"><button type="button" role="menuitem" data-quality="480">480p</button></li>
+                    </ul>
+                </div>
             </div>
             <div class="documental-cta">
                 <p class="documental-cta__label">Ahora que nos conoces</p>
@@ -195,8 +248,8 @@
                         <span data-i18n="stat-cosecha">cosecha manual</span>
                     </div>
                     <div class="origen-stat">
-                        <strong>SCA</strong>
-                        <span>specialty grade</span>
+                        <strong>Villa Angélica</strong>
+                        <span>finca productora</span>
                     </div>
                 </div>
             </div>
@@ -248,61 +301,49 @@
                     </div>
                 </div>
 
-                <div class="sensory-col">
-                    <h3 class="sensory-heading"><span class="gold-line">— II —</span> SENSORY PROFILE</h3>
-                    <div class="chart-wrapper">
-                        <canvas id="radarChart"></canvas>
-                    </div>
-                    <div class="sensory-scores">
-                        <div class="score-row">
-                            <span class="score-label">Fragrance</span>
-                            <div class="score-bar"><div class="score-fill" style="width:85%"></div></div>
-                            <span class="score-num">8.50</span>
-                        </div>
-                        <div class="score-row">
-                            <span class="score-label">Aroma</span>
-                            <div class="score-bar"><div class="score-fill" style="width:87.5%"></div></div>
-                            <span class="score-num">8.75</span>
-                        </div>
-                        <div class="score-row">
-                            <span class="score-label">Flavor</span>
-                            <div class="score-bar"><div class="score-fill" style="width:90%"></div></div>
-                            <span class="score-num">9.00</span>
-                        </div>
-                        <div class="score-row">
-                            <span class="score-label">Aftertaste</span>
-                            <div class="score-bar"><div class="score-fill" style="width:87.5%"></div></div>
-                            <span class="score-num">8.75</span>
-                        </div>
-                        <div class="score-row">
-                            <span class="score-label">Acidity</span>
-                            <div class="score-bar"><div class="score-fill" style="width:72.5%"></div></div>
-                            <span class="score-num">7.25</span>
-                        </div>
-                        <div class="score-row">
-                            <span class="score-label">Body</span>
-                            <div class="score-bar"><div class="score-fill" style="width:92.5%"></div></div>
-                            <span class="score-num">9.25</span>
-                        </div>
-                        <div class="score-row">
-                            <span class="score-label">Balance</span>
-                            <div class="score-bar"><div class="score-fill" style="width:87.5%"></div></div>
-                            <span class="score-num">8.75</span>
-                        </div>
-                        <div class="score-row">
-                            <span class="score-label">Sweetness</span>
-                            <div class="score-bar"><div class="score-fill" style="width:82.5%"></div></div>
-                            <span class="score-num">8.25</span>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </section>
 
     </main>
 
-    <footer>
+    <!-- Floating contact -->
+    <div class="float-contact" role="complementary" aria-label="Contact">
+        <a href="https://wa.me/573237966960" class="float-btn" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20" aria-hidden="true">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+            </svg>
+        </a>
+        <a href="https://instagram.com/royaleluxurycoffee" class="float-btn float-btn--ig" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20" aria-hidden="true">
+                <rect x="2" y="2" width="20" height="20" rx="5" />
+                <circle cx="12" cy="12" r="4" />
+                <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+            </svg>
+        </a>
+    </div>
+
+    <footer id="contact">
+        <p class="footer-contact__label">Contáctanos</p>
+        <div class="footer-social">
+            <a href="https://wa.me/573237966960" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" class="footer-social__whatsapp">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+                </svg>
+            </a>
+            <a href="mailto:info@royaleluxurycoffee.com" aria-label="Email" class="footer-social__email">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <rect x="2" y="4" width="20" height="16" rx="2" />
+                    <path d="M2 7l10 7 10-7" />
+                </svg>
+            </a>
+            <a href="https://instagram.com/royaleluxurycoffee" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="footer-social__ig">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <rect x="2" y="2" width="20" height="20" rx="5" />
+                    <circle cx="12" cy="12" r="4" />
+                    <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+                </svg>
+            </a>
+        </div>
         <p>© Garzón, Huila — Coffee as Culture</p>
     </footer>
 
@@ -324,40 +365,6 @@
             // Charts global config
             Chart.defaults.font.family = "'Inter', sans-serif";
             Chart.defaults.color = 'rgba(255, 255, 255, 0.6)';
-
-            // Radar chart
-            const ctxRadar = document.getElementById('radarChart').getContext('2d');
-            new Chart(ctxRadar, {
-                type: 'radar',
-                data: {
-                    labels: ['FRAGRANCE', 'AROMA', 'FLAVOR', 'AFTERTASTE', 'ACIDITY', 'BODY', 'BALANCE', 'SWEETNESS'],
-                    datasets: [{
-                        label: 'Sensory Profile',
-                        data: [8.50, 8.75, 9.00, 8.75, 7.25, 9.25, 8.75, 8.25],
-                        backgroundColor: 'rgba(201, 162, 77, 0.08)',
-                        borderColor: '#c9a24d',
-                        pointBackgroundColor: '#c9a24d',
-                        pointBorderColor: '#000',
-                        pointHoverBackgroundColor: '#fff',
-                        pointHoverBorderColor: '#c9a24d',
-                        borderWidth: 1.5,
-                    }]
-                },
-                options: {
-                    scales: {
-                        r: {
-                            angleLines: { color: 'rgba(255, 255, 255, 0.08)' },
-                            grid: { color: 'rgba(255, 255, 255, 0.08)' },
-                            pointLabels: {
-                                color: '#c9a24d',
-                                font: { size: 9, letterSpacing: 2 }
-                            },
-                            ticks: { display: false, min: 0, max: 10 }
-                        }
-                    },
-                    plugins: { legend: { display: false } }
-                }
-            });
 
             // Flavor wheel
             const ctxWheel = document.getElementById('flavorWheel').getContext('2d');
@@ -396,7 +403,7 @@
                         legend: { display: false },
                         tooltip: {
                             backgroundColor: 'rgba(8, 8, 8, 0.95)',
-                            titleFont: { family: "'Playfair Display', serif", size: 14 },
+                            titleFont: { family: "'Cormorant Garamond', serif", size: 14 },
                             bodyFont: { family: "'Inter', sans-serif", size: 12 },
                             borderColor: '#c9a24d',
                             borderWidth: 1,
@@ -437,14 +444,72 @@
             }, { threshold: 0.25 });
             preloadObs.observe(video);
             playObs.observe(video);
+        })();
 
-            var btn = document.getElementById('doc-sound');
-            if (btn) {
-                btn.addEventListener('click', function () {
-                    video.muted = !video.muted;
-                    btn.classList.toggle('is-unmuted', !video.muted);
+        // Video quality selector
+        (function () {
+            var video = document.getElementById('doc-video');
+            var wrap = document.getElementById('doc-quality');
+            var btn = document.getElementById('doc-quality-btn');
+            var label = document.getElementById('doc-quality-label');
+            var menu = document.getElementById('doc-quality-menu');
+            if (!video || !wrap || !btn || !menu) return;
+
+            var base = 'https://res.cloudinary.com/duf951flp/video/upload/';
+            var file = '0519_1_txuepp';
+            var qualities = {
+                auto: { webm: 'q_auto,vc_auto', mp4: 'q_auto,vc_h264', label: 'Auto' },
+                '1080': { webm: 'q_auto,vc_auto,w_1920', mp4: 'q_auto,vc_h264,w_1920', label: '1080p' },
+                '720': { webm: 'q_auto,vc_auto,w_1280', mp4: 'q_auto,vc_h264,w_1280', label: '720p' },
+                '480': { webm: 'q_auto:low,vc_auto,w_854', mp4: 'q_auto:low,vc_h264,w_854', label: '480p' }
+            };
+
+            var sources = video.querySelectorAll('source');
+            var webmSource = sources[0];
+            var mp4Source = sources[1];
+
+            function setQuality(key) {
+                var q = qualities[key];
+                if (!q) return;
+                var wasPlaying = !video.paused;
+                var time = video.currentTime;
+
+                webmSource.src = base + q.webm + '/' + file + '.webm';
+                mp4Source.src = base + q.mp4 + '/' + file + '.mp4';
+                video.load();
+
+                video.addEventListener('loadedmetadata', function onReady() {
+                    video.removeEventListener('loadedmetadata', onReady);
+                    if (time > 0) video.currentTime = time;
+                    if (wasPlaying) video.play().catch(function () {});
                 });
+
+                label.textContent = q.label;
+                menu.querySelectorAll('button').forEach(function (b) {
+                    b.classList.toggle('is-active', b.dataset.quality === key);
+                });
+                closeMenu();
             }
+
+            function openMenu() {
+                wrap.classList.add('is-open');
+                btn.setAttribute('aria-expanded', 'true');
+            }
+            function closeMenu() {
+                wrap.classList.remove('is-open');
+                btn.setAttribute('aria-expanded', 'false');
+            }
+
+            btn.addEventListener('click', function (e) {
+                e.stopPropagation();
+                wrap.classList.contains('is-open') ? closeMenu() : openMenu();
+            });
+            menu.querySelectorAll('button').forEach(function (b) {
+                b.addEventListener('click', function () { setQuality(b.dataset.quality); });
+            });
+            document.addEventListener('click', function (e) {
+                if (!wrap.contains(e.target)) closeMenu();
+            });
         })();
 
         // Loader
@@ -471,6 +536,7 @@
             var toggle = document.getElementById('nav-toggle');
             var menu = document.getElementById('nav-menu');
             var overlay = document.getElementById('nav-overlay');
+            var closeBtn = document.getElementById('nav-close');
             if (!toggle || !menu) return;
 
             function openNav() {
@@ -492,10 +558,24 @@
             });
 
             if (overlay) overlay.addEventListener('click', closeNav);
+            if (closeBtn) closeBtn.addEventListener('click', closeNav);
 
             menu.querySelectorAll('a').forEach(function (a) {
                 a.addEventListener('click', closeNav);
             });
+        })();
+
+        // Nav scroll state
+        (function () {
+            var nav = document.querySelector('.nav');
+            if (!nav) return;
+
+            function updateNavState() {
+                nav.classList.toggle('is-scrolled', window.scrollY > 40);
+            }
+
+            updateNavState();
+            window.addEventListener('scroll', updateNavState, { passive: true });
         })();
 
         // Lang switcher

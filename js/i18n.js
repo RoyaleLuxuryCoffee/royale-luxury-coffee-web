@@ -16,10 +16,6 @@
             'format-label':    'Formato',
             'format-hint':     'Elige uno',
             'grind-label':     'Molido',
-            'cadence-label':   'Cadencia',
-            'cadence-hint':    'Pausa cuando quieras',
-            'cadence-once':    'Una vez',
-            'cadence-shipment':'Envío único',
             'qty-label':       'Cantidad',
             'shop-btn':        'Comprar ahora',
 
@@ -30,6 +26,8 @@
             'label-dept':      'Departamento',
             'label-city':      'Ciudad',
             'label-address':   'Dirección',
+            'label-phone':     'Teléfono',
+            'label-email':     'Correo electrónico',
             'ph-name':         'Tu nombre completo',
             'ph-address':      'Calle, apto, edificio...',
             'opt-dept':        'Selecciona departamento',
@@ -38,8 +36,11 @@
             'back-btn':        '← Volver al producto',
             'zona-aviso':      'Zona de difícil acceso — te contactamos en menos de 24 h para coordinar el envío.',
             'alert-fill':      'Por favor completa todos los datos de envío.',
+            'alert-email':     'Ingresa un correo electrónico válido.',
+            'alert-phone':     'Ingresa un número de celular colombiano válido (ej. 3001234567).',
             'alert-error':     'Error al crear el link de pago. Intenta de nuevo.',
             'alert-conn':      'Error de conexión. Revisa tu internet e intenta de nuevo.',
+            'alert-municipios':'No se pudo cargar la lista de ciudades. Recarga la página.',
 
             /* ── Comprar.html — origen quote ────────── */
             'origin-quote':    'Del bosque nublado<br>hasta<br>tu taza<span class="dot">.</span>',
@@ -52,7 +53,7 @@
             'd02-h3':          'Tambores pequeños, calor lento.',
             'd02-p':           'Tostado en lotes artesanales de 12 kg en nuestro atelier en Bogotá. Grano entero por defecto; molido a pedido la mañana que sale tu orden, nunca antes.',
             'd03-h3':          'Garzón, donde respira el bosque nublado.',
-            'd03-p':           'Recolectado a mano entre octubre y febrero por la familia Vargas — agricultores de tercera generación que trabajan cuatro hectáreas sobre el Magdalena.',
+            'd03-p':           'Recolectado a mano entre octubre y febrero por Juan Soler y Nicolás Murcia — dos jóvenes garzoneños que cultivan Villa Angélica sobre el Magdalena.',
             'd04-h3':          'Chocolate que se convierte en cedro.',
 
             /* ── Comprar.html — provenance ──────────── */
@@ -76,10 +77,6 @@
             'format-label':    'Format',
             'format-hint':     'Choose one',
             'grind-label':     'Grind',
-            'cadence-label':   'Cadence',
-            'cadence-hint':    'Pause anytime',
-            'cadence-once':    'Once',
-            'cadence-shipment':'Single Shipment',
             'qty-label':       'Quantity',
             'shop-btn':        'Shop Origin Now',
 
@@ -98,8 +95,11 @@
             'back-btn':        '← Back to product',
             'zona-aviso':      'Remote area — we\'ll contact you within 24 h to arrange shipping.',
             'alert-fill':      'Please fill in all shipping details.',
+            'alert-email':     'Please enter a valid email address.',
+            'alert-phone':     'Please enter a valid Colombian mobile number (e.g. 3001234567).',
             'alert-error':     'Error creating payment link. Please try again.',
             'alert-conn':      'Connection error. Please check your internet and try again.',
+            'alert-municipios':'Could not load the city list. Please reload the page.',
 
             /* ── Comprar.html — origen quote ────────── */
             'origin-quote':    'From the cloud<br>forest floor to<br>your cup<span class="dot">.</span>',
@@ -112,7 +112,7 @@
             'd02-h3':          'Small drums, slow heat.',
             'd02-p':           'Roasted in 12 kg artisanal batches at our Bogotá atelier. Whole bean by default; ground on demand the morning your order ships, never before.',
             'd03-h3':          'Garzón, where the cloud forest breathes.',
-            'd03-p':           'Hand-picked between October and February by the Vargas family — third-generation farmers working four hectares above the Magdalena.',
+            'd03-p':           'Hand-picked between October and February by Juan Soler and Nicolás Murcia — two young growers from Garzón, farming Villa Angélica above the Magdalena.',
             'd04-h3':          'Chocolate that cools into cedar.',
 
             /* ── Comprar.html — provenance ──────────── */

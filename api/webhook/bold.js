@@ -304,12 +304,12 @@ module.exports = async function handler(req, res) {
 
   if (req.method !== 'POST') return res.status(405).end();
 
-  // Verificar secret del webhook si está configurado
+  // Verificar token en query string (?token=...)
   const webhookSecret = process.env.BOLD_WEBHOOK_SECRET;
   if (webhookSecret) {
-    const incomingSecret = req.headers['x-bold-secret'] || req.headers['x-webhook-secret'];
-    if (incomingSecret !== webhookSecret) {
-      console.warn('⚠️  Webhook: secret inválido');
+    const incomingToken = req.query?.token || '';
+    if (incomingToken !== webhookSecret) {
+      console.warn('⚠️  Webhook: token inválido');
       return res.status(401).end();
     }
   }

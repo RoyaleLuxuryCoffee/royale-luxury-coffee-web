@@ -1,5 +1,6 @@
 const express = require("express");
 const cors    = require("cors");
+const crypto  = require("crypto");
 const { Resend } = require("resend");
 require("dotenv").config();
 
@@ -14,14 +15,29 @@ const allowedOrigins = [
 ];
 app.use(cors({
   origin: (origin, callback) => {
-    if (!origin || allowedOrigins.some(o => origin.startsWith(o))) {
+    if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
       callback(new Error("CORS: origen no permitido"));
     }
   }
 }));
-app.use(express.json());
+app.use(express.json({
+  verify: (req, _res, buf) => { req.rawBody = buf; }
+}));
+
+// ─── Validación de cliente ─────────────────────────────────────────────────
+function validateCustomer(customer) {
+  if (!customer || typeof customer !== 'object') return 'Datos del cliente inválidos';
+  const { name, address, city, department, phone, email } = customer;
+  if (!name     || name.length     > 100) return 'Nombre inválido';
+  if (!address  || address.length  > 200) return 'Dirección inválida';
+  if (!city     || city.length     > 100) return 'Ciudad inválida';
+  if (!department)                        return 'Departamento inválido';
+  if (!phone || !/^\+?\d{7,15}$/.test(phone.replace(/\s/g, ''))) return 'Teléfono inválido';
+  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))       return 'Email inválido';
+  return null;
+}
 
 // ─── Órdenes pendientes ────────────────────────────────────────────────────
 const pendingOrders = new Map();
@@ -31,6 +47,11 @@ const products = [
   {
     id: "black-heron-340g",
     name: "The Black Heron — Garza Negra",
+    priceCOP: 30000
+  },
+  {
+    id: "immortal-heron-340g",
+    name: "The Immortal Heron — Garza Inmortal",
     priceCOP: 30000
   }
 ];
@@ -298,20 +319,24 @@ app.get("/", (req, res) => res.send("🚀 Royale Engine: Online"));
 app.post("/order", async (req, res) => {
   try {
     const { productId, quantity, cadence, customer } = req.body;
-    const product = products.find(p => p.id === productId);
 
+    const customerError = validateCustomer(customer);
+    if (customerError) {
+      return res.status(400).json({ success: false, error: customerError });
+    }
+
+    const product = products.find(p => p.id === productId);
     if (!product) {
       return res.status(404).json({ success: false, error: "Producto no encontrado" });
     }
 
-    const cant         = parseInt(quantity) || 1;
+    const cant         = Math.min(Math.max(parseInt(quantity) || 1, 1), 10);
     const discountRate = cadence === 'sub' ? 0.12 : 0;
     const unitPrice    = Math.round(product.priceCOP * (1 - discountRate));
     const totalAmount  = unitPrice * cant;
     const reference    = `ROYALE-${Date.now()}`;
 
-    console.log(`\n📦 Procesando: ${product.name} x${cant}`);
-    console.log(`🚚 ${customer.name} | ${customer.phone} | ${customer.address}, ${customer.city}`);
+    console.log(`\n📦 Procesando: ${product.name} x${cant} | ref: ${reference}`);
 
     pendingOrders.set(reference, {
       reference,
@@ -340,9 +365,9 @@ app.post("/order", async (req, res) => {
     const data = await response.json();
 
     if (!response.ok) {
-      console.error("❌ Bold error:", JSON.stringify(data));
+      console.error("❌ Bold error:", response.status);
       pendingOrders.delete(reference);
-      return res.status(response.status).json({ success: false, error: data });
+      return res.status(502).json({ success: false, error: "Error al generar el link de pago" });
     }
 
     res.json({ success: true, paymentUrl: data.payload?.url || data.url });
@@ -356,6 +381,15 @@ app.post("/order", async (req, res) => {
 // ─── Webhook Bold ──────────────────────────────────────────────────────────
 app.post("/webhook/bold", async (req, res) => {
   try {
+    if (process.env.BOLD_WEBHOOK_SECRET) {
+      const sig      = req.headers['x-bold-signature'] || '';
+      const expected = crypto
+        .createHmac('sha256', process.env.BOLD_WEBHOOK_SECRET)
+        .update(req.rawBody)
+        .digest('hex');
+      if (sig !== expected) return res.sendStatus(401);
+    }
+
     const { status, reference } = req.body;
 
     if (status !== "APPROVED") {
