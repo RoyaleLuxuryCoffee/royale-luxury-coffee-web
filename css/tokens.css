@@ -1,12 +1,12 @@
 /* =============================================
-   ROYALE LUXURY COFFEE — DESIGN TOKENS
+   LERON — DESIGN TOKENS
    ============================================= */
 
 :root {
-    --ink:        #0A0908;
+    --ink:        #14120F;
     --coal:       #13110F;
     --char:       #1C1A17;
-    --bone:       #F5F1E8;
+    --bone:       #F3EEE4;
     --gold:       #C9A961;
     --gold-soft:  #E6D2A6;
     --gold-deep:  #8B7355;
@@ -16,12 +16,12 @@
 
     --hairline:      rgba(201, 169, 97, 0.20);
     --hairline-soft: rgba(201, 169, 97, 0.12);
-    --bone-15:       rgba(245, 241, 232, 0.15);
-    --bone-40:       rgba(245, 241, 232, 0.40);
-    --bone-55:       rgba(245, 241, 232, 0.55);
-    --bone-65:       rgba(245, 241, 232, 0.65);
+    --bone-15:       rgba(243, 238, 228, 0.15);
+    --bone-40:       rgba(243, 238, 228, 0.40);
+    --bone-55:       rgba(243, 238, 228, 0.55);
+    --bone-65:       rgba(243, 238, 228, 0.65);
 
-    --serif: 'Cormorant Garamond', Georgia, serif;
+    --serif: 'Prata', 'Cormorant Garamond', Georgia, serif;
     --sans:  'Inter', system-ui, sans-serif;
 
     --tw-2: 0.18em;

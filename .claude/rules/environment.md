@@ -11,7 +11,7 @@ alwaysApply: false
 | Variable | Purpose |
 |---|---|
 | `BOLD_API_KEY` | Bold payment gateway API key (header: `x-api-key`) |
-| `REDIRECT_URL` | URL Bold redirects to after payment (default: `https://royaleluxurycoffee.com/thanks.html`) |
+| `REDIRECT_URL` | URL Bold redirects to after payment (default: `https://leroncoffee.com/thanks.html`) |
 | `PORT` | Server port (default: 3001) |
 
 The `.env` file is **not gitignored** — never commit secrets.

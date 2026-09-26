@@ -59,6 +59,16 @@
             /* ── Comprar.html — provenance ──────────── */
             'prov-title':      'Cada bolsa lleva<br><em class="gold-grad">sus papeles.</em>',
             'prov-cert':       'Descargar Certificado (PDF)',
+
+            /* ── index.html — hero / marca ──────────── */
+            'hero-h1':        'El café no es un producto.<br><span>Es cultura.</span>',
+            'hero-p':         'Microlotes de finca. Garzón, Huila.<br>Café de alto puntaje, cultivado con intención.',
+            'hero-btn':       'Comprar ahora',
+            'showcase-label': 'Black Heron · Garza Negra',
+            'brand-eyebrow':  'Identidad de marca',
+            'brand-h2':       'Un solo gesto.',
+            'brand-p':        'El símbolo reduce la garza a un único gesto: la curva de su cuello, desde el nacimiento del ala hasta la punta del pico. Se elimina el cuerpo, las alas y las patas — lo que queda es la postura, no la ilustración. Menos elementos, mejor proporción.',
+            'brand-tag':      'Specialty Coffee',
         },
 
         en: {
@@ -118,6 +128,16 @@
             /* ── Comprar.html — provenance ──────────── */
             'prov-title':      'Every bag carries<br><em class="gold-grad">its papers.</em>',
             'prov-cert':       'Download Certificate (PDF)',
+
+            /* ── index.html — hero / brand ──────────── */
+            'hero-h1':        'Coffee is not a product.<br><span>It\'s culture.</span>',
+            'hero-p':         'Estate microlots. Garzón, Huila.<br>High-scoring coffee, grown with intent.',
+            'hero-btn':       'Shop Origin Now',
+            'showcase-label': 'Black Heron · Garza Negra',
+            'brand-eyebrow':  'Brand identity',
+            'brand-h2':       'A single gesture.',
+            'brand-p':        'The symbol reduces the heron to one gesture: the curve of its neck, from the base of the wing to the tip of the beak. The body, wings and legs are removed — what remains is posture, not illustration. Fewer elements, better proportion.',
+            'brand-tag':      'Specialty Coffee',
         }
     };
 

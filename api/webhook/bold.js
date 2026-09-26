@@ -15,7 +15,7 @@ function escapeHtml(str) {
 }
 
 function isValidReference(ref) {
-  return typeof ref === 'string' && /^ROYALE-\d+$/.test(ref);
+  return typeof ref === 'string' && /^(LERON|ROYALE)-\d+$/.test(ref);
 }
 
 // ─── Email al cliente ──────────────────────────────────────────────────────
@@ -31,10 +31,10 @@ function clientEmailTemplate(order) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Su orden Royale Luxury Coffee</title>
+  <title>Su orden Leron</title>
 </head>
-<body style="margin:0;padding:0;background:#0A0908;font-family:'Georgia',serif;">
-  <table width="100%" cellpadding="0" cellspacing="0" style="background:#0A0908;">
+<body style="margin:0;padding:0;background:#14120F;font-family:'Georgia',serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background:#14120F;">
     <tr>
       <td align="center" style="padding:48px 16px;">
         <table width="560" cellpadding="0" cellspacing="0" style="max-width:560px;width:100%;">
@@ -43,7 +43,7 @@ function clientEmailTemplate(order) {
             <td style="padding:0 0 40px;border-bottom:1px solid rgba(201,169,97,0.2);">
               <p style="margin:0;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;
                          font-size:10px;letter-spacing:5px;text-transform:uppercase;color:#C9A961;">
-                ROYALE LUXURY COFFEE
+                Leron
               </p>
             </td>
           </tr>
@@ -51,7 +51,7 @@ function clientEmailTemplate(order) {
           <tr>
             <td style="padding:40px 0 8px;">
               <h1 style="margin:0;font-size:28px;font-weight:400;line-height:1.2;
-                          color:#F5F1E8;font-style:italic;">
+                          color:#F3EEE4;font-style:italic;">
                 Orden confirmada.
               </h1>
             </td>
@@ -59,7 +59,7 @@ function clientEmailTemplate(order) {
           <tr>
             <td style="padding:0 0 32px;">
               <p style="margin:0;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;
-                         font-size:13px;color:rgba(245,241,232,0.5);letter-spacing:0.05em;">
+                         font-size:13px;color:rgba(243, 238, 228,0.5);letter-spacing:0.05em;">
                 Ref. ${ref}
               </p>
             </td>
@@ -67,11 +67,11 @@ function clientEmailTemplate(order) {
 
           <tr>
             <td style="padding:0 0 32px;">
-              <p style="margin:0;font-size:16px;line-height:1.8;color:rgba(245,241,232,0.75);">
+              <p style="margin:0;font-size:16px;line-height:1.8;color:rgba(243, 238, 228,0.75);">
                 Estimado/a ${name},
               </p>
-              <p style="margin:16px 0 0;font-size:16px;line-height:1.8;color:rgba(245,241,232,0.75);">
-                Su pedido <em style="color:#F5F1E8;">${product}</em> — ${quantity} × 340 g
+              <p style="margin:16px 0 0;font-size:16px;line-height:1.8;color:rgba(243, 238, 228,0.75);">
+                Su pedido <em style="color:#F3EEE4;">${product}</em> — ${quantity} × 340 g
                 ha sido procesado exitosamente por un total de
                 <strong style="color:#C9A961;">$${amount} COP</strong>.
               </p>
@@ -95,18 +95,18 @@ function clientEmailTemplate(order) {
           <tr>
             <td style="padding:0 0 24px;">
               <p style="margin:0;font-size:15px;font-style:italic;line-height:1.85;
-                          color:rgba(245,241,232,0.65);">
-                Royale procesa su orden de inmediato. Su paquete será entregado por
-                <em style="color:#F5F1E8;">Interrapidísimo</em> en la dirección registrada.
+                          color:rgba(243, 238, 228,0.65);">
+                Leron procesa su orden de inmediato. Su paquete será entregado por
+                <em style="color:#F3EEE4;">Interrapidísimo</em> en la dirección registrada.
               </p>
             </td>
           </tr>
 
           <tr>
             <td style="padding:0 0 32px;">
-              <p style="margin:0;font-size:15px;line-height:1.8;color:rgba(245,241,232,0.75);">
+              <p style="margin:0;font-size:15px;line-height:1.8;color:rgba(243, 238, 228,0.75);">
                 Pronto recibirá un mensaje de
-                <strong style="color:#F5F1E8;">WhatsApp</strong> al número
+                <strong style="color:#F3EEE4;">WhatsApp</strong> al número
                 <em style="color:#C9A961;">${phone}</em>
                 con el valor exacto del flete a cancelar al mensajero en efectivo
                 al momento de la entrega.
@@ -122,7 +122,7 @@ function clientEmailTemplate(order) {
                 Flete Contra Entrega
               </p>
               <p style="margin:0;font-size:14px;font-style:italic;line-height:1.8;
-                          color:rgba(245,241,232,0.6);">
+                          color:rgba(243, 238, 228,0.6);">
                 El costo del transporte se cancela directamente al mensajero
                 en efectivo al momento de la entrega.
               </p>
@@ -139,11 +139,11 @@ function clientEmailTemplate(order) {
           <tr>
             <td>
               <p style="margin:0;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;
-                          font-size:11px;color:rgba(245,241,232,0.3);line-height:1.8;">
+                          font-size:11px;color:rgba(243, 238, 228,0.3);line-height:1.8;">
                 Garzón, Huila — Coffee as Culture<br>
-                <a href="mailto:info@royaleluxurycoffee.com"
+                <a href="mailto:info@leroncoffee.com"
                    style="color:rgba(201,169,97,0.6);text-decoration:none;">
-                  info@royaleluxurycoffee.com
+                  info@leroncoffee.com
                 </a>
               </p>
             </td>
@@ -173,10 +173,10 @@ function ownerEmailTemplate(order) {
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Nuevo pedido — Royale</title>
+  <title>Nuevo pedido — Leron</title>
 </head>
-<body style="margin:0;padding:0;background:#0A0908;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;">
-  <table width="100%" cellpadding="0" cellspacing="0" style="background:#0A0908;">
+<body style="margin:0;padding:0;background:#14120F;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background:#14120F;">
     <tr>
       <td align="center" style="padding:48px 16px;">
         <table width="520" cellpadding="0" cellspacing="0" style="max-width:520px;width:100%;">
@@ -184,14 +184,14 @@ function ownerEmailTemplate(order) {
           <tr>
             <td style="padding:0 0 28px;border-bottom:1px solid rgba(201,169,97,0.2);">
               <p style="margin:0;font-size:10px;letter-spacing:5px;text-transform:uppercase;color:#C9A961;">
-                ROYALE — NUEVO PEDIDO
+                LERON — NUEVO PEDIDO
               </p>
             </td>
           </tr>
 
           <tr>
             <td style="padding:28px 0 24px;">
-              <h1 style="margin:0;font-size:22px;font-weight:400;color:#F5F1E8;
+              <h1 style="margin:0;font-size:22px;font-weight:400;color:#F3EEE4;
                           font-family:Georgia,serif;font-style:italic;">
                 Pago aprobado ✓
               </h1>
@@ -205,14 +205,14 @@ function ownerEmailTemplate(order) {
                 <tr>
                   <td style="padding:5px 0;font-size:11px;letter-spacing:3px;text-transform:uppercase;
                               color:#C9A961;width:40%;">Referencia</td>
-                  <td style="padding:5px 0;font-size:13px;color:#F5F1E8;text-align:right;">
+                  <td style="padding:5px 0;font-size:13px;color:#F3EEE4;text-align:right;">
                     ${ref}
                   </td>
                 </tr>
                 <tr>
                   <td style="padding:5px 0;font-size:11px;letter-spacing:3px;text-transform:uppercase;
                               color:#C9A961;">Producto</td>
-                  <td style="padding:5px 0;font-size:13px;color:#F5F1E8;text-align:right;">
+                  <td style="padding:5px 0;font-size:13px;color:#F3EEE4;text-align:right;">
                     ${product} × ${qty}
                   </td>
                 </tr>
@@ -243,11 +243,11 @@ function ownerEmailTemplate(order) {
           <tr>
             <td style="padding:0 0 24px;">
               <table cellpadding="0" cellspacing="0" width="100%">
-                <tr><td style="padding:3px 0;font-size:14px;color:#F5F1E8;">${name}</td></tr>
-                <tr><td style="padding:3px 0;font-size:13px;color:rgba(245,241,232,0.6);">${email}</td></tr>
-                <tr><td style="padding:3px 0;font-size:13px;color:rgba(245,241,232,0.6);">${phone}</td></tr>
+                <tr><td style="padding:3px 0;font-size:14px;color:#F3EEE4;">${name}</td></tr>
+                <tr><td style="padding:3px 0;font-size:13px;color:rgba(243, 238, 228,0.6);">${email}</td></tr>
+                <tr><td style="padding:3px 0;font-size:13px;color:rgba(243, 238, 228,0.6);">${phone}</td></tr>
                 <tr>
-                  <td style="padding:8px 0 3px;font-size:13px;color:rgba(245,241,232,0.8);">
+                  <td style="padding:8px 0 3px;font-size:13px;color:rgba(243, 238, 228,0.8);">
                     ${address}<br>
                     ${city}, ${dept}
                   </td>
@@ -258,8 +258,8 @@ function ownerEmailTemplate(order) {
 
           <tr>
             <td>
-              <p style="margin:0;font-size:11px;color:rgba(245,241,232,0.25);">
-                Royale Luxury Coffee — Panel de órdenes
+              <p style="margin:0;font-size:11px;color:rgba(243, 238, 228,0.25);">
+                Leron — Panel de órdenes
               </p>
             </td>
           </tr>
@@ -275,19 +275,19 @@ function ownerEmailTemplate(order) {
 // ─── Envíos ────────────────────────────────────────────────────────────────
 async function notifyClient(order) {
   await resend.emails.send({
-    from:    process.env.ROYALE_EMAIL_FROM || 'Royale Luxury Coffee <orders@royaleluxurycoffee.com>',
+    from:    process.env.LERON_EMAIL_FROM || 'Leron <orders@leroncoffee.com>',
     to:      order.customer.email,
-    subject: `Su orden Royale Luxury Coffee está confirmada — Ref. ${order.reference}`,
+    subject: `Su orden Leron está confirmada — Ref. ${order.reference}`,
     html:    clientEmailTemplate(order)
   });
   console.log(`📧 Email cliente → ${order.customer.email}`);
 }
 
 async function notifyOwner(order) {
-  const ownerEmail = process.env.ROYALE_OWNER_EMAIL;
+  const ownerEmail = process.env.LERON_OWNER_EMAIL;
   if (!ownerEmail) return;
   await resend.emails.send({
-    from:    process.env.ROYALE_EMAIL_FROM || 'Royale Luxury Coffee <orders@royaleluxurycoffee.com>',
+    from:    process.env.LERON_EMAIL_FROM || 'Leron <orders@leroncoffee.com>',
     to:      ownerEmail,
     subject: `Nuevo pedido — ${order.customer.name} — $${order.amount.toLocaleString('es-CO')} COP`,
     html:    ownerEmailTemplate(order)

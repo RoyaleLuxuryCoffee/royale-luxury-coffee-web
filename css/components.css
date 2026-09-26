@@ -1,5 +1,5 @@
 /* =============================================
-   ROYALE LUXURY COFFEE — UI COMPONENTS
+   LERON — UI COMPONENTS
    ============================================= */
 
 /* ── 1. Breadcrumb ─────────────────────────── */
@@ -14,8 +14,8 @@
 }
 .r-breadcrumb a { color: var(--gold); transition: color .3s var(--ease); }
 .r-breadcrumb a:hover { color: var(--gold-soft); }
-.r-breadcrumb [aria-current="page"] { color: rgba(245,241,232,0.45); }
-.r-breadcrumb .sep { color: rgba(245,241,232,0.20); }
+.r-breadcrumb [aria-current="page"] { color: rgba(243, 238, 228,0.45); }
+.r-breadcrumb .sep { color: rgba(243, 238, 228,0.20); }
 
 /* ── 2. GhostNumeral ───────────────────────── */
 .r-ghost-numeral {
@@ -63,7 +63,7 @@
     font-family: var(--serif);
     font-style: italic;
     font-size: 20px;
-    color: rgba(245,241,232,0.85);
+    color: rgba(243, 238, 228,0.85);
 }
 .r-product-header__rule { width: 48px; height: 1px; background: rgba(201,169,97,0.40); }
 .r-product-header__copy {
@@ -88,15 +88,15 @@
 .r-chip {
     display: inline-flex;
     padding: 12px 20px;
-    border: 1px solid rgba(245,241,232,0.15);
-    color: rgba(245,241,232,0.70);
+    border: 1px solid rgba(243, 238, 228,0.15);
+    color: rgba(243, 238, 228,0.70);
     font-family: var(--sans);
     font-size: 10px;
     letter-spacing: var(--tw-3);
     text-transform: uppercase;
     transition: border-color .3s var(--ease), color .3s var(--ease);
 }
-.r-chip:hover { border-color: rgba(245,241,232,0.40); }
+.r-chip:hover { border-color: rgba(243, 238, 228,0.40); }
 .r-chip--primary { border-color: var(--gold); color: var(--gold); }
 .r-chip--primary:hover { border-color: var(--gold-soft); color: var(--gold-soft); }
 
@@ -149,7 +149,7 @@
     gap: 18px;
     padding: 22px 26px;
     text-align: left;
-    border: 1px solid rgba(245,241,232,0.15);
+    border: 1px solid rgba(243, 238, 228,0.15);
     transition: border-color .3s var(--ease), background .3s var(--ease);
     overflow: hidden;
 }
@@ -162,7 +162,7 @@
     border-left: 1px solid var(--gold);
     opacity: 0.55;
 }
-.r-format__opt:hover { border-color: rgba(245,241,232,0.40); }
+.r-format__opt:hover { border-color: rgba(243, 238, 228,0.40); }
 .r-format__opt.is-active {
     border-color: var(--gold);
     background: rgba(201,169,97,0.04);
@@ -201,7 +201,7 @@
     font-size: 10px;
     letter-spacing: var(--tw-3);
     text-transform: uppercase;
-    color: rgba(245,241,232,0.55);
+    color: rgba(243, 238, 228,0.55);
 }
 
 /* ── 7. GrindDial ──────────────────────────── */
@@ -225,7 +225,7 @@
     position: absolute;
     left: 0; right: 0; top: 50%;
     height: 1px;
-    background: rgba(245,241,232,0.15);
+    background: rgba(243, 238, 228,0.15);
 }
 .r-dial__tick {
     position: absolute;
@@ -318,7 +318,7 @@
     font-family: var(--serif);
     font-style: italic;
     font-size: 13px;
-    color: rgba(245,241,232,0.45);
+    color: rgba(243, 238, 228,0.45);
     max-width: 280px;
 }
 .r-dossier .hairline { margin: 0 0 48px; }
@@ -407,7 +407,7 @@
     margin: 0;
 }
 .r-dossier__data div {
-    border-top: 1px solid rgba(245,241,232,0.10);
+    border-top: 1px solid rgba(243, 238, 228,0.10);
     padding-top: 12px;
 }
 .r-dossier__data dt { margin: 0 0 4px; }
@@ -424,7 +424,7 @@
     display: flex;
     justify-content: space-between;
     padding: 12px 0;
-    border-top: 1px solid rgba(245,241,232,0.10);
+    border-top: 1px solid rgba(243, 238, 228,0.10);
     font-family: var(--serif);
     font-size: 18px;
 }
@@ -611,4 +611,18 @@
 }
 @keyframes footer-social-ig-spin {
     to { transform: rotate(360deg); }
+}
+
+.rlc-loader__img {
+    height: clamp(140px, 28vh, 240px);
+    width: auto;
+}
+
+.logo__img {
+    display: block;
+    height: 44px;
+    width: auto;
+}
+@media (max-width: 768px) {
+    .logo__img { height: 36px; }
 }

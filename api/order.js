@@ -11,7 +11,7 @@ const products = [
 ];
 
 const ALLOWED_ORIGINS = [
-  'https://royaleluxurycoffee.com',
+  'https://leroncoffee.com',
   'http://localhost:3000',
   'http://127.0.0.1:3000'
 ];
@@ -59,7 +59,7 @@ module.exports = async function handler(req, res) {
     const discountRate = cadence === 'sub' ? 0.12 : 0;
     const unitPrice    = Math.round(product.priceCOP * (1 - discountRate));
     const totalAmount  = unitPrice * cant;
-    const reference    = `ROYALE-${Date.now()}`;
+    const reference    = `LERON-${Date.now()}`;
 
     console.log(`📦 ${product.name} x${cant} | ref: ${reference}`);
 
@@ -81,9 +81,9 @@ module.exports = async function handler(req, res) {
       body: JSON.stringify({
         amount_type:  'CLOSE',
         amount:       { currency: 'COP', total_amount: totalAmount },
-        description:  `Royale: ${product.name} x${cant}`.slice(0, 100),
+        description:  `Leron: ${product.name} x${cant}`.slice(0, 100),
         reference,
-        redirect_url: process.env.REDIRECT_URL || 'https://royaleluxurycoffee.com/thanks.html'
+        redirect_url: process.env.REDIRECT_URL || 'https://leroncoffee.com/thanks.html'
       })
     });
 

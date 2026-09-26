@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://royaleluxurycoffee.com/sitemap.xml
+Sitemap: https://leroncoffee.com/sitemap.xml

@@ -416,7 +416,7 @@
     transition: color 0.3s var(--ease), background 0.3s var(--ease);
 }
 
-.qty-btn:hover { color: var(--bone); background: rgba(245,241,232,0.04); }
+.qty-btn:hover { color: var(--bone); background: rgba(243, 238, 228,0.04); }
 
 .qty-num {
     min-width: 48px;
@@ -468,7 +468,7 @@
 
 .r-btn-primary:hover { background: var(--gold-soft); }
 
-.icon-royale-compact {
+.icon-leron-compact {
     display: inline-block;
     width: 36px;
     height: 18px;
@@ -493,7 +493,7 @@
     cursor: pointer;
 }
 
-.r-btn-ghost:hover { border-color: rgba(245,241,232,0.35); color: var(--bone); }
+.r-btn-ghost:hover { border-color: rgba(243, 238, 228,0.35); color: var(--bone); }
 
 /* ── Checkout ──────────────────────────────── */
 .checkout-module {
@@ -833,7 +833,7 @@
 
 .r-dossier__note-track {
     height: 1px;
-    background: rgba(245,241,232,0.10);
+    background: rgba(243, 238, 228,0.10);
     overflow: visible;
     position: relative;
 }

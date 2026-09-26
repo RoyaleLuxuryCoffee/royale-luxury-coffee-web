@@ -1,5 +1,5 @@
 /* =============================================
-   ROYALE LUXURY COFFEE — COMPONENT BEHAVIOUR
+   LERON — COMPONENT BEHAVIOUR
    ============================================= */
 
 (function () {

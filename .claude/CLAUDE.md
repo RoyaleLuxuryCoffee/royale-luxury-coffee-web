@@ -1,5 +1,5 @@
 ---
-description: Core project context for Royale Luxury Coffee — always loaded.
+description: Core project context for Leron — always loaded.
 alwaysApply: true
 ---
 
@@ -53,7 +53,7 @@ style-compra.css     ← Comprar.html only
 ```js
 var API_URL = (hostname === 'localhost' || hostname === '127.0.0.1')
   ? 'http://localhost:3001'
-  : 'https://royaleluxurycoffee.com';
+  : 'https://leroncoffee.com';
 ```
 
 In production, a reverse proxy must route `POST /order` → `localhost:3001`.
