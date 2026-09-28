@@ -113,6 +113,17 @@ img {
     filter: brightness(1.15);
 }
 
+.logo__img {
+    display: block;
+    height: 44px;
+    width: auto;
+}
+
+.rlc-loader__img {
+    height: clamp(140px, 28vh, 240px);
+    width: auto;
+}
+
 .nav a {
     color: var(--white);
     text-decoration: none;
@@ -1809,6 +1820,10 @@ footer {
     .logo {
         font-size: 1.1rem;
         letter-spacing: 0.1em;
+    }
+
+    .logo__img {
+        height: 34px;
     }
 
     .nav-cta {
