@@ -7,7 +7,8 @@ const redis = new Redis({
 });
 
 const products = [
-  { id: 'black-heron-340g', name: 'The Black Heron — Garza Negra', priceCOP: 30000 }
+  { id: 'black-heron-340g', name: 'The Black Heron — Garza Negra', priceCOP: 30000 },
+  { id: 'immortal-heron-340g', name: 'The Immortal Heron — Garza Inmortal', priceCOP: 30000 }
 ];
 
 const ALLOWED_ORIGINS = [
