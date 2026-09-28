@@ -32,8 +32,11 @@
 
 /* RESET */
 *, *::before, *::after { box-sizing: border-box; }
-html, body { margin: 0; padding: 0; background: var(--ink); color: var(--bone); }
+html, body { margin: 0; padding: 0; background: var(--ink); color: var(--bone); max-width: 100%; overflow-x: hidden; }
 body { font-family: var(--sans); -webkit-font-smoothing: antialiased; }
+table { max-width: 100%; }
+svg { max-width: 100%; height: auto; }
+input, select, textarea, button { max-width: 100%; font-family: inherit; }
 ::selection { background: var(--gold); color: var(--ink); }
 button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
 a { color: inherit; text-decoration: none; }

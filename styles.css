@@ -889,8 +889,8 @@ img {
 
 /* ── Flavor wheel container ── */
 .fw-container {
-    width: 280px;
-    height: 280px;
+    width: clamp(200px, 70vw, 280px);
+    height: clamp(200px, 70vw, 280px);
     position: relative;
     flex-shrink: 0;
 }
