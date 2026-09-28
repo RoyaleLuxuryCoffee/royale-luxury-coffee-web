@@ -351,7 +351,7 @@ app.post("/order", async (req, res) => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `x-api-key ${process.env.BOLD_API_KEY}`
+        "x-api-key":    process.env.BOLD_API_KEY
       },
       body: JSON.stringify({
         amount_type: "CLOSE",

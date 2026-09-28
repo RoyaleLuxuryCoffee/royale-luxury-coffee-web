@@ -76,8 +76,8 @@ module.exports = async function handler(req, res) {
     const boldRes = await fetch('https://integrations.api.bold.co/online/link/v1', {
       method: 'POST',
       headers: {
-        'Content-Type':  'application/json',
-        'Authorization': `x-api-key ${process.env.BOLD_API_KEY}`
+        'Content-Type': 'application/json',
+        'x-api-key':    process.env.BOLD_API_KEY
       },
       body: JSON.stringify({
         amount_type:  'CLOSE',
