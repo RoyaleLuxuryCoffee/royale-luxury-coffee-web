@@ -12,9 +12,13 @@ const products = [
 ];
 
 const ALLOWED_ORIGINS = [
+  'https://royaleluxurycoffee.com',
+  'https://www.royaleluxurycoffee.com',
   'https://leroncoffee.com',
-  'http://localhost:3000',
-  'http://127.0.0.1:3000'
+  'https://www.leroncoffee.com',
+  'https://royal-luxury-ten.vercel.app',
+  'http://localhost:3001',
+  'http://127.0.0.1:3001'
 ];
 
 function validateCustomer(customer) {
