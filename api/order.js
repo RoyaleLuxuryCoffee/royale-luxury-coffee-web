@@ -68,6 +68,7 @@ module.exports = async function handler(req, res) {
 
     console.log(`📦 ${product.name} x${cant} | ref: ${reference}`);
 
+    console.log('💾 Guardando en Redis...');
     await redis.set(reference, {
       reference,
       product:  product.name,
@@ -77,6 +78,7 @@ module.exports = async function handler(req, res) {
       createdAt: new Date().toISOString()
     }, { ex: 7200 });
 
+    console.log('💳 Llamando a Bold API... key:', process.env.BOLD_API_KEY ? 'SET' : 'MISSING');
     const boldRes = await fetch('https://integrations.api.bold.co/online/link/v1', {
       method: 'POST',
       headers: {
@@ -103,7 +105,7 @@ module.exports = async function handler(req, res) {
     return res.json({ success: true, paymentUrl: data.payload?.url || data.url });
 
   } catch (err) {
-    console.error('Error /api/order:', err.message);
-    return res.status(500).json({ success: false, error: 'Fallo interno' });
+    console.error('Error /api/order:', err.message, err.cause ? String(err.cause) : '');
+    return res.status(500).json({ success: false, error: 'Fallo interno', detail: err.message });
   }
 };
