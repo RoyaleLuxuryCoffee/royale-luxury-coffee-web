@@ -97,9 +97,9 @@ module.exports = async function handler(req, res) {
     const data = await boldRes.json();
 
     if (!boldRes.ok) {
-      console.error('❌ Bold error:', boldRes.status);
+      console.error('❌ Bold error:', boldRes.status, JSON.stringify(data));
       await redis.del(reference);
-      return res.status(502).json({ success: false, error: 'Error al generar el link de pago' });
+      return res.status(502).json({ success: false, error: 'Error al generar el link de pago', boldStatus: boldRes.status, boldData: data });
     }
 
     return res.json({ success: true, paymentUrl: data.payload?.url || data.url });
