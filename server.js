@@ -10,16 +10,15 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 // ─── Middlewares ───────────────────────────────────────────────────────────
 const allowedOrigins = [
   "https://leroncoffee.com",
-  "http://localhost",
-  "http://127.0.0.1"
+  "https://royaleluxurycoffee.com"
 ];
 app.use(cors({
   origin: (origin, callback) => {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error("CORS: origen no permitido"));
-    }
+    if (!origin) return callback(null, true); // same-origin / curl
+    if (allowedOrigins.includes(origin)) return callback(null, true);
+    // Allow any localhost / 127.0.0.1 origin regardless of port (dev)
+    if (/^https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(origin)) return callback(null, true);
+    callback(new Error("CORS: origen no permitido"));
   }
 }));
 app.use(express.json({
@@ -316,6 +315,17 @@ async function notifyOwner(order) {
 
 app.get("/", (req, res) => res.send("🚀 Leron Engine: Online"));
 
+app.post("/signature", (req, res) => {
+  const { orderId, amount, currency = "COP" } = req.body;
+  if (!orderId || !amount) return res.status(400).json({ error: "orderId y amount requeridos" });
+  const secret = process.env.BOLD_WEBHOOK_SECRET;
+  // Bold firma con SHA-256(orderId + amount + currency + secretKey)
+  const data = `${orderId}${amount}${currency}${secret}`;
+  const sig  = crypto.createHash("sha256").update(data).digest("hex");
+  console.log("→ Firma Bold:", sig, "| data:", `${orderId}${amount}${currency}[secret]`);
+  res.json({ signature: sig });
+});
+
 app.post("/order", async (req, res) => {
   try {
     const { productId, quantity, cadence, customer } = req.body;
@@ -347,30 +357,38 @@ app.post("/order", async (req, res) => {
       createdAt: new Date().toISOString()
     });
 
+    const boldBody = {
+      amount_type: "CLOSE",
+      amount: { currency: "COP", total_amount: totalAmount },
+      description: `Leron: ${product.name} x${cant} — ${customer.name}`.slice(0, 100),
+      reference,
+      redirect_url: process.env.REDIRECT_URL || "https://leroncoffee.com/thanks.html"
+    };
+    console.log("→ Bold request body:", JSON.stringify(boldBody));
+    console.log("→ Bold API key (primeros 10):", (process.env.BOLD_API_KEY || '').slice(0, 10));
+
     const response = await fetch("https://integrations.api.bold.co/online/link/v1", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json",
-        "x-api-key":    process.env.BOLD_API_KEY
+        "Content-Type":  "application/json",
+        "Authorization": `Bearer ${process.env.BOLD_API_KEY}`
       },
-      body: JSON.stringify({
-        amount_type: "CLOSE",
-        amount: { currency: "COP", total_amount: totalAmount },
-        description: `Leron: ${product.name} x${cant} — ${customer.name}`.slice(0, 100),
-        reference,
-        redirect_url: process.env.REDIRECT_URL || "https://leroncoffee.com/thanks.html"
-      })
+      body: JSON.stringify(boldBody)
     });
 
     const data = await response.json();
 
+    console.log("Bold status:", response.status, "| body:", JSON.stringify(data));
+
     if (!response.ok) {
-      console.error("❌ Bold error:", response.status);
+      console.error("❌ Bold error:", response.status, data);
       pendingOrders.delete(reference);
       return res.status(502).json({ success: false, error: "Error al generar el link de pago" });
     }
 
-    res.json({ success: true, paymentUrl: data.payload?.url || data.url });
+    const paymentUrl = data.payload?.url || data.url || data.payment_url || data.link;
+    console.log("✅ paymentUrl:", paymentUrl);
+    res.json({ success: true, paymentUrl });
 
   } catch (error) {
     console.error("Error /order:", error);

@@ -41,7 +41,7 @@
 
     <link rel="preconnect" href="https://res.cloudinary.com" crossorigin>
     <link rel="stylesheet" href="styles.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
 
     <script type="application/ld+json">
     {
@@ -85,7 +85,8 @@
     <div class="nav-overlay" id="nav-overlay"></div>
 
     <header class="nav">
-        <a href="index.html" class="logo" aria-label="Leron"><img src="imagenes/logo-leron-white.png" alt="Leron" class="logo__img"></a>
+        <a href="index.html" class="logo" aria-label="Leron"><img src="imagenes/logo-leron-white.png" alt="Leron"
+                class="logo__img"></a>
         <nav id="nav-menu">
             <span class="nav-menu__deco" aria-hidden="true">RLC</span>
             <button type="button" class="nav-menu__close" id="nav-close" aria-label="Cerrar menú">&times;</button>
@@ -203,33 +204,14 @@
                     concesiones.</p>
             </div>
             <div class="documental-cinema">
-                <video id="doc-video" muted playsinline loop preload="none" controls controlsList="nodownload"
-                    poster="https://res.cloudinary.com/duf951flp/video/upload/so_0,q_auto,f_jpg/0519_1_txuepp.jpg">
-                    <source src="https://res.cloudinary.com/duf951flp/video/upload/q_auto,vc_auto/0519_1_txuepp.webm"
-                        type="video/webm">
-                    <source src="https://res.cloudinary.com/duf951flp/video/upload/q_auto,vc_h264/0519_1_txuepp.mp4"
-                        type="video/mp4; codecs=&quot;avc1.42E01E&quot;">
-                </video>
-                <div class="documental-vignette"></div>
-                <div class="documental-quality" id="doc-quality">
-                    <button class="documental-quality__btn" id="doc-quality-btn" aria-haspopup="true"
-                        aria-expanded="false" aria-label="Calidad de video">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                            <circle cx="12" cy="12" r="3" />
-                            <path
-                                d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
-                        </svg>
-                        <span class="documental-quality__label" id="doc-quality-label">Auto</span>
-                    </button>
-                    <ul class="documental-quality__menu" id="doc-quality-menu" role="menu">
-                        <li role="none"><button type="button" role="menuitem" class="is-active"
-                                data-quality="auto">Auto</button></li>
-                        <li role="none"><button type="button" role="menuitem" data-quality="1080">1080p</button></li>
-                        <li role="none"><button type="button" role="menuitem" data-quality="720">720p</button></li>
-                        <li role="none"><button type="button" role="menuitem" data-quality="480">480p</button></li>
-                    </ul>
-                </div>
+                <iframe
+                    src="https://player.cloudinary.com/embed/?cloud_name=duf951flp&public_id=1018_tm7qmm&loop=true&muted=true"
+                    style="width:100%;height:100%;position:absolute;inset:0;border:0;"
+                    allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
+                    allowfullscreen
+                    title="Leron — documental"
+                ></iframe>
+
             </div>
             <div class="documental-cta">
                 <p class="documental-cta__label">Ahora que nos conoces</p>
@@ -242,7 +224,9 @@
                 <img class="brand-mark__logo" src="imagenes/leron-logo-lockup.png" alt="Leron">
                 <span class="brand-mark__eyebrow label" data-i18n="brand-eyebrow">Identidad de marca</span>
                 <h2 class="brand-mark__title" data-i18n="brand-h2">Un solo gesto.</h2>
-                <p class="brand-mark__text" data-i18n="brand-p">El símbolo reduce la garza a un único gesto: la curva de su cuello, desde el nacimiento del ala hasta la punta del pico. Se elimina el cuerpo, las alas y las patas — lo que queda es la postura, no la ilustración. Menos elementos, mejor proporción.</p>
+                <p class="brand-mark__text" data-i18n="brand-p">El símbolo reduce la garza a un único gesto: la curva de
+                    su cuello, desde el nacimiento del ala hasta la punta del pico. Se elimina el cuerpo, las alas y las
+                    patas — lo que queda es la postura, no la ilustración. Menos elementos, mejor proporción.</p>
                 <span class="brand-mark__tag label-mute" data-i18n="brand-tag">Specialty Coffee</span>
             </div>
         </section>
@@ -279,7 +263,7 @@
 
         <section class="sensory-profile-section reveal" id="sensory">
             <div class="sensory-header">
-                <p class="sensory-super-eyebrow">Análisis Sensorial — N° 01</p>
+                <p class="sensory-super-eyebrow">Análisis Sensorial — N° 60</p>
                 <h2 class="sensory-title">The Black Heron<br><em>Garza Negra</em></h2>
                 <p class="sensory-product-name"><em>Washed</em> · Medium Dark · Garzón, Huila</p>
                 <hr class="hairline sensory-hairline">
@@ -292,33 +276,33 @@
                         <div class="fw-container">
                             <canvas id="flavorWheel"></canvas>
                         </div>
-                        <div class="center-spotlight">N° 01</div>
+                        <div class="center-spotlight">N° 60</div>
                     </div>
                     <div class="flavor-legend">
                         <div class="fl-row">
                             <span class="fl-swatch" style="background:#1A110D"></span>
                             <span class="fl-name">Dark Chocolate</span>
-                            <span class="fl-pct">32%</span>
+                            <span class="fl-pct">38%</span>
                         </div>
                         <div class="fl-row">
                             <span class="fl-swatch" style="background:#c9a24d"></span>
                             <span class="fl-name">Caramel</span>
-                            <span class="fl-pct">24%</span>
+                            <span class="fl-pct">26%</span>
                         </div>
                         <div class="fl-row">
                             <span class="fl-swatch" style="background:#5C3A21"></span>
                             <span class="fl-name">Roasted Almond</span>
-                            <span class="fl-pct">20%</span>
+                            <span class="fl-pct">18%</span>
                         </div>
                         <div class="fl-row">
-                            <span class="fl-swatch" style="background:#1E1208"></span>
-                            <span class="fl-name">Cedar</span>
-                            <span class="fl-pct">14%</span>
+                            <span class="fl-swatch" style="background:#7A2828"></span>
+                            <span class="fl-name">Black Cherry</span>
+                            <span class="fl-pct">12%</span>
                         </div>
                         <div class="fl-row">
                             <span class="fl-swatch" style="background:#6B4A18"></span>
-                            <span class="fl-name">Brown Sugar</span>
-                            <span class="fl-pct">10%</span>
+                            <span class="fl-name">Cedar</span>
+                            <span class="fl-pct">6%</span>
                         </div>
                     </div>
                 </div>
@@ -415,10 +399,10 @@
             new Chart(ctxWheel, {
                 type: 'doughnut',
                 data: {
-                    labels: ['Dark Chocolate', 'Caramel', 'Roasted Almond', 'Cedar', 'Brown Sugar'],
+                    labels: ['Dark Chocolate', 'Caramel', 'Roasted Almond', 'Black Cherry', 'Cedar'],
                     datasets: [{
-                        data: [32, 24, 20, 14, 10],
-                        backgroundColor: [gradChoc, gradCaramel, gradAlmond, '#1E1208', '#6B4A18'],
+                        data: [38, 26, 18, 12, 6],
+                        backgroundColor: [gradChoc, gradCaramel, gradAlmond, '#7A2828', '#6B4A18'],
                         borderWidth: 1,
                         borderColor: '#080808',
                         hoverOffset: 10,
@@ -452,96 +436,6 @@
     <script src="js/i18n.js"></script>
 
     <script>
-        // Video lazy-load
-        (function () {
-            var video = document.getElementById('doc-video');
-            if (!video) return;
-            var preloaded = false;
-            var played = false;
-            var preloadObs = new IntersectionObserver(function (entries) {
-                if (entries[0].isIntersecting && !preloaded) {
-                    preloaded = true;
-                    video.preload = 'auto';
-                    video.load();
-                    preloadObs.disconnect();
-                }
-            }, { rootMargin: '400px' });
-            var playObs = new IntersectionObserver(function (entries) {
-                if (entries[0].isIntersecting && !played) {
-                    played = true;
-                    video.play().catch(function () { });
-                    playObs.disconnect();
-                }
-            }, { threshold: 0.25 });
-            preloadObs.observe(video);
-            playObs.observe(video);
-        })();
-
-        // Video quality selector
-        (function () {
-            var video = document.getElementById('doc-video');
-            var wrap = document.getElementById('doc-quality');
-            var btn = document.getElementById('doc-quality-btn');
-            var label = document.getElementById('doc-quality-label');
-            var menu = document.getElementById('doc-quality-menu');
-            if (!video || !wrap || !btn || !menu) return;
-
-            var base = 'https://res.cloudinary.com/duf951flp/video/upload/';
-            var file = '0519_1_txuepp';
-            var qualities = {
-                auto: { webm: 'q_auto,vc_auto', mp4: 'q_auto,vc_h264', label: 'Auto' },
-                '1080': { webm: 'q_auto,vc_auto,w_1920', mp4: 'q_auto,vc_h264,w_1920', label: '1080p' },
-                '720': { webm: 'q_auto,vc_auto,w_1280', mp4: 'q_auto,vc_h264,w_1280', label: '720p' },
-                '480': { webm: 'q_auto:low,vc_auto,w_854', mp4: 'q_auto:low,vc_h264,w_854', label: '480p' }
-            };
-
-            var sources = video.querySelectorAll('source');
-            var webmSource = sources[0];
-            var mp4Source = sources[1];
-
-            function setQuality(key) {
-                var q = qualities[key];
-                if (!q) return;
-                var wasPlaying = !video.paused;
-                var time = video.currentTime;
-
-                webmSource.src = base + q.webm + '/' + file + '.webm';
-                mp4Source.src = base + q.mp4 + '/' + file + '.mp4';
-                video.load();
-
-                video.addEventListener('loadedmetadata', function onReady() {
-                    video.removeEventListener('loadedmetadata', onReady);
-                    if (time > 0) video.currentTime = time;
-                    if (wasPlaying) video.play().catch(function () { });
-                });
-
-                label.textContent = q.label;
-                menu.querySelectorAll('button').forEach(function (b) {
-                    b.classList.toggle('is-active', b.dataset.quality === key);
-                });
-                closeMenu();
-            }
-
-            function openMenu() {
-                wrap.classList.add('is-open');
-                btn.setAttribute('aria-expanded', 'true');
-            }
-            function closeMenu() {
-                wrap.classList.remove('is-open');
-                btn.setAttribute('aria-expanded', 'false');
-            }
-
-            btn.addEventListener('click', function (e) {
-                e.stopPropagation();
-                wrap.classList.contains('is-open') ? closeMenu() : openMenu();
-            });
-            menu.querySelectorAll('button').forEach(function (b) {
-                b.addEventListener('click', function () { setQuality(b.dataset.quality); });
-            });
-            document.addEventListener('click', function (e) {
-                if (!wrap.contains(e.target)) closeMenu();
-            });
-        })();
 
         // Loader
         (function () {

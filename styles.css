@@ -755,7 +755,7 @@ img {
 .documental-quality {
     position: absolute;
     top: 16px;
-    right: 16px;
+    left: 16px;
     z-index: 20;
 }
 
@@ -833,7 +833,7 @@ img {
 @media (max-width: 768px) {
     .documental { padding-top: 7rem; }
     .documental-intro { margin-bottom: 3rem; }
-    .documental-quality { top: 12px; right: 12px; }
+    .documental-quality { top: 12px; left: 12px; }
     .documental-quality__btn { padding: 6px 10px; font-size: 0.65rem; }
 }
 
