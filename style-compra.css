@@ -950,3 +950,72 @@
     /* Grind dial labels */
     .r-dial { touch-action: none; }
 }
+
+/* ── Preventa block (immortal-heron / golden-heron) ─ */
+.r-preventa {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 32px;
+    background: linear-gradient(135deg, rgba(201,169,97,0.07) 0%, rgba(255,255,255,0.02) 100%);
+    border: 1px solid rgba(201,169,97,0.18);
+    border-radius: 2px;
+}
+
+.r-preventa__badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.r-preventa__dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--gold);
+    box-shadow: 0 0 8px rgba(201,169,97,0.7);
+    animation: preventa-pulse 2s ease-in-out infinite;
+    flex-shrink: 0;
+}
+
+@keyframes preventa-pulse {
+    0%, 100% { box-shadow: 0 0 6px rgba(201,169,97,0.5); }
+    50%       { box-shadow: 0 0 14px rgba(201,169,97,0.9); }
+}
+
+.r-preventa__headline {
+    font-family: var(--serif);
+    font-size: clamp(1.4rem, 3vw, 1.85rem);
+    font-weight: 300;
+    color: var(--bone);
+    line-height: 1.25;
+    margin: 0;
+}
+
+.r-preventa__sub {
+    font-family: var(--sans);
+    font-size: 12px;
+    color: var(--silver);
+    line-height: 1.8;
+    letter-spacing: 0.02em;
+    margin: 0;
+}
+
+.r-preventa__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    text-decoration: none;
+    width: 100%;
+}
+
+.r-preventa__disclaimer {
+    font-family: var(--sans);
+    font-size: 10px;
+    letter-spacing: .08em;
+    color: var(--silver);
+    opacity: 0.5;
+    text-align: center;
+    margin: -8px 0 0;
+}
