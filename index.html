@@ -136,13 +136,13 @@
                 <div class="hero-showcase" id="collection">
 
                     <div class="showcase-track" id="showcaseTrack">
-                        <div class="showcase-item is-active" data-index="0" style="order:2">
+                        <div class="showcase-item pos-curr" data-index="0">
                             <img src="imagenes/1.%20IMMORTAL%20HERON.png" alt="Immortal Heron">
                         </div>
-                        <div class="showcase-item" data-index="1" style="order:3">
+                        <div class="showcase-item pos-next" data-index="1">
                             <img src="imagenes/2.%20BLACK%20HERON.png" alt="Black Heron">
                         </div>
-                        <div class="showcase-item" data-index="2" style="order:1">
+                        <div class="showcase-item pos-prev" data-index="2">
                             <img src="imagenes/3.%20GOLDEN%20HERON.png" alt="Golden Heron">
                         </div>
                     </div>
@@ -562,12 +562,12 @@
                 { name: 'Golden Heron',   process: 'Natural · Light'        }
             ];
 
-            function setOrders(a) {
+            function setPositions(a) {
                 var prev = (a - 1 + ITEMS) % ITEMS;
                 var next = (a + 1) % ITEMS;
-                items[prev].style.order = '1';
-                items[a].style.order    = '2';
-                items[next].style.order = '3';
+                items[prev].className = 'showcase-item pos-prev';
+                items[a].className    = 'showcase-item pos-curr';
+                items[next].className = 'showcase-item pos-next';
             }
 
             function updateMeta(a) {
@@ -582,16 +582,15 @@
             }
 
             function goTo(i) {
-                items[active].classList.remove('is-active');
                 active = (i + ITEMS) % ITEMS;
-                items[active].classList.add('is-active');
-                setOrders(active);
+                setPositions(active);
                 updateMeta(active);
             }
 
             function start() { timer = setInterval(function () { goTo(active + 1); }, DELAY); }
             function stop()  { clearInterval(timer); }
 
+            /* Click en laterales */
             items.forEach(function (item) {
                 item.addEventListener('click', function () {
                     var i = parseInt(item.dataset.index);
@@ -599,6 +598,21 @@
                 });
             });
 
+            /* Swipe táctil */
+            var txStart = 0;
+            track.addEventListener('touchstart', function (e) {
+                txStart = e.touches[0].clientX;
+            }, { passive: true });
+            track.addEventListener('touchend', function (e) {
+                var dx = e.changedTouches[0].clientX - txStart;
+                if (Math.abs(dx) > 40) {
+                    stop();
+                    goTo(dx < 0 ? active + 1 : active - 1);
+                    start();
+                }
+            }, { passive: true });
+
+            /* Pausa en hover (desktop) */
             var showcase = document.querySelector('.hero-showcase');
             if (showcase) {
                 showcase.addEventListener('mouseenter', stop);
