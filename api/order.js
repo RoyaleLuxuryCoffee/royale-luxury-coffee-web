@@ -1,111 +1,107 @@
-require('dotenv').config();
-const { Redis } = require('@upstash/redis');
+const crypto = require('crypto');
+const { Resend } = require('resend');
 
-const redis = new Redis({
-  url:   process.env.KV_REST_API_URL,
-  token: process.env.KV_REST_API_TOKEN
-});
-
-const products = [
-  { id: 'black-heron-340g', name: 'The Black Heron — Garza Negra', priceCOP: 30000 },
-  { id: 'immortal-heron-340g', name: 'The Immortal Heron — Garza Inmortal', priceCOP: 30000 }
+const allowedOrigins = [
+  'https://royalluxurycoffee.com',
+  'https://leroncoffee.com'
 ];
 
-const ALLOWED_ORIGINS = [
-  'https://royaleluxurycoffee.com',
-  'https://www.royaleluxurycoffee.com',
-  'https://leroncoffee.com',
-  'https://www.leroncoffee.com',
-  'https://royal-luxury-ten.vercel.app',
-  'http://localhost:3001',
-  'http://127.0.0.1:3001'
+function setCors(req, res) {
+  const origin = req.headers.origin || '';
+  if (allowedOrigins.includes(origin) || /^https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(origin)) {
+    res.setHeader('Access-Control-Allow-Origin', origin);
+  }
+  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+}
+
+const products = [
+  { id: 'black-heron-340g',   name: 'The Black Heron — Garza Negra',    priceCOP: 30000 },
+  { id: 'immortal-heron-340g', name: 'The Immortal Heron — Garza Inmortal', priceCOP: 30000 }
 ];
 
 function validateCustomer(customer) {
   if (!customer || typeof customer !== 'object') return 'Datos del cliente inválidos';
   const { name, address, city, department, phone, email } = customer;
-  if (!name    || name.length    > 100) return 'Nombre inválido';
-  if (!address || address.length > 200) return 'Dirección inválida';
-  if (!city    || city.length    > 100) return 'Ciudad inválida';
-  if (!department)                      return 'Departamento inválido';
+  if (!name     || name.length     > 100) return 'Nombre inválido';
+  if (!address  || address.length  > 200) return 'Dirección inválida';
+  if (!city     || city.length     > 100) return 'Ciudad inválida';
+  if (!department)                        return 'Departamento inválido';
   if (!phone || !/^\+?\d{7,15}$/.test(phone.replace(/\s/g, ''))) return 'Teléfono inválido';
   if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))       return 'Email inválido';
   return null;
 }
 
 module.exports = async function handler(req, res) {
-  console.log(`🔔 /api/order — ${req.method} | origin: ${req.headers.origin || 'none'}`);
-  const origin = req.headers.origin || '';
-  if (ALLOWED_ORIGINS.includes(origin)) {
-    res.setHeader('Access-Control-Allow-Origin', origin);
-  }
-  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-  res.setHeader('Vary', 'Origin');
-
+  setCors(req, res);
   if (req.method === 'OPTIONS') return res.status(200).end();
-  if (req.method !== 'POST')   return res.status(405).end();
+  if (req.method !== 'POST') return res.status(405).end();
 
   try {
     const { productId, quantity, cadence, customer } = req.body;
 
     const customerError = validateCustomer(customer);
-    if (customerError) {
-      console.log(`❌ Validación fallida: ${customerError}`, JSON.stringify(customer));
-      return res.status(400).json({ success: false, error: customerError });
-    }
+    if (customerError) return res.status(400).json({ success: false, error: customerError });
 
     const product = products.find(p => p.id === productId);
-    if (!product) {
-      return res.status(404).json({ success: false, error: 'Producto no encontrado' });
-    }
+    if (!product) return res.status(404).json({ success: false, error: 'Producto no encontrado' });
 
-    const cant = Math.min(Math.max(parseInt(quantity) || 1, 1), 10);
+    const cant         = Math.min(Math.max(parseInt(quantity) || 1, 1), 10);
     const discountRate = cadence === 'sub' ? 0.12 : 0;
     const unitPrice    = Math.round(product.priceCOP * (1 - discountRate));
     const totalAmount  = unitPrice * cant;
     const reference    = `LERON-${Date.now()}`;
 
-    console.log(`📦 ${product.name} x${cant} | ref: ${reference}`);
-
-    console.log('💾 Guardando en Redis...');
-    await redis.set(reference, {
+    const boldBody = {
+      amount_type:  'CLOSE',
+      amount:       { currency: 'COP', total_amount: totalAmount },
+      description:  `Leron: ${product.name} x${cant} — ${customer.name}`.slice(0, 100),
       reference,
-      product:  product.name,
-      quantity: cant,
-      amount:   totalAmount,
-      customer,
-      createdAt: new Date().toISOString()
-    }, { ex: 7200 });
+      redirect_url: process.env.REDIRECT_URL || 'https://royalluxurycoffee.com/thanks.html'
+    };
 
-    console.log('💳 Llamando a Bold API... key:', process.env.BOLD_API_KEY ? 'SET' : 'MISSING');
-    const boldRes = await fetch('https://integrations.api.bold.co/online/link/v1', {
-      method: 'POST',
+    const boldRes  = await fetch('https://integrations.api.bold.co/online/link/v1', {
+      method:  'POST',
       headers: {
-        'Content-Type': 'application/json',
-        'x-api-key':    process.env.BOLD_API_KEY
+        'Content-Type':  'application/json',
+        'Authorization': `Bearer ${process.env.BOLD_API_KEY}`
       },
-      body: JSON.stringify({
-        amount_type:  'CLOSE',
-        amount:       { currency: 'COP', total_amount: totalAmount },
-        description:  `Leron: ${product.name} x${cant}`.slice(0, 100),
-        reference,
-        redirect_url: process.env.REDIRECT_URL || 'https://leroncoffee.com/thanks.html'
-      })
+      body: JSON.stringify(boldBody)
     });
 
     const data = await boldRes.json();
+    console.log('Bold status:', boldRes.status, data);
 
     if (!boldRes.ok) {
-      console.error('❌ Bold error:', boldRes.status, JSON.stringify(data));
-      await redis.del(reference);
-      return res.status(502).json({ success: false, error: 'Error al generar el link de pago', boldStatus: boldRes.status, boldData: data });
+      return res.status(502).json({ success: false, error: 'Error al generar el link de pago' });
     }
 
-    return res.json({ success: true, paymentUrl: data.payload?.url || data.url });
+    const paymentUrl = data.payload?.url || data.url || data.payment_url || data.link;
 
-  } catch (err) {
-    console.error('Error /api/order:', err.message, err.cause ? String(err.cause) : '');
-    return res.status(500).json({ success: false, error: 'Fallo interno', detail: err.message });
+    // Email notifications (non-blocking)
+    try {
+      const resend = new Resend(process.env.RESEND_API_KEY);
+      const order  = { reference, product: product.name, quantity: cant, amount: totalAmount, customer };
+      await Promise.allSettled([
+        resend.emails.send({
+          from:    process.env.LERON_EMAIL_FROM || 'Leron <orders@leroncoffee.com>',
+          to:      customer.email,
+          subject: `Su orden Leron está confirmada — Ref. ${reference}`,
+          html:    `<p>Orden ${reference} confirmada por $${totalAmount.toLocaleString('es-CO')} COP.</p>`
+        }),
+        process.env.LERON_OWNER_EMAIL ? resend.emails.send({
+          from:    process.env.LERON_EMAIL_FROM || 'Leron <orders@leroncoffee.com>',
+          to:      process.env.LERON_OWNER_EMAIL,
+          subject: `Nuevo pedido — ${customer.name} — $${totalAmount.toLocaleString('es-CO')} COP`,
+          html:    `<p>${customer.name} · ${customer.email} · ${customer.phone}<br>${product.name} x${cant}<br>Ref: ${reference}</p>`
+        }) : Promise.resolve()
+      ]);
+    } catch (e) { console.error('Email error:', e); }
+
+    res.json({ success: true, paymentUrl });
+
+  } catch (error) {
+    console.error('Error /api/order:', error);
+    res.status(500).json({ success: false, error: 'Fallo interno' });
   }
 };

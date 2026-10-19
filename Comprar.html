@@ -764,8 +764,8 @@
             var _host = window.location.hostname;
             var _base = (_host === 'localhost' || _host === '127.0.0.1')
                 ? 'http://localhost:3001'
-                : 'https://leroncoffee.com';
-            var ORDER_ENDPOINT = _base + '/order';
+                : '';
+            var ORDER_ENDPOINT = _base + '/api/order';
 
             /* ── Helpers ──────────────────────────── */
             function qty() { return parseInt(document.querySelector('.numero').textContent) || 1; }
@@ -945,7 +945,7 @@
                 var currency = 'COP';
 
                 try {
-                    var res = await fetch(_base + '/signature', {
+                    var res = await fetch(_base + '/api/signature', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({ orderId, amount, currency })
