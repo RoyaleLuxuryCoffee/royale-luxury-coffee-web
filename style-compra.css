@@ -224,6 +224,7 @@
     min-width: 130%;
     height: auto;
     max-width: none;
+    /* overflow intencional en desktop — contenido en mobile via @media */
     position: relative;
     z-index: 1;
     display: block;
@@ -355,7 +356,7 @@
 
 @media (max-width: 959px) {
     .r-pin { display: none; }
-    .product-img-wrap img { width: 80%; min-width: 80%; }
+    .product-img-wrap img { width: 80%; min-width: 0; max-width: 400px; margin: 0 auto; display: block; }
 }
 
 /* ── Scroll reveal ─────────────────────────── */
@@ -883,4 +884,70 @@
     .r-specbar { grid-template-columns: 1fr; }
     .r-specbar__cell { border-left: 0; border-top: 1px solid var(--hairline-soft); }
     .r-specbar__cell:first-child { border-top: 0; }
+}
+
+/* ── Responsive mobile global ──────────────── */
+@media (max-width: 768px) {
+    /* Imagen del producto: sin desbordamiento */
+    .product-img-wrap img {
+        width: 85%;
+        min-width: 0;
+        max-width: 340px;
+        margin: 0 auto;
+        display: block;
+    }
+
+    /* Layout: menos espacio vertical */
+    .product-layout {
+        padding-top: 24px;
+        padding-bottom: 64px;
+        gap: 32px;
+    }
+
+    /* Panel: menos separación entre secciones */
+    .product-panel { gap: 20px; }
+
+    /* Precio más compacto */
+    .price-amount { font-size: 28px; }
+    .summary-total dd { font-size: 22px; }
+
+    /* Origen: quote más pequeño */
+    .r-origen__quote {
+        font-size: clamp(36px, 10vw, 64px);
+    }
+}
+
+@media (max-width: 480px) {
+    /* Imagen: contener bien en pantallas pequeñas */
+    .product-img-wrap img {
+        width: 78%;
+        max-width: 280px;
+    }
+
+    /* Breadcrumb: menos padding superior */
+    .breadcrumb-row { padding-top: 76px; }
+
+    /* Título del producto */
+    .r-product-header__title {
+        font-size: clamp(36px, 10vw, 52px);
+    }
+
+    /* Origen */
+    .r-origen { padding: 48px 0 0; }
+    .r-origen__statement { margin-bottom: 40px; gap: 20px; }
+
+    /* Checkout form */
+    .checkout-title { font-size: 24px; }
+    .r-field input,
+    .r-field select { font-size: 16px; } /* evita zoom en iOS */
+
+    /* Summary */
+    .summary-line { padding: 12px 16px; }
+
+    /* Cadence / Format pickers */
+    .r-cadence__opt,
+    .r-format__opt { padding: 14px 12px; }
+
+    /* Grind dial labels */
+    .r-dial { touch-action: none; }
 }
