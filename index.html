@@ -133,9 +133,28 @@
                     <a href="Comprar.html" class="btn-gold" data-i18n="hero-btn">Shop Origin Now</a>
                 </div>
 
-                <div class="hero-product">
-                    <img src="imagenes/immortal-heron.png" alt="Immortal Heron — Leron">
+                <div class="hero-showcase" id="collection">
+
+                    <div class="showcase-track" id="showcaseTrack">
+                        <div class="showcase-item is-active" data-index="0" style="order:2">
+                            <img src="imagenes/1.%20IMMORTAL%20HERON.png" alt="Immortal Heron">
+                        </div>
+                        <div class="showcase-item" data-index="1" style="order:3">
+                            <img src="imagenes/2.%20BLACK%20HERON.png" alt="Black Heron">
+                        </div>
+                        <div class="showcase-item" data-index="2" style="order:1">
+                            <img src="imagenes/3.%20GOLDEN%20HERON.png" alt="Golden Heron">
+                        </div>
+                    </div>
+
+                    <div class="showcase-meta">
+                        <span class="showcase-count" id="showcaseCount">01 / 03</span>
+                        <h3 class="showcase-name" id="showcaseName">Immortal Heron</h3>
+                        <span class="showcase-process" id="showcaseProcess">Honey Process · Medium</span>
+                    </div>
+
                 </div>
+
             </div>
             <div class="scroll-indicator"><span>Scroll</span></div>
         </section>
@@ -177,7 +196,7 @@
         </div>
 
 
-        <section class="showcase reveal" id="collection">
+        <section class="showcase reveal">
             <div class="showcase-inner">
                 <div class="showcase-text-left">
                     <p data-i18n="showcase-left">En las altas mesetas del Huila, el café no se cosecha.<br><strong>Se
@@ -518,6 +537,75 @@
                 b.addEventListener('click', function () { setLang(b.dataset.lang); });
             });
             setLang(current);
+        })();
+    </script>
+
+    <script>
+        /* hero showcase — 3-visible carousel, active always centered */
+        (function () {
+            var track   = document.getElementById('showcaseTrack');
+            var meta    = document.querySelector('.showcase-meta');
+            var nameEl  = document.getElementById('showcaseName');
+            var procEl  = document.getElementById('showcaseProcess');
+            var countEl = document.getElementById('showcaseCount');
+            if (!track) return;
+
+            var items  = Array.from(track.querySelectorAll('.showcase-item'));
+            var ITEMS  = items.length;
+            var active = 0;
+            var timer  = null;
+            var DELAY  = 4500;
+
+            var DATA = [
+                { name: 'Immortal Heron', process: 'Honey Process · Medium' },
+                { name: 'Black Heron',    process: 'Washed · Medium Dark'   },
+                { name: 'Golden Heron',   process: 'Natural · Light'        }
+            ];
+
+            function setOrders(a) {
+                var prev = (a - 1 + ITEMS) % ITEMS;
+                var next = (a + 1) % ITEMS;
+                items[prev].style.order = '1';
+                items[a].style.order    = '2';
+                items[next].style.order = '3';
+            }
+
+            function updateMeta(a) {
+                if (!meta) return;
+                meta.classList.add('is-fading');
+                setTimeout(function () {
+                    if (countEl) countEl.textContent = '0' + (a + 1) + ' / 0' + ITEMS;
+                    if (nameEl)  nameEl.textContent  = DATA[a].name;
+                    if (procEl)  procEl.textContent  = DATA[a].process;
+                    meta.classList.remove('is-fading');
+                }, 220);
+            }
+
+            function goTo(i) {
+                items[active].classList.remove('is-active');
+                active = (i + ITEMS) % ITEMS;
+                items[active].classList.add('is-active');
+                setOrders(active);
+                updateMeta(active);
+            }
+
+            function start() { timer = setInterval(function () { goTo(active + 1); }, DELAY); }
+            function stop()  { clearInterval(timer); }
+
+            items.forEach(function (item) {
+                item.addEventListener('click', function () {
+                    var i = parseInt(item.dataset.index);
+                    if (i !== active) { stop(); goTo(i); start(); }
+                });
+            });
+
+            var showcase = document.querySelector('.hero-showcase');
+            if (showcase) {
+                showcase.addEventListener('mouseenter', stop);
+                showcase.addEventListener('mouseleave', start);
+            }
+
+            start();
         })();
     </script>
 </body>
