@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Collection — Leron Coffee</title>
+    <meta name="description" content="Las tres expresiones de Leron: Immortal Heron, Black Heron y Golden Heron. Microlotes de Garzón, Huila, Colombia.">
+    <link rel="canonical" href="https://leroncoffee.com/shop.html">
+    <meta name="theme-color" content="#14120F">
+    <link rel="icon" type="image/png" href="imagenes/logo-leron-white.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/tokens.css">
+    <link rel="stylesheet" href="css/components.css">
+    <style>
+        /* ── Page base ── */
+        body { background: var(--ink); color: var(--bone); }
+
+        /* ── Nav ── */
+        .site-nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 200;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 clamp(20px, 5vw, 60px);
+            height: 64px;
+            background: rgba(10,9,8,0.88);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(201,169,97,0.08);
+        }
+        .site-nav__logo img { height: 28px; width: auto; }
+        .site-nav nav { display: flex; gap: 32px; }
+        .site-nav nav a {
+            font-family: var(--sans);
+            font-size: 11px;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            color: var(--silver);
+            text-decoration: none;
+            transition: color .2s;
+        }
+        .site-nav nav a:hover { color: var(--bone); }
+
+        /* ── Page header ── */
+        .page-header {
+            padding: clamp(100px, 14vw, 160px) 0 clamp(40px, 6vw, 72px);
+            text-align: center;
+        }
+        .page-header__eyebrow {
+            display: block;
+            font-family: var(--sans);
+            font-size: 9px;
+            letter-spacing: .32em;
+            text-transform: uppercase;
+            color: var(--gold);
+            opacity: .7;
+            margin-bottom: 20px;
+        }
+        .page-header__title {
+            font-family: var(--serif);
+            font-size: clamp(2.8rem, 7vw, 5.5rem);
+            font-weight: 300;
+            line-height: 1.05;
+            color: var(--bone);
+            margin: 0 0 20px;
+        }
+        .page-header__title em { font-style: italic; color: var(--gold); }
+        .page-header__sub {
+            font-family: var(--sans);
+            font-size: 13px;
+            color: var(--silver);
+            letter-spacing: .04em;
+        }
+
+        /* ── Collection grid ── */
+        .collection {
+            padding: 0 0 clamp(80px, 12vw, 140px);
+        }
+        .collection__grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        @media (max-width: 900px) {
+            .collection__grid { grid-template-columns: 1fr; gap: 2px; }
+        }
+
+        /* ── Product card ── */
+        .p-card {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            background: var(--coal);
+            overflow: hidden;
+            text-decoration: none;
+            color: inherit;
+            transition: background .3s ease;
+        }
+        .p-card:hover { background: var(--char); }
+
+        .p-card__img-wrap {
+            position: relative;
+            aspect-ratio: 3/4;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            overflow: hidden;
+            background: var(--char);
+        }
+        .p-card__img-wrap::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(10,9,8,0.85) 0%, transparent 55%);
+            pointer-events: none;
+        }
+        .p-card__img {
+            width: 68%;
+            max-width: 280px;
+            height: 85%;
+            object-fit: contain;
+            object-position: bottom center;
+            transition: transform .55s cubic-bezier(.4,0,.2,1);
+            filter: drop-shadow(0 24px 48px rgba(0,0,0,0.7));
+        }
+        .p-card:hover .p-card__img {
+            transform: scale(1.04) translateY(-8px);
+            filter: drop-shadow(0 0 40px rgba(201,169,97,0.22)) drop-shadow(0 32px 64px rgba(0,0,0,0.75));
+        }
+
+        .p-card__badge {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 2;
+            font-family: var(--sans);
+            font-size: 8px;
+            font-weight: 500;
+            letter-spacing: .2em;
+            text-transform: uppercase;
+            padding: 5px 10px;
+            border: 1px solid rgba(201,169,97,0.4);
+            color: var(--gold);
+            background: rgba(10,9,8,0.6);
+            backdrop-filter: blur(8px);
+        }
+        .p-card__badge--available {
+            border-color: rgba(201,169,97,0.6);
+            color: var(--gold);
+        }
+        .p-card__badge--soon {
+            border-color: rgba(168,164,156,0.3);
+            color: var(--silver);
+        }
+
+        .p-card__body {
+            position: relative;
+            z-index: 1;
+            padding: clamp(20px, 3vw, 32px);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            flex: 1;
+        }
+
+        .p-card__num {
+            font-family: var(--sans);
+            font-size: 9px;
+            letter-spacing: .22em;
+            color: var(--gold);
+            opacity: .55;
+        }
+
+        .p-card__name {
+            font-family: var(--serif);
+            font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+            font-weight: 300;
+            line-height: 1.1;
+            color: var(--bone);
+            margin: 0;
+        }
+        .p-card__name em { font-style: italic; display: block; font-size: .65em; color: var(--silver); margin-top: 4px; }
+
+        .p-card__specs {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .p-card__spec {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+        .p-card__spec dt {
+            font-family: var(--sans);
+            font-size: 8px;
+            letter-spacing: .2em;
+            text-transform: uppercase;
+            color: var(--silver);
+            opacity: .55;
+        }
+        .p-card__spec dd {
+            font-family: var(--sans);
+            font-size: 11px;
+            color: var(--silver);
+        }
+
+        .p-card__notes {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .p-card__note {
+            font-family: var(--sans);
+            font-size: 9px;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            color: var(--gold);
+            opacity: .7;
+            background: rgba(201,169,97,0.07);
+            border: 1px solid rgba(201,169,97,0.15);
+            padding: 4px 8px;
+        }
+
+        .p-card__divider {
+            height: 1px;
+            background: rgba(201,169,97,0.1);
+            margin: 4px 0;
+        }
+
+        .p-card__cta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: auto;
+            padding-top: 4px;
+        }
+        .p-card__cta-label {
+            font-family: var(--sans);
+            font-size: 10px;
+            font-weight: 500;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            color: var(--gold);
+            transition: letter-spacing .2s ease;
+        }
+        .p-card:hover .p-card__cta-label { letter-spacing: .24em; }
+        .p-card__cta-label--muted { color: var(--silver); opacity: .45; }
+        .p-card__arrow {
+            width: 32px;
+            height: 32px;
+            border: 1px solid rgba(201,169,97,0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background .2s ease, border-color .2s ease;
+        }
+        .p-card:hover .p-card__arrow {
+            background: rgba(201,169,97,0.12);
+            border-color: rgba(201,169,97,0.5);
+        }
+        .p-card__arrow svg { color: var(--gold); }
+
+        /* ── Hairline between cards on desktop ── */
+        @media (min-width: 901px) {
+            .p-card + .p-card { border-left: 1px solid rgba(201,169,97,0.06); }
+        }
+
+        /* ── Footer ── */
+        .site-footer {
+            text-align: center;
+            padding: 48px 24px;
+            border-top: 1px solid rgba(201,169,97,0.08);
+        }
+        .footer-social {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+            margin: 16px 0;
+        }
+        .footer-social a { color: var(--silver); transition: color .2s; }
+        .footer-social a:hover { color: var(--gold); }
+        .footer-social svg { display: block; }
+
+        /* ── Reveal ── */
+        .reveal-up {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity .6s ease, transform .6s ease;
+        }
+        .reveal-up.is-revealed { opacity: 1; transform: none; }
+    </style>
+</head>
+
+<body>
+
+    <header class="site-nav">
+        <a href="index.html" class="site-nav__logo" aria-label="Leron">
+            <img src="imagenes/logo-leron-white.png" alt="Leron">
+        </a>
+        <nav>
+            <a href="index.html#origen">Origin</a>
+            <a href="shop.html" style="color:var(--bone)">Collection</a>
+            <a href="#footer-contact">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+
+        <div class="page-header container">
+            <span class="page-header__eyebrow">Garzón · Huila · Colombia</span>
+            <h1 class="page-header__title">La <em>Collection</em></h1>
+            <p class="page-header__sub">Tres expresiones. Un solo origen. Cada bolsa, un microlote numerado.</p>
+        </div>
+
+        <hr class="hairline" style="max-width:1400px;margin:0 auto;">
+
+        <section class="collection">
+            <div class="collection__grid">
+
+                <!-- 01 — Immortal Heron -->
+                <a href="immortal-heron.html" class="p-card reveal-up" style="transition-delay:.05s">
+                    <div class="p-card__img-wrap">
+                        <span class="p-card__badge p-card__badge--soon">Preventa</span>
+                        <img class="p-card__img" src="imagenes/1.%20IMMORTAL%20HERON.png" alt="The Immortal Heron">
+                    </div>
+                    <div class="p-card__body">
+                        <span class="p-card__num">Lot N° 61</span>
+                        <h2 class="p-card__name">The Immortal Heron<em>Garza Inmortal</em></h2>
+                        <dl class="p-card__specs">
+                            <div class="p-card__spec"><dt>Process</dt><dd>Honey</dd></div>
+                            <div class="p-card__spec"><dt>Roast</dt><dd>Medium</dd></div>
+                            <div class="p-card__spec"><dt>Weight</dt><dd>340 g</dd></div>
+                        </dl>
+                        <ul class="p-card__notes">
+                            <li class="p-card__note">Dark Chocolate</li>
+                            <li class="p-card__note">Caramel</li>
+                            <li class="p-card__note">Roasted Almond</li>
+                        </ul>
+                        <div class="p-card__divider"></div>
+                        <div class="p-card__cta">
+                            <span class="p-card__cta-label p-card__cta-label--muted">Reservar preventa</span>
+                            <span class="p-card__arrow">
+                                <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+                            </span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- 02 — Black Heron -->
+                <a href="Comprar.html" class="p-card reveal-up" style="transition-delay:.15s">
+                    <div class="p-card__img-wrap">
+                        <span class="p-card__badge p-card__badge--available">Disponible</span>
+                        <img class="p-card__img" src="imagenes/2.%20BLACK%20HERON.png" alt="The Black Heron">
+                    </div>
+                    <div class="p-card__body">
+                        <span class="p-card__num">Lot N° 60</span>
+                        <h2 class="p-card__name">The Black Heron<em>Garza Negra</em></h2>
+                        <dl class="p-card__specs">
+                            <div class="p-card__spec"><dt>Process</dt><dd>Washed</dd></div>
+                            <div class="p-card__spec"><dt>Roast</dt><dd>Medium Dark</dd></div>
+                            <div class="p-card__spec"><dt>Weight</dt><dd>340 g</dd></div>
+                        </dl>
+                        <ul class="p-card__notes">
+                            <li class="p-card__note">Raspberry</li>
+                            <li class="p-card__note">Tangerine</li>
+                            <li class="p-card__note">Cacao</li>
+                        </ul>
+                        <div class="p-card__divider"></div>
+                        <div class="p-card__cta">
+                            <span class="p-card__cta-label">Comprar ahora</span>
+                            <span class="p-card__arrow">
+                                <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+                            </span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- 03 — Golden Heron -->
+                <a href="golden-heron.html" class="p-card reveal-up" style="transition-delay:.25s">
+                    <div class="p-card__img-wrap">
+                        <span class="p-card__badge p-card__badge--soon">Preventa</span>
+                        <img class="p-card__img" src="imagenes/3.%20GOLDEN%20HERON.png" alt="The Golden Heron">
+                    </div>
+                    <div class="p-card__body">
+                        <span class="p-card__num">Lot N° 62</span>
+                        <h2 class="p-card__name">The Golden Heron<em>Garza Dorada</em></h2>
+                        <dl class="p-card__specs">
+                            <div class="p-card__spec"><dt>Process</dt><dd>Natural</dd></div>
+                            <div class="p-card__spec"><dt>Roast</dt><dd>Light</dd></div>
+                            <div class="p-card__spec"><dt>Weight</dt><dd>340 g</dd></div>
+                        </dl>
+                        <ul class="p-card__notes">
+                            <li class="p-card__note">Red Berries</li>
+                            <li class="p-card__note">Chocolate</li>
+                            <li class="p-card__note">Red Wine</li>
+                        </ul>
+                        <div class="p-card__divider"></div>
+                        <div class="p-card__cta">
+                            <span class="p-card__cta-label p-card__cta-label--muted">Reservar preventa</span>
+                            <span class="p-card__arrow">
+                                <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+                            </span>
+                        </div>
+                    </div>
+                </a>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="site-footer" id="footer-contact">
+        <p class="label-mute">Contáctanos</p>
+        <div class="footer-social">
+            <a href="https://wa.me/573237966960" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+            </a>
+            <a href="mailto:info@leroncoffee.com" aria-label="Email">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
+            </a>
+            <a href="https://instagram.com/leroncoffee" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+            </a>
+        </div>
+        <p class="label-mute">© Garzón, Huila — Coffee as Culture</p>
+    </footer>
+
+    <script>
+        var revealEls = document.querySelectorAll('.reveal-up');
+        if ('IntersectionObserver' in window) {
+            var obs = new IntersectionObserver(function(entries) {
+                entries.forEach(function(e) {
+                    if (e.isIntersecting) { e.target.classList.add('is-revealed'); obs.unobserve(e.target); }
+                });
+            }, { threshold: 0.08 });
+            revealEls.forEach(function(el) { obs.observe(el); });
+        } else {
+            revealEls.forEach(function(el) { el.classList.add('is-revealed'); });
+        }
+    </script>
+
+</body>
+</html>
