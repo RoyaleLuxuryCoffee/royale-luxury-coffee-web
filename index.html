@@ -568,7 +568,8 @@
                 { name: 'Black Heron',    process: 'Washed · Medium Dark',   url: 'Comprar.html'        },
                 { name: 'Golden Heron',   process: 'Natural · Light',        url: 'golden-heron.html'   }
             ];
-            var ctaEl = document.getElementById('showcaseCta');
+            var ctaEl    = document.getElementById('showcaseCta');
+            var metaTimer = null;
 
             function setPositions(a) {
                 var prev = (a - 1 + ITEMS) % ITEMS;
@@ -580,14 +581,16 @@
 
             function updateMeta(a) {
                 if (!meta) return;
+                if (metaTimer) { clearTimeout(metaTimer); metaTimer = null; }
                 meta.classList.add('is-fading');
-                setTimeout(function () {
+                metaTimer = setTimeout(function () {
+                    metaTimer = null;
                     if (countEl) countEl.textContent = '0' + (a + 1) + ' / 0' + ITEMS;
                     if (nameEl)  nameEl.textContent  = DATA[a].name;
                     if (procEl)  procEl.textContent  = DATA[a].process;
                     if (ctaEl)   ctaEl.href          = DATA[a].url;
                     meta.classList.remove('is-fading');
-                }, 220);
+                }, 200);
             }
 
             function goTo(i) {
