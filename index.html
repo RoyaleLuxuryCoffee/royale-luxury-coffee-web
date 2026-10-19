@@ -137,13 +137,19 @@
 
                     <div class="showcase-track" id="showcaseTrack">
                         <div class="showcase-item pos-curr" data-index="0">
-                            <img src="imagenes/1.%20IMMORTAL%20HERON.png" alt="Immortal Heron">
+                            <a href="immortal-heron.html" class="showcase-item__link" tabindex="-1" aria-label="Ver Immortal Heron">
+                                <img src="imagenes/1.%20IMMORTAL%20HERON.png" alt="Immortal Heron">
+                            </a>
                         </div>
                         <div class="showcase-item pos-next" data-index="1">
-                            <img src="imagenes/2.%20BLACK%20HERON.png" alt="Black Heron">
+                            <a href="Comprar.html" class="showcase-item__link" tabindex="-1" aria-label="Ver Black Heron">
+                                <img src="imagenes/2.%20BLACK%20HERON.png" alt="Black Heron">
+                            </a>
                         </div>
                         <div class="showcase-item pos-prev" data-index="2">
-                            <img src="imagenes/3.%20GOLDEN%20HERON.png" alt="Golden Heron">
+                            <a href="golden-heron.html" class="showcase-item__link" tabindex="-1" aria-label="Ver Golden Heron">
+                                <img src="imagenes/3.%20GOLDEN%20HERON.png" alt="Golden Heron">
+                            </a>
                         </div>
                     </div>
 
@@ -151,6 +157,7 @@
                         <span class="showcase-count" id="showcaseCount">01 / 03</span>
                         <h3 class="showcase-name" id="showcaseName">Immortal Heron</h3>
                         <span class="showcase-process" id="showcaseProcess">Honey Process · Medium</span>
+                        <a href="immortal-heron.html" class="showcase-cta" id="showcaseCta">Ver producto →</a>
                     </div>
 
                 </div>
@@ -557,10 +564,11 @@
             var DELAY  = 4500;
 
             var DATA = [
-                { name: 'Immortal Heron', process: 'Honey Process · Medium' },
-                { name: 'Black Heron',    process: 'Washed · Medium Dark'   },
-                { name: 'Golden Heron',   process: 'Natural · Light'        }
+                { name: 'Immortal Heron', process: 'Honey Process · Medium', url: 'immortal-heron.html' },
+                { name: 'Black Heron',    process: 'Washed · Medium Dark',   url: 'Comprar.html'        },
+                { name: 'Golden Heron',   process: 'Natural · Light',        url: 'golden-heron.html'   }
             ];
+            var ctaEl = document.getElementById('showcaseCta');
 
             function setPositions(a) {
                 var prev = (a - 1 + ITEMS) % ITEMS;
@@ -577,6 +585,7 @@
                     if (countEl) countEl.textContent = '0' + (a + 1) + ' / 0' + ITEMS;
                     if (nameEl)  nameEl.textContent  = DATA[a].name;
                     if (procEl)  procEl.textContent  = DATA[a].process;
+                    if (ctaEl)   ctaEl.href          = DATA[a].url;
                     meta.classList.remove('is-fading');
                 }, 220);
             }
@@ -590,11 +599,14 @@
             function start() { timer = setInterval(function () { goTo(active + 1); }, DELAY); }
             function stop()  { clearInterval(timer); }
 
-            /* Click en laterales */
+            /* Click: laterales rotan, activo navega */
             items.forEach(function (item) {
-                item.addEventListener('click', function () {
+                item.addEventListener('click', function (e) {
                     var i = parseInt(item.dataset.index);
-                    if (i !== active) { stop(); goTo(i); start(); }
+                    if (i !== active) {
+                        e.preventDefault();
+                        stop(); goTo(i); start();
+                    }
                 });
             });
 

@@ -2090,9 +2090,25 @@ footer {
     transition: opacity 0.25s ease;
 }
 
+.showcase-cta {
+    display: inline-block;
+    margin-top: 4px;
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    text-decoration: none;
+    opacity: 0.85;
+    transition: opacity 0.2s ease, letter-spacing 0.2s ease;
+}
+.showcase-cta:hover { opacity: 1; letter-spacing: .22em; }
+
 .showcase-meta.is-fading .showcase-count,
 .showcase-meta.is-fading .showcase-name,
-.showcase-meta.is-fading .showcase-process {
+.showcase-meta.is-fading .showcase-process,
+.showcase-meta.is-fading .showcase-cta {
     opacity: 0;
 }
 
