@@ -182,18 +182,20 @@
 
 /* ── Product layout ────────────────────────── */
 .product-layout {
-    padding-top: 48px;
-    padding-bottom: 128px;
+    padding-top: 40px;
+    padding-bottom: 80px;
     display: grid;
     grid-template-columns: 1fr;
-    gap: 64px;
+    gap: 40px;
     align-items: start;
 }
 
 @media (min-width: 960px) {
     .product-layout {
         grid-template-columns: 1fr 1fr;
-        gap: 96px;
+        gap: 80px;
+        padding-top: 48px;
+        padding-bottom: 128px;
     }
 }
 
@@ -355,7 +357,7 @@
 
 @media (max-width: 959px) {
     .r-pin { display: none; }
-    .product-img-wrap img { width: 70%; min-width: 0; max-width: 320px; margin: 0 auto; display: block; }
+    .product-img-wrap img { width: 75%; min-width: 0; max-width: 340px; margin: 0 auto; display: block; }
 }
 
 /* ── Scroll reveal ─────────────────────────── */
@@ -898,13 +900,13 @@
 
     /* Layout: menos espacio vertical */
     .product-layout {
-        padding-top: 24px;
-        padding-bottom: 64px;
-        gap: 32px;
+        padding-top: 20px;
+        padding-bottom: 48px;
+        gap: 24px;
     }
 
     /* Panel: menos separación entre secciones */
-    .product-panel { gap: 20px; }
+    .product-panel { gap: 18px; }
 
     /* Precio más compacto */
     .price-amount { font-size: 28px; }
@@ -919,8 +921,8 @@
 @media (max-width: 480px) {
     /* Imagen: contener bien en pantallas pequeñas */
     .product-img-wrap img {
-        width: 60%;
-        max-width: 220px;
+        width: 72%;
+        max-width: 260px;
     }
 
     /* Breadcrumb: menos padding superior */
@@ -1018,4 +1020,14 @@
     opacity: 0.5;
     text-align: center;
     margin: -8px 0 0;
+}
+
+@media (max-width: 768px) {
+    .r-preventa { padding: 24px; gap: 16px; }
+    .r-preventa__headline { font-size: clamp(1.2rem, 5vw, 1.5rem); }
+}
+
+@media (max-width: 480px) {
+    .r-preventa { padding: 18px 16px; gap: 14px; }
+    .r-preventa__disclaimer { display: none; }
 }
