@@ -47,7 +47,7 @@
         "name": "The Black Heron — Garza Negra",
         "image": "https://leroncoffee.com/imagenes/aa.png",
         "description": "Café especial 100% arábica, microlote N°60 de Garzón, Huila, Colombia. Cultivado por Juan Soler y Nicolás Murcia en la finca Villa Angélica. Disponible molido al despachar o en grano.",
-        "sku": "black-heron-340g",
+        "sku": "black-heron-250g",
         "brand": { "@type": "Brand", "name": "Leron" },
         "offers": {
             "@type": "Offer",
@@ -89,7 +89,7 @@
         <div class="container r-stickybar__inner">
             <div class="r-stickybar__product">
                 <span class="r-stickybar__name">The Black Heron</span>
-                <span class="r-stickybar__detail">340 g · Lot N° 60 · Garzón, Huila</span>
+                <span class="r-stickybar__detail">250 g · Lot N° 60 · Garzón, Huila</span>
             </div>
             <div class="r-stickybar__right">
                 <span class="r-stickybar__price" id="sticky-price">$30.000</span>
@@ -132,7 +132,7 @@
             <div class="product-image-col">
                 <div class="product-img-wrap">
                     <div class="product-halo"></div>
-                    <img id="product-main-img" src="imagenes/2.%20BLACK%20HERON.png" alt="The Black Heron — 340 g coffee bag, Lot N° 60">
+                    <img id="product-main-img" src="imagenes/2.%20BLACK%20HERON.png" alt="The Black Heron — 250 g coffee bag, Lot N° 60">
 
                     <div class="r-pin r-pin--a">
                         <div class="r-pin__tag">
@@ -201,7 +201,7 @@
                         <span class="r-format__hint" data-i18n="format-hint">Choose one</span>
                     </legend>
                     <div class="r-format__grid" role="radiogroup">
-                        <button type="button" role="radio" aria-checked="true" data-id="black-heron-340g"
+                        <button type="button" role="radio" aria-checked="true" data-id="black-heron-250g"
                             data-price="30000" class="r-format__opt is-active">
                             <span class="r-format__icon" aria-hidden="true">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
@@ -211,13 +211,13 @@
                                 </svg>
                             </span>
                             <span>
-                                <span class="r-format__primary">340 g</span>
-                                <span class="r-format__secondary">12 oz · Black Heron</span>
+                                <span class="r-format__primary">250 g</span>
+                                <span class="r-format__secondary">Black Heron</span>
                             </span>
                         </button>
 
-                        <button type="button" role="radio" aria-checked="false" data-id="immortal-heron-340g"
-                            data-price="30000" class="r-format__opt">
+                        <button type="button" role="radio" aria-checked="false" data-id="immortal-heron-500g"
+                            data-price="55000" class="r-format__opt">
                             <span class="r-format__icon" aria-hidden="true">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
                                     stroke-linecap="round" stroke-linejoin="round">
@@ -226,8 +226,8 @@
                                 </svg>
                             </span>
                             <span>
-                                <span class="r-format__primary">340 g</span>
-                                <span class="r-format__secondary">12 oz · Immortal Heron</span>
+                                <span class="r-format__primary">500 g</span>
+                                <span class="r-format__secondary">Immortal Heron</span>
                             </span>
                         </button>
 
@@ -743,7 +743,7 @@
             'use strict';
 
             /* ── State ────────────────────────────── */
-            var selectedProductId = 'black-heron-340g';
+            var selectedProductId = 'black-heron-250g';
             var selectedBasePrice = 30000;
             var selectedCadence = 'once';
             var selectedGrind = 'whole';
@@ -800,9 +800,9 @@
                 selectedBasePrice = parseInt(e.detail.price, 10);
                 var img = document.getElementById('product-main-img');
                 if (img) {
-                    var immortal = e.detail.id === 'immortal-heron-340g';
+                    var immortal = e.detail.id === 'immortal-heron-500g';
                     img.src = immortal ? 'imagenes/1.%20IMMORTAL%20HERON.png' : 'imagenes/2.%20BLACK%20HERON.png';
-                    img.alt = immortal ? 'The Immortal Heron — 340 g coffee bag' : 'The Black Heron — 340 g coffee bag, Lot N° 60';
+                    img.alt = immortal ? 'The Immortal Heron — 500 g coffee bag' : 'The Black Heron — 250 g coffee bag, Lot N° 60';
                 }
                 updatePriceDisplay();
             });

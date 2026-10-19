@@ -44,13 +44,21 @@ const pendingOrders = new Map();
 // ─── Catálogo ──────────────────────────────────────────────────────────────
 const products = [
   {
-    id: "black-heron-340g",
+    id: "black-heron-250g",
     name: "The Black Heron — Garza Negra",
+    weight: "250 g",
     priceCOP: 30000
   },
   {
-    id: "immortal-heron-340g",
+    id: "immortal-heron-500g",
     name: "The Immortal Heron — Garza Inmortal",
+    weight: "500 g",
+    priceCOP: 55000
+  },
+  {
+    id: "golden-heron-250g",
+    name: "The Golden Heron — Garza Dorada",
+    weight: "250 g",
     priceCOP: 30000
   }
 ];
